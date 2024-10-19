@@ -270,11 +270,11 @@
                             </a>
                         </li>
                         <li class="pt-8 border-top border-gray-100">
-                            <a href="sign-in.html"
+                            <a href="<?=base_url('login/logout');?>"
                                 class="py-12 text-15 px-20 hover-bg-danger-50 text-gray-300 hover-text-danger-600 rounded-8 flex-align gap-8 fw-medium text-15">
                                 <span class="text-2xl text-danger-600 d-flex"><i
                                         class="ph ph-sign-out"></i></span>
-                                <span class="text">Log Out</span>
+                                <span class="text">Çıxış</span>
                             </a>
                         </li>
                     </ul>
