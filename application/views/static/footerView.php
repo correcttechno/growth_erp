@@ -43,7 +43,8 @@
     <script src="<?=get_js('jquery-jvectormap-2.0.5.min.js');?>"></script>
     <!-- jvectormap world Js -->
     <script src="<?=get_js('jquery-jvectormap-world-mill-en.js');?>"></script>
-
+    <!-- jquery form Js -->
+    <script src="<?=get_js('jquery.form.js');?>"></script>
     <!-- main js -->
     <script src="<?=get_js('main.js');?>"></script>
 
@@ -403,6 +404,26 @@
         
     </script>
     
+
+    <script>    
+
+    
+        // Table Header Checkbox checked all js Start
+        $('#selectAll').on('change', function () {
+            $('.form-check .form-check-input').prop('checked', $(this).prop('checked')); 
+        }); 
+    
+        // Data Tables
+        new DataTable('#assignmentTable', {
+            searching: false,
+            lengthChange: false,
+            info: false,   // Bottom Left Text => Showing 1 to 10 of 12 entries
+            paging: false,
+            "columnDefs": [
+                { "orderable": false, "targets": [0, 6] } // Disables sorting on the 7th column (index 6)
+            ]
+        });
+    </script>
     
     </body>
 </html>

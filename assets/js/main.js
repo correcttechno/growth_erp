@@ -198,4 +198,31 @@
     }); 
     // ========================= Header Sticky Js End===================
 
+    $('form:not([data-stop])').ajaxForm({
+      beforeSend: function () {
+        $('form').addClass('loading');
+      },
+      uploadProgress: function (h, o, t, faiz) {
+  
+      },
+      complete: function (x) {
+        $('form').removeClass('loading');
+        var result = x.responseText;
+        var json = JSON.parse(result);
+        $.each(json, function (i, item) {
+          $('[data-error=' + i + ']').html(item);
+        });
+  
+        if (json.status != undefined && json.status == true) {
+          $('form input,form select').val('');
+          location.reload();
+        }
+      }
+    });
+
+    $(document).on('click','[data-delete-id]',function(){
+      $('#deleteModal').find('input[name=id]').val($(this).attr('data-delete-id'));
+      $('#deleteModal').modal('show');
+    })
+
 })(jQuery);

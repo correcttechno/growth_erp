@@ -7,7 +7,7 @@ class Login extends CI_Controller {
         parent::__construct();
         $this->load->library('session');
         $this->load->library('form_validation');
-        $this->load->model("user_model");
+        $this->load->model("static/user_model");
     }
 
     public function index(){
