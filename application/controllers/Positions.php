@@ -1,30 +1,35 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Departments extends CI_Controller{
+class Positions extends CI_Controller{
 
     function __construct(){
         parent::__construct();
-        $this->load->model('departments_model');
+        $this->load->model('positions_model');
     }
 
     public function index(){
-        $results=$this->departments_model->read();
-        $this->load_model->load('departmentsView',array('results'=>$results));
+        $results=$this->positions_model->read();
+        $this->load_model->load('positionsView',array('results'=>$results));
     }
 
     public function add(){
         $title      =$this->input->post('title',true);
+        $content    =$this->input->post('content',true);
         $id         =$this->input->post('id',true);
 
         $response=array(
-            'title'=>'',
-            'status'=>false,
+            'title'     =>'',
+            'content'   =>$content,
+            'status'    =>false,
         );
 
         if(!empty($title)){
-            $ar=array('title'=>$title);
-            $this->departments_model->add($ar,$id);
+            $ar=array(
+                'title'=>$title,
+                'content'=>$content,
+            );
+            $this->positions_model->add($ar,$id);
             $response['status']=true;
         }
         else{
@@ -36,7 +41,7 @@ class Departments extends CI_Controller{
     public function delete(){
         $id=$this->input->post('delete_id',true);
         if(!empty($id)){
-            $this->departments_model->delete($id);
+            $this->positions_model->delete($id);
         }
         echo json_encode(array('status'=>true));
     }
@@ -44,7 +49,7 @@ class Departments extends CI_Controller{
     public function read_row(){
         $id=$this->input->post('id',true);
         if(!empty($id)){
-            $result=$this->departments_model->read_row($id);
+            $result=$this->positions_model->read_row($id);
             if($result){
                 echo json_encode($result);
             }

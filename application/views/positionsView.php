@@ -4,7 +4,7 @@
         <!-- Breadcrumb Start -->
         <div class="breadcrumb mb-24">
             <ul class="flex-align gap-4">
-                <li><span class="text-main-600 fw-normal text-20">Departamnetlər</span></li>
+                <li><span class="text-main-600 fw-normal text-20">Vəzifələr</span></li>
             </ul>
         </div>
         <!-- Breadcrumb End -->
@@ -35,7 +35,8 @@
                                     id="selectAll">
                             </div>
                         </th>
-                        <th class="h6 text-gray-300">Ad</th>
+                        <th class="h6 text-gray-300">Vəzifə</th>
+                        <th class="h6 text-gray-300">Vəzifə təlimatları</th>
                         <th class="h6 text-gray-300">Tarix</th>
                         <th class="h6 text-gray-300">Əməliyyatlar</th>
                     </tr>
@@ -51,6 +52,11 @@
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">
                                 <?=$r['title'];?>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="h6 mb-0 fw-medium text-gray-300">
+                                <?=$r['content'];?>
                             </span>
                         </td>
                         <td>
@@ -97,18 +103,24 @@
     <div class="modal-dialog modal-md modal-dialog modal-dialog-centered">
         <div class="modal-content radius-16 bg-base">
             <div class="modal-header py-16 px-24 border border-top-0 border-start-0 border-end-0">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Yeni departamnet yarat</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Yeni vəzifə yarat</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-24">
-                <form action="<?=base_url('departments/add');?>" method="post">
+                <form action="<?=base_url('positions/add');?>" method="post">
                     <div class="row">
-                        <div class="col-12 mb-20">
-                            <input type="hidden" name="id" value="0"/>
-
-                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Departamnet adı:
+                        <input type="hidden" name="id" value="0"/>
+                        <div class="col-12 mb-5">
+                            <label class="form-label fw-semibold text-primary-light text-sm mb-3">Vəzifə adı:
                             </label>
-                            <input type="text" name="title" class="form-control radius-8" placeholder="Departamnet adı">
+                            <input type="text" name="title" class="form-control radius-8" placeholder="Vəzifə adı">
+                            <span data-error="title" class="text-xs text-danger"></span>
+                        </div>
+
+                        <div class="col-12 mb-5">
+                            <label class="form-label fw-semibold text-primary-light text-sm mb-1">Vəzifə təlimatları:
+                            </label>
+                            <textarea type="text" name="content" class="form-control radius-8" placeholder="Vəzifə təlimatları"></textarea>
                             
                             <span data-error="title" class="text-xs text-danger"></span>
                         </div>
@@ -130,4 +142,4 @@
     </div>
 </div>
 
-<?php $this->modal_model->delete("departments");?>
+<?php $this->modal_model->delete("positions");?>
