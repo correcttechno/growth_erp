@@ -2,6 +2,10 @@
 
 class Employees_model extends CI_Model{
 
+    function __construct(){
+        parent::__construct();
+    }
+
     public function read(){
         $results=array();//$this->database_model->read('users');
         return count($results)>0?$results:false;
@@ -27,5 +31,6 @@ class Employees_model extends CI_Model{
         $result=$this->database_model->read_row('users',array('id'=>$id));
         return count($result)>0?$result:false;
     }
+
 
 }

@@ -124,14 +124,12 @@
                                     </label>
                                     <div class="position-relative">
                                         <select id="dep_id" name="departament_id" class="form-select py-9 placeholder-13 text-15">
-                                            <option value="1" disabled selected>Enter course category</option>
-                                            <option value="2">Computer Science </option>
-                                            <option value="2">Business </option>
-                                            <option value="2">Management </option>
-                                            <option value="2">Humanities </option>
-                                            <option value="2">Data Science</option>
-                                            <option value="2">Artificial Intelligence</option>
+                                            <option value="0">--seçim--</option>
+                                            <?php if($departments):foreach($departments as $d):?>
+                                            <option value="<?=$d['id'];?>"><?=$d['title'];?></option><
+                                            <?php endforeach;endif;?>
                                         </select>
+                                        <span data-error="dep_id" class="text-xs text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -140,14 +138,12 @@
                                     </label>
                                     <div class="position-relative">
                                         <select id="pos_id" name="position_id" class="form-select py-9 placeholder-13 text-15">
-                                            <option value="1" disabled selected>Select course level</option>
-                                            <option value="2">Course Level 1</option>
-                                            <option value="2">Course Level 2</option>
-                                            <option value="2">Course Level 3</option>
-                                            <option value="2">Course Level 4</option>
-                                            <option value="2">Course Level 5</option>
-                                            <option value="2">Course Level 6</option>
+                                            <option value="0">--seçim--</option>
+                                            <?php if($positions):foreach($positions as $d):?>
+                                            <option value="<?=$d['id'];?>"><?=$d['title'];?></option><
+                                            <?php endforeach;endif;?>
                                         </select>
+                                        <span data-error="pos_id" class="text-xs text-danger"></span>
                                     </div>
                                 </div>
 
@@ -183,6 +179,7 @@
                                         Cins:
                                     </label>
                                     <select type="text" name="gender" class="form-control radius-8" placeholder="Cins">
+                                        <option value="0">--seçim--</option>
                                         <option value="male">Kişi</option>
                                         <option value="female">Qadın</option>
                                     </select>
