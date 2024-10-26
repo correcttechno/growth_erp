@@ -8,6 +8,7 @@ class Employees extends CI_Controller{
         $this->load->model('employees_model');
         $this->load->model("departments_model");
         $this->load->model("positions_model");
+        $this->load->helper('password');
     }
 
     public function index(){
@@ -23,8 +24,8 @@ class Employees extends CI_Controller{
     }
 
     public function add(){
-        $dep_id         =$this->input->post('dep_id',true);
-        $pos_id         =$this->input->post('pos_id',true);
+        $dep_id         =$this->input->post('department_id',true);
+        $pos_id         =$this->input->post('position_id',true);
         $firstname      =$this->input->post('firstname',true);
         $lastname       =$this->input->post('lastname',true);
         $gender         =$this->input->post('gender',true);
@@ -53,7 +54,7 @@ class Employees extends CI_Controller{
             'status'        =>false,
         );
 
-        if(!empty($firstname) and !empty($lastname) and !empty($phone) and !empty($address)){
+        if(!empty($dep_id) and !empty($pos_id) and !empty($firstname) and !empty($lastname) and !empty($phone) and !empty($address) and !empty($gender) and !empty($email)){
             $ar=array(
                 'department_id'     =>$dep_id,
                 'position_id'       =>$pos_id,
@@ -66,12 +67,24 @@ class Employees extends CI_Controller{
                 'phone'             =>$phone,
                 'password'          =>$password,
                 'content'           =>$content,
+                'token'             =>generate_token(),
             );
-            $this->employees_model->add($ar,$id);
-            $response['status']=true;
+
+            if($password!=$repassword){
+                $response['password']="Şifrələr uyğun deyil !";
+            }
+            else if(empty($id) and $this->employees_model->check_email($email)){
+                $response['email']="Bu e-mail bir dəfə istifadə edilib !";
+            }
+            else{
+                $ar['password']=generate_password($password);
+                $this->employees_model->add($ar,$id);
+                $response['status']=true;
+            }
         }
         else{
-            $response['title']="Zəhmət olmasa xanaları doldurun !";
+            
+            $response['content']="Zəhmət olmasa *-lu  xanaları doldurun !";
         }
         echo json_encode($response);
     }
@@ -89,6 +102,7 @@ class Employees extends CI_Controller{
         if(!empty($id)){
             $result=$this->employees_model->read_row($id);
             if($result){
+                unset($result['password']);
                 echo json_encode($result);
             }
         }

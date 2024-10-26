@@ -7,7 +7,7 @@ class Employees_model extends CI_Model{
     }
 
     public function read(){
-        $results=array();//$this->database_model->read('users');
+        $results=$this->database_model->read('users');
         return count($results)>0?$results:false;
     }
 
@@ -18,6 +18,9 @@ class Employees_model extends CI_Model{
 
     public function add($data,$ch_id=0){
         if(!empty($ch_id)){
+            if($data['password']==""){
+                unset($data['password']);
+            }
             $this->database_model->update("users",$data,array('id'=>$ch_id));
         }
         else{
@@ -31,6 +34,13 @@ class Employees_model extends CI_Model{
         $result=$this->database_model->read_row('users',array('id'=>$id));
         return count($result)>0?$result:false;
     }
+
+    public function check_email($email){
+        $result=$this->database_model->read_row('users',array('email'=>$email));
+        return count($result)>0?true:false;
+    }
+
+
 
 
 }

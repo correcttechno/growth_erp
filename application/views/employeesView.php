@@ -35,10 +35,15 @@
                                     id="selectAll">
                             </div>
                         </th>
+                        <th class="h6 text-gray-300">Ad / Soyad</th>
+                        <th class="h6 text-gray-300">Departament</th>
                         <th class="h6 text-gray-300">Vəzifə</th>
-                        <th class="h6 text-gray-300">Vəzifə təlimatları</th>
-                        <th class="h6 text-gray-300">Tarix</th>
-                        <th class="h6 text-gray-300">Əməliyyatlar</th>
+                        <th class="h6 text-gray-300">Telefon</th>
+                        <th class="h6 text-gray-300">E-Mail</th>
+                        <th class="h6 text-gray-300">Cins</th>
+                        <th class="h6 text-gray-300">Doğum Tarixi</th>
+                        <th class="h6 text-gray-300">Ünvan</th>
+                        <th class="h6 text-gray-300 dt-orderable-none">Əməliyyatlar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,17 +56,53 @@
                         </td>
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">
-                                <?=$r['title'];?>
+                                <?=$r['firstname'];?> 
+                                <?=$r['lastname'];?>
                             </span>
                         </td>
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">
-                                <?=$r['content'];?>
+                             <?php
+                             $dep=$this->departments_model->read_row($r['department_id']);
+                             if($dep){
+                                echo $dep['title'];
+                             }
+                             ?>
                             </span>
                         </td>
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">
-                                <?=$r['date'];?>
+                            <?php
+                             $pos=$this->positions_model->read_row($r['position_id']);
+                             if($pos){
+                                echo $pos['title'];
+                             }
+                             ?>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="h6 mb-0 fw-medium text-gray-300">
+                                <?=$r['phone'];?>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="h6 mb-0 fw-medium text-gray-300">
+                                <?=$r['email'];?>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="h6 mb-0 fw-medium text-gray-300">
+                                <?=($r['gender']=='male'?"Kişi":"Qadın");?>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="h6 mb-0 fw-medium text-gray-300">
+                                <?=$r['birthday'];?>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="h6 mb-0 fw-medium text-gray-300">
+                                <?=$r['address'];?>
                             </span>
                         </td>
 
@@ -120,10 +161,10 @@
 
                                 <div class="col-sm-12">
                                     <label for="dep_id" class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                        Departament
+                                        Departament: <span class="text-danger">*</span>
                                     </label>
                                     <div class="position-relative">
-                                        <select id="dep_id" name="departament_id" class="form-select py-9 placeholder-13 text-15">
+                                        <select id="dep_id" name="department_id" class="form-select py-9 placeholder-13 text-15">
                                             <option value="0">--seçim--</option>
                                             <?php if($departments):foreach($departments as $d):?>
                                             <option value="<?=$d['id'];?>"><?=$d['title'];?></option><
@@ -134,7 +175,7 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <label for="pos_id" class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                        Vəzifə
+                                        Vəzifə: <span class="text-danger">*</span>
                                     </label>
                                     <div class="position-relative">
                                         <select id="pos_id" name="position_id" class="form-select py-9 placeholder-13 text-15">
@@ -156,7 +197,7 @@
 
                                 <div class="col-4">
                                     <label class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                        Ad:
+                                        Ad: <span class="text-danger">*</span>
                                     </label>
                                     <input type="text" name="firstname" class="form-control radius-8"
                                         placeholder="Ad">
@@ -166,7 +207,7 @@
 
                                 <div class="col-4">
                                     <label class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                        Soyad:
+                                        Soyad: <span class="text-danger">*</span>
                                     </label>
                                     <input type="text" name="lastname" class="form-control radius-8"
                                         placeholder="Soyad">
@@ -176,7 +217,7 @@
 
                                 <div class="col-4">
                                     <label class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                        Cins:
+                                        Cins: <span class="text-danger">*</span>
                                     </label>
                                     <select type="text" name="gender" class="form-control radius-8" placeholder="Cins">
                                         <option value="0">--seçim--</option>
@@ -199,7 +240,7 @@
 
                                 <div class="col-6">
                                     <label class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                        Ünvan:
+                                        Ünvan: <span class="text-danger">*</span>
                                     </label>
                                     <input type="text" name="address" class="form-control radius-8"
                                         placeholder="Ünvan">
@@ -209,7 +250,7 @@
 
                                 <div class="col-6">
                                     <label class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                        E-Mail:
+                                        E-Mail: <span class="text-danger">*</span>
                                     </label>
                                     <input type="text" name="email" class="form-control radius-8"
                                         placeholder="E-mail">
@@ -219,7 +260,7 @@
 
                                 <div class="col-6">
                                     <label class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                       Telefon:
+                                       Telefon: <span class="text-danger">*</span>
                                     </label>
                                     <input type="text" name="phone" class="form-control radius-8"
                                         placeholder="Telefon">
@@ -229,7 +270,7 @@
 
                                 <div class="col-6">
                                     <label class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                       Şifrə:
+                                       Şifrə: <span class="text-danger">*</span>
                                     </label>
                                     <input type="text" name="password" class="form-control radius-8"
                                         placeholder="Şifrə">
@@ -239,7 +280,7 @@
 
                                 <div class="col-6">
                                     <label class="form-label fw-semibold text-primary-light text-sm mb-8">
-                                       Təkrar şifrə:
+                                       Təkrar şifrə: <span class="text-danger">*</span>
                                     </label>
                                     <input type="text" name="repassword" class="form-control radius-8"
                                         placeholder="Təkrar şifrə">
@@ -253,6 +294,7 @@
                                     </label>
                                     <textarea type="text" name="content" class="form-control radius-8"
                                         placeholder="Əlavə məlumat"></textarea>
+                                    <span data-error="content" class="text-xs text-danger"></span>
                                 </div>
 
                                 
