@@ -35,7 +35,7 @@
                                     id="selectAll">
                             </div>
                         </th>
-                        <th class="h6 text-gray-300">Ad</th>
+                        <th class="h6 text-gray-300">Başlıq</th>
                         <th class="h6 text-gray-300">Tarix</th>
                         <th class="h6 text-gray-300">Əməliyyatlar</th>
                     </tr>
@@ -97,7 +97,7 @@
     <div class="modal-dialog modal-md modal-dialog modal-dialog-centered">
         <div class="modal-content radius-16 bg-base">
             <div class="modal-header py-16 px-24 border border-top-0 border-start-0 border-end-0">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Yeni departamnet yarat</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Yeni müştəri növü yarat</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-24">
@@ -106,9 +106,9 @@
                         <div class="col-12 mb-20">
                             <input type="hidden" name="id" value="0"/>
 
-                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Departamnet adı:
+                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Başlıq:
                             </label>
-                            <input type="text" name="title" class="form-control radius-8" placeholder="Departamnet adı">
+                            <input type="text" name="title" class="form-control radius-8" placeholder="Başlıq">
                             
                             <span data-error="title" class="text-xs text-danger"></span>
                         </div>
