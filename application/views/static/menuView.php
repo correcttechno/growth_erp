@@ -40,7 +40,7 @@
                             <a href="<?=base_url("customers");?>" class="sidebar-submenu__link">Müştərilər</a>
                         </li>
                         <li class="sidebar-submenu__item">
-                            <a href="<?=base_url("customers_type");?>" class="sidebar-submenu__link"> Müştəri növləri </a>
+                            <a href="<?=base_url("customerstype");?>" class="sidebar-submenu__link"> Müştəri növləri </a>
                         </li>
                         <li class="sidebar-submenu__item">
                             <a href="<?=base_url("customers_documents");?>" class="sidebar-submenu__link">Müştəri sənədləri</a>
