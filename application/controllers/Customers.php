@@ -9,26 +9,70 @@ class Customers extends CI_Controller{
     }
 
     public function index(){
-        $results=array();//$this->customers_model->read();
+        $results=$this->customers_model->read();
         $this->load_model->load('customersView',array('results'=>$results));
     }
 
     public function add(){
-        $title      =$this->input->post('title',true);
-        $id         =$this->input->post('id',true);
+      
+        $firstname      =$this->input->post('firstname',true);
+        $lastname       =$this->input->post('lastname',true);
+        $phone          =$this->input->post('phone',true);
+        $email          =$this->input->post('email',true);
+        $birthday       =$this->input->post('birthday',true);
+        $address        =$this->input->post('address',true);
+
+        $rfirstname     =$this->input->post('rfirstname',true);
+        $rlastname      =$this->input->post('rlastname',true);
+        $rphone         =$this->input->post('rphone',true);
+        $remail         =$this->input->post('remail',true);
+        $rbirthday      =$this->input->post('rbirthday',true);
+        $raddress       =$this->input->post('raddress',true);
+
+        $customertype   =$this->input->post('customertype',true);
+        $voen           =$this->input->post('voen',true);
+        $countworkers   =$this->input->post('countworkers',true);
+        $countobject    =$this->input->post('countobject',true);
+
+        $bankname       =$this->input->post('bankname',true);
+        $bankperson     =$this->input->post('bankperson',true);
+        $bankphone      =$this->input->post('bankphone',true);
+        
+        $id             =$this->input->post('id',true);
 
         $response=array(
-            'title'=>'',
-            'status'=>false,
+            'msg'       =>'',
+            'status'    =>false,
         );
 
-        if(!empty($title)){
-            $ar=array('title'=>$title);
+        if(!empty($firstname) and !empty($lastname)){
+            $ar=array(
+                "firstname"     => $firstname,
+                "lastname"      => $lastname,
+                "phone"         => $phone,
+                "email"         => $email,
+                "birthday"      => $birthday,
+                "address"       => $address,
+                "rfirstname"    => $rfirstname,
+                "rlastname"     => $rlastname,
+                "rphone"        => $rphone,
+                "remail"        => $remail,
+                "rbirthday"     => $rbirthday,
+                "raddress"      => $raddress,
+                "voen"          => $voen,
+                "countworkers"  => $countworkers,
+                "countobject"   => $countobject,
+                "bankname"      => $bankname,
+                "bankperson"    => $bankperson,
+                "bankphone"     => $bankphone,
+            );
+
+
             $this->customers_model->add($ar,$id);
             $response['status']=true;
         }
         else{
-            $response['title']="Zəhmət olmasa xanaları doldurun !";
+            $response['title']="Zəhmət * -lu xanaları doldurun !";
         }
         echo json_encode($response);
     }

@@ -1,7 +1,7 @@
 <?php
 
 function generate_password($string){
-    return md5(md5($string));
+    return (md5($string));
 }
 
 function generate_token() {
