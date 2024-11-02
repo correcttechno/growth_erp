@@ -421,7 +421,7 @@
             info: false,   // Bottom Left Text => Showing 1 to 10 of 12 entries
             paging: false,
             "columnDefs": [
-                { "orderable": false, "targets": [0, 6] } // Disables sorting on the 7th column (index 6)
+                { "orderable": false, "targets": [0, 7] } // Disables sorting on the 7th column (index 6)
             ]
         });
     </script>
