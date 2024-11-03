@@ -5,7 +5,6 @@ class Login extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->library('session');
         $this->load->library('form_validation');
         $this->load->model("static/user_model");
     }
@@ -29,17 +28,9 @@ class Login extends CI_Controller {
         } else {
             $username = $this->input->post('username');
             $password = $this->input->post('password');
-           
+			$check_login=$this->user_model->set_login($username,$password);
 
-			$user=$this->user_model->check_user($username,$password);
-
-            if ($user) {
-                $session_data = array(
-                    'username' => $user['username'],
-                    'token'    =>$user['token'],
-                    'logged_in' => TRUE
-                );
-                $this->session->set_userdata($session_data);
+            if ($check_login) {
                 redirect(base_url().'dashboard');
             } else {
                 $response['message']="Hesab tapılmadı !";
@@ -49,10 +40,7 @@ class Login extends CI_Controller {
     }
 
     public function logout() {
-        $this->session->unset_userdata('username');
-        $this->session->unset_userdata('token');
-        $this->session->unset_userdata('logged_in');
-        $this->session->sess_destroy();
+        $this->user_model->set_logout();
         redirect(base_url());
     }
 }

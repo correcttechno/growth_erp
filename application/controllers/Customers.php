@@ -73,7 +73,7 @@ class Customers extends CI_Controller{
             $response['status']=true;
         }
         else{
-            $response['msg']="Zəhmət * -lu xanaları doldurun !";
+            $response['msg']="Zəhmət olmasa * -lu xanaları doldurun !";
         }
         echo json_encode($response);
     }

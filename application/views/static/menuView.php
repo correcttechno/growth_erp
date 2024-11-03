@@ -102,7 +102,7 @@
                         class="text-gray-300 text-sm px-20 pt-20 fw-semibold border-top border-gray-100 d-block text-uppercase">Settings</span>
                 </li>
                 <li class="sidebar-menu__item">
-                    <a href="setting.html" class="sidebar-menu__link">
+                    <a href="<?=base_url('profile');?>" class="sidebar-menu__link">
                         <span class="icon"><i class="ph ph-gear"></i></span>
                         <span class="text">Hesab Ayarları</span>
                     </a>

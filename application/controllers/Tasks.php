@@ -12,7 +12,7 @@ class Tasks extends CI_Controller{
     }
 
     public function index(){
-        $results=array();//$this->tasks_model->read();
+        $results        =$this->tasks_model->read();
         $customers      =$this->customers_model->read();
         $taskstype      =$this->taskstype_model->read();
         $employees      =$this->employees_model->read();
@@ -20,21 +20,45 @@ class Tasks extends CI_Controller{
     }
 
     public function add(){
-        $title      =$this->input->post('title',true);
-        $id         =$this->input->post('id',true);
+
+        $tasktype_id    =$this->input->post('tasktype_id',true);
+        $customer_id    =$this->input->post('customer_id',true);
+        $content        =$this->input->post('content',true);
+        $start          =$this->input->post('start',true);
+        $end            =$this->input->post('end',true);
+        $priority       =$this->input->post('priority',true);
+        $users          =$this->input->post('users',true);
+        $id             =$this->input->post('id',true);
 
         $response=array(
-            'title'=>'',
-            'status'=>false,
+            'tasktype_id'   =>'',
+            'customer_id'   =>'',
+            'content'       =>'',
+            'start'         =>'',
+            'end'           =>'',
+            'priority'      =>'',
+            'file'          =>'',
+            'users'         =>'',
+            'status'        =>false,
+            'msg'           =>'',
         );
 
-        if(!empty($title)){
-            $ar=array('title'=>$title);
+        if(!empty($tasktype_id) and !empty($customer_id) and !empty($start) and !empty($end) and !empty($priority)){
+            $ar=array(
+                'tasktype_id'   =>$tasktype_id,
+                'customer_id'   =>$customer_id,
+                'content'       =>$content,
+                'start'         =>$start,
+                'end'           =>$end,
+                'priority'      =>$priority,
+                'users'         =>json_encode($users),
+
+            );
             $this->tasks_model->add($ar,$id);
             $response['status']=true;
         }
         else{
-            $response['title']="Zəhmət olmasa xanaları doldurun !";
+            $response['msg']="Zəhmət olmasa *-lu xanaları doldurun !";
         }
         echo json_encode($response);
     }
