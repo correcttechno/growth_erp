@@ -132,79 +132,7 @@
         </div>
         <!-- Notification Start -->
 
-        <!-- Language Start -->
-        <div class="dropdown">
-            <button
-                class="text-gray-500 w-40 h-40 bg-main-50 hover-bg-main-100 transition-2 rounded-circle text-xl flex-center"
-                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="ph ph-globe"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu--md border-0 bg-transparent p-0">
-                <div class="card border border-gray-100 rounded-12 box-shadow-custom">
-                    <div class="card-body">
-                        <div class="max-h-270 overflow-y-auto scroll-sm pe-8">
-                            <div
-                                class="form-check form-radio d-flex align-items-center justify-content-between ps-0 mb-16">
-                                <label
-                                    class="ps-0 form-check-label line-height-1 fw-medium text-secondary-light"
-                                    for="arabic">
-                                    <span
-                                        class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-8">
-                                        <img src="assets/images/thumbs/flag1.png" alt=""
-                                            class="w-32-px h-32-px border borde border-gray-100 rounded-circle flex-shrink-0">
-                                        <span class="text-15 fw-semibold mb-0">Arabic</span>
-                                    </span>
-                                </label>
-                                <input class="form-check-input" type="radio" name="language" id="arabic">
-                            </div>
-                            <div
-                                class="form-check form-radio d-flex align-items-center justify-content-between ps-0 mb-16">
-                                <label
-                                    class="ps-0 form-check-label line-height-1 fw-medium text-secondary-light"
-                                    for="germany">
-                                    <span
-                                        class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-8">
-                                        <img src="assets/images/thumbs/flag2.png" alt=""
-                                            class="w-32-px h-32-px border borde border-gray-100 rounded-circle flex-shrink-0">
-                                        <span class="text-15 fw-semibold mb-0">Germany</span>
-                                    </span>
-                                </label>
-                                <input class="form-check-input" type="radio" name="language" id="germany">
-                            </div>
-                            <div
-                                class="form-check form-radio d-flex align-items-center justify-content-between ps-0 mb-16">
-                                <label
-                                    class="ps-0 form-check-label line-height-1 fw-medium text-secondary-light"
-                                    for="english">
-                                    <span
-                                        class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-8">
-                                        <img src="assets/images/thumbs/flag3.png" alt=""
-                                            class="w-32-px h-32-px border borde border-gray-100 rounded-circle flex-shrink-0">
-                                        <span class="text-15 fw-semibold mb-0">English</span>
-                                    </span>
-                                </label>
-                                <input class="form-check-input" type="radio" name="language" id="english">
-                            </div>
-                            <div
-                                class="form-check form-radio d-flex align-items-center justify-content-between ps-0">
-                                <label
-                                    class="ps-0 form-check-label line-height-1 fw-medium text-secondary-light"
-                                    for="spanish">
-                                    <span
-                                        class="text-black hover-bg-transparent hover-text-primary d-flex align-items-center gap-8">
-                                        <img src="assets/images/thumbs/flag4.png" alt=""
-                                            class="w-32-px h-32-px border borde border-gray-100 rounded-circle flex-shrink-0">
-                                        <span class="text-15 fw-semibold mb-0">Spanish</span>
-                                    </span>
-                                </label>
-                                <input class="form-check-input" type="radio" name="language" id="spanish">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Language Start -->
+       
     </div>
 
 
@@ -234,39 +162,16 @@
                             <a href="setting.html"
                                 class="py-12 text-15 px-20 hover-bg-gray-50 text-gray-300 rounded-8 flex-align gap-8 fw-medium text-15">
                                 <span class="text-2xl text-primary-600 d-flex"><i class="ph ph-gear"></i></span>
-                                <span class="text">Account Settings</span>
+                                <span class="text">Hesab Ayarları</span>
                             </a>
                         </li>
-                        <li class="mb-4">
-                            <a href="pricing-plan.html"
-                                class="py-12 text-15 px-20 hover-bg-gray-50 text-gray-300 rounded-8 flex-align gap-8 fw-medium text-15">
-                                <span class="text-2xl text-primary-600 d-flex"><i
-                                        class="ph ph-chart-bar"></i></span>
-                                <span class="text">Upgrade Plan</span>
-                            </a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="analytics.html"
-                                class="py-12 text-15 px-20 hover-bg-gray-50 text-gray-300 rounded-8 flex-align gap-8 fw-medium text-15">
-                                <span class="text-2xl text-primary-600 d-flex"><i
-                                        class="ph ph-chart-line-up"></i></span>
-                                <span class="text">Daily Activity</span>
-                            </a>
-                        </li>
-                        <li class="mb-4">
-                            <a href="message.html"
-                                class="py-12 text-15 px-20 hover-bg-gray-50 text-gray-300 rounded-8 flex-align gap-8 fw-medium text-15">
-                                <span class="text-2xl text-primary-600 d-flex"><i
-                                        class="ph ph-chats-teardrop"></i></span>
-                                <span class="text">Inbox</span>
-                            </a>
-                        </li>
+                     
                         <li class="mb-4">
                             <a href="email.html"
                                 class="py-12 text-15 px-20 hover-bg-gray-50 text-gray-300 rounded-8 flex-align gap-8 fw-medium text-15">
                                 <span class="text-2xl text-primary-600 d-flex"><i
                                         class="ph ph-envelope-simple"></i></span>
-                                <span class="text">Email</span>
+                                <span class="text">E-mail girişi</span>
                             </a>
                         </li>
                         <li class="pt-8 border-top border-gray-100">

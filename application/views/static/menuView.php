@@ -104,7 +104,7 @@
                 <li class="sidebar-menu__item">
                     <a href="setting.html" class="sidebar-menu__link">
                         <span class="icon"><i class="ph ph-gear"></i></span>
-                        <span class="text">Account Settings</span>
+                        <span class="text">Hesab Ayarları</span>
                     </a>
                 </li>
 

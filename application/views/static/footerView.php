@@ -1,17 +1,19 @@
 <div class="dashboard-footer">
         <input type="hidden" id="base_url" value="<?=$_SERVER['REQUEST_URI'];?>"/>
         <div class="flex-between flex-wrap gap-16">
-            <p class="text-gray-300 text-13 fw-normal"> &copy; Copyright Edmate 2024, All Right Reserverd</p>
+            <p class="text-gray-300 text-13 fw-normal"> &copy; Copyright Growth Consulting Services <?=date('Y');?>, All Right Reserverd</p>
             <div class="flex-align flex-wrap gap-16">
                 <a href="#"
-                    class="text-gray-300 text-13 fw-normal hover-text-main-600 hover-text-decoration-underline">License</a>
+                    class="text-gray-300 text-13 fw-normal hover-text-main-600 hover-text-decoration-underline">
+                    <i class="ph ph-apple-logo"></i>
+                    IOS
+                </a>
                 <a href="#"
-                    class="text-gray-300 text-13 fw-normal hover-text-main-600 hover-text-decoration-underline">More
-                    Themes</a>
-                <a href="#"
-                    class="text-gray-300 text-13 fw-normal hover-text-main-600 hover-text-decoration-underline">Documentation</a>
-                <a href="#"
-                    class="text-gray-300 text-13 fw-normal hover-text-main-600 hover-text-decoration-underline">Support</a>
+                    class="text-gray-300 text-13 fw-normal hover-text-main-600 hover-text-decoration-underline">
+                    <i class="ph ph-google-play-logo"></i>
+                    Android
+                </a>
+               
             </div>
         </div>
     </div>
