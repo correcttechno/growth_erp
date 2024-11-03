@@ -106,9 +106,11 @@
                         <div class="col-12 mb-20">
                             <input type="hidden" name="id" value="0"/>
 
-                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Başlıq:
+                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Tapşırıq:
                             </label>
-                            <input type="text" name="title" class="form-control radius-8" placeholder="Başlıq">
+                            <select type="text" name="title" class="form-control radius-8">
+
+                            </select>
                             
                             <span data-error="title" class="text-xs text-danger"></span>
                         </div>

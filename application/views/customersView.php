@@ -328,7 +328,8 @@
                                 </div>
 
                                 <div class="col-3">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Müştəri növü:
+                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Müştəri növü: <span
+                                    class="text-danger">*</span>
                                     </label>
                                     <select name="customertype" class="form-control radius-8"
                                         placeholder="Müştəri növü">
@@ -397,12 +398,15 @@
                                     <span data-error="bankphone" class="text-xs text-danger"></span>
                                 </div>
 
+                                <div class="col-12 text-danger text-center" data-error="msg"></div>
+
                             </div>
                         </div>
 
 
 
                         <div class="d-flex align-items-center justify-content-center gap-8 mt-24">
+                            
                             <button type="reset"
                                 class="btn bg-danger-600 hover-bg-danger-800 border-danger-600 hover-border-danger-800 text-md px-24 py-12 radius-8">
                                 Ləğv et

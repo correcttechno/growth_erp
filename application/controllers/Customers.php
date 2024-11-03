@@ -45,7 +45,7 @@ class Customers extends CI_Controller{
             'status'    =>false,
         );
 
-        if(!empty($firstname) and !empty($lastname)){
+        if(!empty($firstname) and !empty($lastname) and !empty($customertype)){
             $ar=array(
                 "firstname"     => $firstname,
                 "lastname"      => $lastname,
@@ -65,6 +65,7 @@ class Customers extends CI_Controller{
                 "bankname"      => $bankname,
                 "bankperson"    => $bankperson,
                 "bankphone"     => $bankphone,
+                "customertype"  =>$customertype,
             );
 
 
@@ -72,7 +73,7 @@ class Customers extends CI_Controller{
             $response['status']=true;
         }
         else{
-            $response['title']="Zəhmət * -lu xanaları doldurun !";
+            $response['msg']="Zəhmət * -lu xanaları doldurun !";
         }
         echo json_encode($response);
     }
