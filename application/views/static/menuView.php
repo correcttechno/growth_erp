@@ -5,7 +5,7 @@
             class="ph ph-x"></i></button>
     <!-- sidebar close btn -->
 
-    <a href="index.html"
+    <a href="<?=base_url("dashboard");?>"
         class="sidebar__logo text-center p-20 position-sticky inset-block-start-0 bg-white w-100 z-1 pb-10">
         <img src="<?=get_img("logo.svg");?>" alt="Logo">
     </a>
@@ -21,11 +21,21 @@
                     </a>
                  
                 </li>
-                <li class="sidebar-menu__item ">
-                    <a href="<?=base_url("tasks");?>" class="sidebar-menu__link">
+                <li class="sidebar-menu__item has-dropdown">
+                    <a href="javascript:void(0)" class="sidebar-menu__link">
                         <span class="icon"><i class="ph ph-list-checks"></i></span>
                         <span class="text">Tapşırıqlar</span>
                     </a>
+                    <!-- Submenu start -->
+                    <ul class="sidebar-submenu">
+                        <li class="sidebar-submenu__item">
+                            <a href="<?=base_url("tasks");?>" class="sidebar-submenu__link">Tapşırıqlar</a>
+                        </li>
+                        <li class="sidebar-submenu__item">
+                            <a href="<?=base_url("taskstype");?>" class="sidebar-submenu__link">Tapşırıq növləri</a>
+                        </li>                       
+                    </ul>
+                    <!-- Submenu End -->
                    
                 </li>
                 <li class="sidebar-menu__item has-dropdown">
