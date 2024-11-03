@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="<?=get_css('calendar.css');?>">
     <!-- jvector map Css -->
     <link rel="stylesheet" href="<?=get_css('jquery-jvectormap-2.0.5.css');?>">
+    <!-- Bootstrap select css -->
+    <link rel="stylesheet" href="<?=get_css('bootstrap-select.min.css');?>">
     <!-- Main css -->
     <link rel="stylesheet" href="<?=get_css('main.css');?>">
 </head> 

@@ -6,11 +6,17 @@ class Tasks extends CI_Controller{
     function __construct(){
         parent::__construct();
         $this->load->model('tasks_model');
+        $this->load->model("customers_model");
+        $this->load->model("taskstype_model");
+        $this->load->model("employees_model");
     }
 
     public function index(){
         $results=array();//$this->tasks_model->read();
-        $this->load_model->load('tasksView',array('results'=>$results));
+        $customers      =$this->customers_model->read();
+        $taskstype      =$this->taskstype_model->read();
+        $employees      =$this->employees_model->read();
+        $this->load_model->load('tasksView',array('results'=>$results,'customers'=>$customers,'taskstype'=>$taskstype,'employees'=>$employees));
     }
 
     public function add(){

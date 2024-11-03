@@ -291,4 +291,22 @@
 
   })
 
+  $('.selectpicker').selectpicker({
+
+
+    countSelectedText: '{0} öğe seçildi',
+    dropupAuto: false,
+
+    liveSearch: true,
+    liveSearchPlaceholder: 'Axtar...',
+
+    selectedTextFormat: 'count > 3',
+    showSubtext: true,
+    size: 7,
+    style: 'btn-primary',
+    tickIcon: 'fa fa-check',
+    width: '100%'
+
+  });
+
 })(jQuery);
