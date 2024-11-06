@@ -21,6 +21,7 @@
                     </a>
                  
                 </li>
+                
                 <li class="sidebar-menu__item has-dropdown">
                     <a href="javascript:void(0)" class="sidebar-menu__link">
                         <span class="icon"><i class="ph ph-list-checks"></i></span>
@@ -31,13 +32,18 @@
                         <li class="sidebar-submenu__item">
                             <a href="<?=base_url("tasks");?>" class="sidebar-submenu__link">Tapşırıqlar</a>
                         </li>
+
+                        <?php if($this->user_model->userdata['status']=='admin'):?>
                         <li class="sidebar-submenu__item">
                             <a href="<?=base_url("taskstype");?>" class="sidebar-submenu__link">Tapşırıq növləri</a>
-                        </li>                       
+                        </li>
+                        <?php endif;?>                   
                     </ul>
                     <!-- Submenu End -->
                    
                 </li>
+
+                <?php if($this->user_model->userdata['status']=='admin'):?>
                 <li class="sidebar-menu__item has-dropdown">
                     <a href="javascript:void(0)" class="sidebar-menu__link">
                         <span class="icon"><i class="ph ph-squares-four"></i></span>
@@ -95,6 +101,8 @@
                     </ul>
                     <!-- Submenu End -->
                 </li>
+                
+                <?php endif;?>
               
 
                 <li class="sidebar-menu__item">

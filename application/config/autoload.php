@@ -136,4 +136,5 @@ $autoload['model'] = array(
     "static/load_model",
     "static/database_model",
     "static/modal_model",
+    "static/user_model",
 );

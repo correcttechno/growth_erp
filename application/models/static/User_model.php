@@ -6,7 +6,10 @@ class User_model extends CI_Model{
         parent::__construct();
         $this->load->helper('password');
         $this->load->library('session');
+        $this->userdata=$this->get_userdata();
     }
+
+    public $userdata=false;
 
     private function check_user($username,$password){
         $password=generate_password($password);

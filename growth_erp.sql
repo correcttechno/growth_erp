@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2024 at 03:14 PM
+-- Generation Time: Nov 06, 2024 at 07:41 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -172,6 +172,7 @@ INSERT INTO `taskstype` (`id`, `title`, `date`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
+  `status` enum('user','admin') NOT NULL DEFAULT 'user',
   `token` varchar(255) DEFAULT NULL,
   `department_id` int(11) NOT NULL DEFAULT 0,
   `position_id` int(11) NOT NULL DEFAULT 0,
@@ -192,10 +193,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `token`, `department_id`, `position_id`, `firstname`, `lastname`, `password`, `address`, `phone`, `email`, `date`, `gender`, `birthday`, `content`, `photo`) VALUES
-(3, 'ea530ec0c243976ff580f1054871593916d82f9e4a3f9f8f0196bc58e3ebb118e2d49bf2338a0507', 3, 1, 'Ruslan', 'Recebli', '01e20b61d05bb6b42840997233579e08', 'Cefer Cabbarli 44', '0706644917', 'recebli212@gmail.com', '2024-10-26 13:00:58', 'male', '', '', NULL),
-(5, '7786415943bf1a1c50d7469464b6a86691eb30d1ff5c2b19982b3f873ebb295923374215cddc65f1', 3, 1, 'Edtech', 'Azerbaijan', 'e5d7cffe25654f7e3a1e334118c71549', 'Cefer Cabbarli 44', '0706644917', 'recebli212d@gmail.com', '2024-11-03 05:01:08', 'male', '', '', NULL),
-(6, '7786415943bf1a1c50d7469464b6a86691eb30d1ff5c2b19982b3f873ebb295923374215cddc65f1', 3, 1, 'Correct', 'Technology', 'e5d7cffe25654f7e3a1e334118c71549', 'Cefer Cabbarli 44', '0706644917', 'recebli212d@gmail.com', '2024-11-03 05:01:08', 'male', '', '', NULL);
+INSERT INTO `users` (`id`, `status`, `token`, `department_id`, `position_id`, `firstname`, `lastname`, `password`, `address`, `phone`, `email`, `date`, `gender`, `birthday`, `content`, `photo`) VALUES
+(3, 'user', '12b372c27455e78fa1a559235ca10c8313e8359096adfa6b915e693e0ba3585749c957dcec7c5c20', 3, 1, 'Ruslan', 'Recebli', '01e20b61d05bb6b42840997233579e08', 'Cefer Cabbarli 44', '0706644917', 'recebli212@gmail.com', '2024-10-26 13:00:58', 'male', '', '', NULL),
+(5, 'user', '7786415943bf1a1c50d7469464b6a86691eb30d1ff5c2b19982b3f873ebb295923374215cddc65f1', 3, 1, 'Edtech', 'Azerbaijan', 'e5d7cffe25654f7e3a1e334118c71549', 'Cefer Cabbarli 44', '0706644917', 'recebli212d@gmail.com', '2024-11-03 05:01:08', 'male', '', '', NULL),
+(6, 'user', '7786415943bf1a1c50d7469464b6a86691eb30d1ff5c2b19982b3f873ebb295923374215cddc65f1', 3, 1, 'Correct', 'Technology', 'e5d7cffe25654f7e3a1e334118c71549', 'Cefer Cabbarli 44', '0706644917', 'recebli212d@gmail.com', '2024-11-03 05:01:08', 'male', '', '', NULL);
 
 --
 -- Indexes for dumped tables

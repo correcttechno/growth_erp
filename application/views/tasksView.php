@@ -254,7 +254,7 @@
                                     class="text-danger">*</span>
                             </label>
                             <input type="date" name="start" class="form-control radius-8"
-                                placeholder="Başlama tarixi" />
+                                placeholder="Başlama tarixi" min="<?=date('Y-m-d');?>"/>
                             <span data-error="title" class="text-xs text-danger"></span>
                         </div>
 

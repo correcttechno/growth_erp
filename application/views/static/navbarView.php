@@ -153,8 +153,8 @@
                     <div class="flex-align gap-8 mb-20 pb-20 border-bottom border-gray-100">
                         <img src="<?=get_img('user-img.png');?>" alt="" class="w-54 h-54 rounded-circle">
                         <div class="">
-                            <h4 class="mb-0"><?=$userdata['firstname'];?> <?=$userdata['lastname'];?></h4>
-                            <p class="fw-medium text-13 text-gray-200"><?=$userdata['email'];?></p>
+                            <h4 class="mb-0"><?=$this->user_model->userdata['firstname'];?> <?=$this->user_model->userdata['lastname'];?></h4>
+                            <p class="fw-medium text-13 text-gray-200"><?=$this->user_model->userdata['email'];?></p>
                         </div>
                     </div>
                     <ul class="max-h-270 overflow-y-auto scroll-sm pe-4">
