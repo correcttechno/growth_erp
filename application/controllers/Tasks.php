@@ -16,6 +16,7 @@ class Tasks extends CI_Controller{
         $customers      =$this->customers_model->read();
         $taskstype      =$this->taskstype_model->read();
         $employees      =$this->employees_model->read();
+        
         $this->load_model->load('tasksView',array('results'=>$results,'customers'=>$customers,'taskstype'=>$taskstype,'employees'=>$employees));
     }
 
@@ -42,9 +43,10 @@ class Tasks extends CI_Controller{
             'status'        =>false,
             'msg'           =>'',
         );
-
-        if(!empty($tasktype_id) and !empty($customer_id) and !empty($start) and !empty($end) and !empty($priority)){
+       
+        if(!empty($tasktype_id) and !empty($customer_id) and !empty($start) and !empty($end) and !empty($priority) and ($users!=Null and count($users)>0)){
             $ar=array(
+                'creator_id'    =>$this->user_model->userdata['id'],
                 'tasktype_id'   =>$tasktype_id,
                 'customer_id'   =>$customer_id,
                 'content'       =>$content,
@@ -79,6 +81,33 @@ class Tasks extends CI_Controller{
                 echo json_encode($result);
             }
         }
+    }
+
+    public function answer(){
+        $task_id    =$this->input->post('id',true);
+        $note       =$this->input->post('note',true);
+        $status     =$this->input->post('status',true);
+
+        $response=array(
+            'status'        =>false,
+            'msg'           =>'',
+        );
+
+        if(!empty($task_id)){
+            $ar=array(
+                'task_id'       =>$task_id,
+                'user_id'       =>$this->user_model->userdata['id'],
+                'note'          =>$note,
+                'status'        =>$status,
+            );
+            $this->tasks_model->add_answer($ar);
+            $response['status']=true;
+        }
+        else{
+            $response['msg']="Error";
+        }
+
+        echo json_encode($response);
     }
 
     

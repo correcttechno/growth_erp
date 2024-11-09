@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2024 at 07:41 PM
+-- Generation Time: Nov 09, 2024 at 07:03 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -127,6 +127,7 @@ INSERT INTO `positions` (`id`, `title`, `content`, `date`) VALUES
 
 CREATE TABLE `tasks` (
   `id` int(11) NOT NULL,
+  `creator_id` int(11) NOT NULL DEFAULT 0,
   `tasktype_id` int(11) NOT NULL DEFAULT 0,
   `customer_id` int(11) NOT NULL DEFAULT 0,
   `content` text DEFAULT NULL,
@@ -142,8 +143,9 @@ CREATE TABLE `tasks` (
 -- Dumping data for table `tasks`
 --
 
-INSERT INTO `tasks` (`id`, `tasktype_id`, `customer_id`, `content`, `start`, `end`, `priority`, `users`, `file`, `date`) VALUES
-(1, 2, 1, 'salam', '2024-11-03', '2024-11-03', 'hight', '[\"6\",\"5\",\"3\"]', NULL, '2024-11-03 12:38:43');
+INSERT INTO `tasks` (`id`, `creator_id`, `tasktype_id`, `customer_id`, `content`, `start`, `end`, `priority`, `users`, `file`, `date`) VALUES
+(3, 3, 2, 2, 'dggdgdg', '2024-11-09', '2024-11-09', 'hight', '[\"6\",\"5\",\"3\"]', NULL, '2024-11-09 16:43:14'),
+(4, 3, 2, 2, 'dggdgdg', '2024-11-09', '2024-11-09', 'hight', '[\"6\",\"5\",\"3\"]', NULL, '2024-11-09 16:43:14');
 
 -- --------------------------------------------------------
 
@@ -163,6 +165,30 @@ CREATE TABLE `taskstype` (
 
 INSERT INTO `taskstype` (`id`, `title`, `date`) VALUES
 (2, 'Vergi Hesabatıd', '2024-11-03 03:37:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tasks_log`
+--
+
+CREATE TABLE `tasks_log` (
+  `id` int(11) NOT NULL,
+  `task_id` int(11) NOT NULL DEFAULT 0,
+  `user_id` int(11) NOT NULL DEFAULT 0,
+  `note` text DEFAULT NULL,
+  `status` enum('notanswer','answered') NOT NULL DEFAULT 'notanswer',
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `tasks_log`
+--
+
+INSERT INTO `tasks_log` (`id`, `task_id`, `user_id`, `note`, `status`, `date`) VALUES
+(1, 3, 3, 'W3Schools is optimized for learning and training. Examples might be simplified to improve reading and learning.\nTutorials, references, and examples are constantly reviewed to avoid errors, but we cannot warrant full correctness\nof all content. While using W3Schools, you agree to have read and accepted our terms of use, cookie and privacy policy', 'answered', '2024-11-09 17:26:55'),
+(2, 3, 5, 'W3Schools is optimized for learning and training. Examples might be simplified to improve reading and learning.\r\nTutorials, references, and examples are constantly reviewed to avoid errors, but we cannot warrant full correctness\r\nof all content. While using W3Schools, you agree to have read and accepted our terms of use, cookie and privacy policy', 'notanswer', '2024-11-09 17:26:55'),
+(7, 4, 3, '', 'notanswer', '2024-11-09 18:01:22');
 
 -- --------------------------------------------------------
 
@@ -194,7 +220,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `status`, `token`, `department_id`, `position_id`, `firstname`, `lastname`, `password`, `address`, `phone`, `email`, `date`, `gender`, `birthday`, `content`, `photo`) VALUES
-(3, 'user', '12b372c27455e78fa1a559235ca10c8313e8359096adfa6b915e693e0ba3585749c957dcec7c5c20', 3, 1, 'Ruslan', 'Recebli', '01e20b61d05bb6b42840997233579e08', 'Cefer Cabbarli 44', '0706644917', 'recebli212@gmail.com', '2024-10-26 13:00:58', 'male', '', '', NULL),
+(3, 'admin', '2627d3156f6808c1988cb8708771f20c0f6f762028b6ba5459be85792018dbc6c37d2629d979cbe0', 3, 1, 'Ruslan', 'Recebli', '01e20b61d05bb6b42840997233579e08', 'Cefer Cabbarli 44', '0706644917', 'recebli212@gmail.com', '2024-10-26 13:00:58', 'male', '', '', NULL),
 (5, 'user', '7786415943bf1a1c50d7469464b6a86691eb30d1ff5c2b19982b3f873ebb295923374215cddc65f1', 3, 1, 'Edtech', 'Azerbaijan', 'e5d7cffe25654f7e3a1e334118c71549', 'Cefer Cabbarli 44', '0706644917', 'recebli212d@gmail.com', '2024-11-03 05:01:08', 'male', '', '', NULL),
 (6, 'user', '7786415943bf1a1c50d7469464b6a86691eb30d1ff5c2b19982b3f873ebb295923374215cddc65f1', 3, 1, 'Correct', 'Technology', 'e5d7cffe25654f7e3a1e334118c71549', 'Cefer Cabbarli 44', '0706644917', 'recebli212d@gmail.com', '2024-11-03 05:01:08', 'male', '', '', NULL);
 
@@ -239,6 +265,12 @@ ALTER TABLE `taskstype`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tasks_log`
+--
+ALTER TABLE `tasks_log`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -276,13 +308,19 @@ ALTER TABLE `positions`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `taskstype`
 --
 ALTER TABLE `taskstype`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tasks_log`
+--
+ALTER TABLE `tasks_log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -273,22 +273,35 @@
     $('#deleteModal').modal('show');
   })
 
-  $(document).on('click', '[data-edit-id]', function () {
-    $('#addModal').modal('show');
+  $('button[type=reset]').click(function(){
+    $('.modal').modal('hide');
+  })
+
+  function read_row_data(id){
     $.ajax({
       url: base_url + '/read_row',
       dataType: "json",
-      data: { 'id': $(this).attr('data-edit-id') },
+      data: { 'id': id },
       method: 'post',
       success: function (e) {
         $.each(e, function (item, value) {
 
-          write_form_element($('#addModal'), item, value);
+          write_form_element($('#addModal,#answerModal'), item, value);
 
         })
       },
     });
+  }
 
+  $(document).on('click', '[data-edit-id]', function () {
+    $('#addModal').modal('show');
+    read_row_data($(this).attr('data-edit-id'));
+  })
+
+  $(document).on('click', '[data-answer-id]', function () {
+    $('#answerModal').find('textarea').val();
+    $('#answerModal').modal('show');
+    read_row_data($(this).attr('data-answer-id'));
   })
 
   $('.selectpicker').selectpicker({
@@ -308,5 +321,15 @@
     width: '100%'
 
   });
+
+  $('#notanswer').click(function(){
+    $('input[name=status]').val("notanswer");
+    //return false;
+  })
+
+  $('#answer').click(function(){
+    $('input[name=status]').val("answered");
+    //return false;
+  })
 
 })(jQuery);
