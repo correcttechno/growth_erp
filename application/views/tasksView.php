@@ -181,14 +181,15 @@
 
                     <?php foreach($trRow as $tr):if(!empty($tr['note'])):?>
                         <tr>
+                            <td></td>
                             <td>
                                 <?php if($tr['status']=='answered'):?>
-                                    <span class="flex-shrink-0 w-30 h-30 flex-center rounded-circle bg-success-600 text-white text-2xl"><i class="ph ph-check"></i></span>
+                                    <span class="flex-shrink-0 w-30 h-30 flex-center rounded-circle bg-success-600 text-white text-small"><i class="ph ph-check"></i></span>
                                 <?php else:?>
-                                    <span class="flex-shrink-0 w-30 h-30 flex-center rounded-circle bg-danger-600 text-white text-2xl"><i class="ph ph-x"></i></span>
+                                    <span class="flex-shrink-0 w-30 h-30 flex-center rounded-circle bg-danger-600 text-white text-small"><i class="ph ph-x"></i></span>
                                 <?php endif;?>
                             </td>
-                            <td colspan="3">
+                            <td colspan="2">
                                 <span class="h6 mb-0 fw-medium text-gray-300">
                                 <?=$tr['name'];?>
                                 </span>
