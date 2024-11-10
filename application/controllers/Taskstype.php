@@ -5,6 +5,7 @@ class Taskstype extends CI_Controller{
 
     function __construct(){
         parent::__construct();
+        $this->user_model->checkAdminLogined();
         $this->load->model('taskstype_model');
     }
 

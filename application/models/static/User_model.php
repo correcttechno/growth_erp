@@ -60,4 +60,26 @@ class User_model extends CI_Model{
         }
     }
 
+    public function checkAdminLogined(){
+        if($this->userdata and $this->userdata['status']=='admin'){
+            return true;
+        }
+        else{
+            $this->set_logout();
+            redirect(base_url());
+        }
+    }
+
+    public function checkLogined(){
+        if($this->userdata){
+            return true;
+        }
+        else{
+            $this->set_logout();
+            redirect(base_url());
+        }
+    }
+
+    
+
 }

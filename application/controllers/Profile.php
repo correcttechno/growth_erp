@@ -4,6 +4,7 @@ class Profile extends CI_Controller{
     
     function __construct(){
         parent::__construct();
+        $this->user_model->checkLogined();
         $this->load->model("static/user_model");
     }
 

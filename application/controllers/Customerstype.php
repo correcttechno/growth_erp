@@ -5,6 +5,7 @@ class Customerstype extends CI_Controller{
 
     function __construct(){
         parent::__construct();
+        $this->user_model->checkAdminLogined();
         $this->load->model('customerstype_model');
     }
 

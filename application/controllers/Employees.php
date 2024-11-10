@@ -5,6 +5,7 @@ class Employees extends CI_Controller{
 
     function __construct(){
         parent::__construct();
+        $this->user_model->checkAdminLogined();
         $this->load->model('employees_model');
         $this->load->model("departments_model");
         $this->load->model("positions_model");

@@ -5,6 +5,7 @@ class Tasks extends CI_Controller{
 
     function __construct(){
         parent::__construct();
+        $this->user_model->checkLogined();
         $this->load->model('tasks_model');
         $this->load->model("customers_model");
         $this->load->model("taskstype_model");
