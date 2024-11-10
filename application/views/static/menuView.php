@@ -35,7 +35,28 @@
 
                         <?php if($this->user_model->userdata['status']=='admin'):?>
                         <li class="sidebar-submenu__item">
-                            <a href="<?=base_url("taskstype");?>" class="sidebar-submenu__link">Tapşırıq növləri</a>
+                            <a href="<?=base_url("taskstype");?>" class="sidebar-submenu__link">Növləri</a>
+                        </li>
+                        <?php endif;?>                   
+                    </ul>
+                    <!-- Submenu End -->
+                   
+                </li>
+
+                <li class="sidebar-menu__item has-dropdown">
+                    <a href="javascript:void(0)" class="sidebar-menu__link">
+                        <span class="icon"><i class="ph ph-clock-afternoon"></i></i></span>
+                        <span class="text">T. Tapşırıqlar</span>
+                    </a>
+                    <!-- Submenu start -->
+                    <ul class="sidebar-submenu">
+                        <li class="sidebar-submenu__item">
+                            <a href="<?=base_url("periodictasks");?>" class="sidebar-submenu__link">Təkrarlanan Tapşırıqlar</a>
+                        </li>
+
+                        <?php if($this->user_model->userdata['status']=='admin'):?>
+                        <li class="sidebar-submenu__item">
+                            <a href="<?=base_url("periodictaskstype");?>" class="sidebar-submenu__link">Növləri</a>
                         </li>
                         <?php endif;?>                   
                     </ul>
