@@ -110,6 +110,7 @@
                                             'name'      =>$user['firstname'].' '.$user['lastname'],
                                             'note'      =>$status['note'],
                                             'status'    =>$status['status'],
+                                            'id'        =>$status['id'],
                                         );
                                     }
                                 ?>
@@ -118,8 +119,16 @@
                                         <i class="ph-fill ph-check-circle"></i>
                                     </span>
                                     <div>
-                                        <a href="#" class="text-13 text-heading d-block text-gray-600 fw-medium hover-text-main-600">
+                                        
+                                        <a class="text-13 text-heading d-block text-gray-600 fw-medium hover-text-main-600">
                                             <?=$user['firstname'];?> <?=$user['lastname'];?>
+
+                                            <?php if($status and $this->user_model->userdata['status']=='admin'):?>
+                                                <button data-delete-id="<?=$status['id'];?>" data-o-id="tasks_log" class="w-20 h-20 bg-danger-50 rounded-circle hover-bg-danger-100 transition-2">
+                                                    <i class="text-12 ph ph-trash text-danger-900"></i>
+                                                </button>
+                                            <?php endif;?>
+
                                             <?php if($status):?>
                                                 <span class="text-13 text-heading d-block text-gray-600 fw-medium"><?=$status['date'];?></span>
                                             <?php endif;?>
@@ -195,10 +204,11 @@
                                 </span>
                             </td>
                             <td colspan="6">
-                                <span class="h6 mb-0 fw-medium text-gray-300">
+                                <span class="h6 mb-0 fw-medium text-gray-300" style="max-width:700px">
                                     <?=nl2br($tr['note']);?>
                                 </span>
                             </td>
+                           
                         </tr>
                     <?php endif;endforeach;?>
 
@@ -370,6 +380,14 @@
                     <div class="row">
                         <input type="hidden" name="id" value="0" />
                         <input type="hidden" name="status" value=""/>
+                            
+                        <div class="col-12">
+                            <div class="alert alert-info">
+                                <h4 class="h4 mb-0">Diqqət</h4>
+                                <p><span class="mb-0 fw-medium">"Tapşırıq İcra Edildi"</span> düyməsi sıxıldıqdan sonra tapşırıq hesabınızda görünməyəcəkdir !</p>
+                            </div>
+                        </div>
+
                         <div class="col-12">
                             <label class="form-label fw-semibold text-primary-light text-sm mb-8">Qeyd: <span
                                     class="text-danger">*</span>

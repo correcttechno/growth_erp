@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2024 at 07:03 PM
+-- Generation Time: Nov 10, 2024 at 06:30 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -144,8 +144,8 @@ CREATE TABLE `tasks` (
 --
 
 INSERT INTO `tasks` (`id`, `creator_id`, `tasktype_id`, `customer_id`, `content`, `start`, `end`, `priority`, `users`, `file`, `date`) VALUES
-(3, 3, 2, 2, 'dggdgdg', '2024-11-09', '2024-11-09', 'hight', '[\"6\",\"5\",\"3\"]', NULL, '2024-11-09 16:43:14'),
-(4, 3, 2, 2, 'dggdgdg', '2024-11-09', '2024-11-09', 'hight', '[\"6\",\"5\",\"3\"]', NULL, '2024-11-09 16:43:14');
+(1, 3, 2, 2, 'dggdgdg', '2024-11-09', '2024-11-09', 'hight', '[\"3\",\"5\",\"6\"]', NULL, '2024-11-09 16:43:14'),
+(4, 3, 2, 1, 'dggdgdg', '2024-11-10', '2024-11-10', 'hight', '[\"6\",\"5\"]', NULL, '2024-11-09 16:43:14');
 
 -- --------------------------------------------------------
 
@@ -186,9 +186,8 @@ CREATE TABLE `tasks_log` (
 --
 
 INSERT INTO `tasks_log` (`id`, `task_id`, `user_id`, `note`, `status`, `date`) VALUES
-(1, 3, 3, 'W3Schools is optimized for learning and training. Examples might be simplified to improve reading and learning.\nTutorials, references, and examples are constantly reviewed to avoid errors, but we cannot warrant full correctness\nof all content. While using W3Schools, you agree to have read and accepted our terms of use, cookie and privacy policy', 'answered', '2024-11-09 17:26:55'),
-(2, 3, 5, 'W3Schools is optimized for learning and training. Examples might be simplified to improve reading and learning.\r\nTutorials, references, and examples are constantly reviewed to avoid errors, but we cannot warrant full correctness\r\nof all content. While using W3Schools, you agree to have read and accepted our terms of use, cookie and privacy policy', 'notanswer', '2024-11-09 17:26:55'),
-(7, 4, 3, '', 'notanswer', '2024-11-09 18:01:22');
+(5, 1, 3, '', 'answered', '2024-11-10 05:13:31'),
+(6, 4, 6, '', 'answered', '2024-11-10 05:19:30');
 
 -- --------------------------------------------------------
 
@@ -220,9 +219,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `status`, `token`, `department_id`, `position_id`, `firstname`, `lastname`, `password`, `address`, `phone`, `email`, `date`, `gender`, `birthday`, `content`, `photo`) VALUES
-(3, 'admin', '2627d3156f6808c1988cb8708771f20c0f6f762028b6ba5459be85792018dbc6c37d2629d979cbe0', 3, 1, 'Ruslan', 'Recebli', '01e20b61d05bb6b42840997233579e08', 'Cefer Cabbarli 44', '0706644917', 'recebli212@gmail.com', '2024-10-26 13:00:58', 'male', '', '', NULL),
-(5, 'user', '7786415943bf1a1c50d7469464b6a86691eb30d1ff5c2b19982b3f873ebb295923374215cddc65f1', 3, 1, 'Edtech', 'Azerbaijan', 'e5d7cffe25654f7e3a1e334118c71549', 'Cefer Cabbarli 44', '0706644917', 'recebli212d@gmail.com', '2024-11-03 05:01:08', 'male', '', '', NULL),
-(6, 'user', '7786415943bf1a1c50d7469464b6a86691eb30d1ff5c2b19982b3f873ebb295923374215cddc65f1', 3, 1, 'Correct', 'Technology', 'e5d7cffe25654f7e3a1e334118c71549', 'Cefer Cabbarli 44', '0706644917', 'recebli212d@gmail.com', '2024-11-03 05:01:08', 'male', '', '', NULL);
+(3, 'admin', '292d020227c2a6e0264143e40972585081dc3669481f9d63311f0272902e40f3601280e3b0dbf7fc', 3, 1, 'Ruslan', 'Recebli', '01e20b61d05bb6b42840997233579e08', 'Cefer Cabbarli 44', '0706644917', 'recebli212@gmail.com', '2024-10-26 13:00:58', 'male', '', '', NULL),
+(5, 'user', '38403572eb987801b36666f49b91e557ed28d759af032300d31cdee3f63ccc73b5e618f8eab3317f', 3, 1, 'Edtech', 'Azerbaijan', '01e20b61d05bb6b42840997233579e08', 'Cefer Cabbarli 44', '0706644917', 'edtech@gmail.com', '2024-11-03 05:01:08', 'male', '', '', NULL),
+(6, 'user', '7c2f57d15d6444b24e4656a4fbc91791c74ca33ee6dcef0c48b641297bba7d593e11dbfc846ca9c5', 3, 1, 'Correct', 'Technology', '01e20b61d05bb6b42840997233579e08', 'Cefer Cabbarli 44', '0706644917', 'correcttechno@gmail.com', '2024-11-03 05:01:08', 'male', '', '', NULL);
 
 --
 -- Indexes for dumped tables
@@ -320,7 +319,7 @@ ALTER TABLE `taskstype`
 -- AUTO_INCREMENT for table `tasks_log`
 --
 ALTER TABLE `tasks_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`

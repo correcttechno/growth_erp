@@ -3,7 +3,35 @@
 class Tasks_model extends CI_Model{
 
     public function read(){
-        $results=$this->database_model->read('tasks');
+        $data=$this->database_model->read('tasks');
+        $results=array();
+        foreach($data as $d){
+            if($this->user_model->userdata['status']=='admin'){
+                $results[]=$d;
+            }
+            else{
+                $users_ids=json_decode($d['users'],true);
+                $answers_ids=array();
+                $answers=$this->database_model->read('tasks_log',array('task_id'=>$d['id']));
+                foreach($answers as $a){
+                    $answers_ids[]=$a['user_id'];
+                    if($a['status']=='notanswer'){
+                        if($a['user_id']==$this->user_model->userdata['id']){
+                        $results[]=$d;
+                        }
+                        break;
+                    }
+                }
+
+                $f1=array_diff($users_ids, $answers_ids);
+                $f2=array_diff($answers_ids, $users_ids);
+                $f=array_merge($f1, $f2);
+                
+                if(count($f)>0 and $f[0]==$this->user_model->userdata['id']){
+                    $results[]=$d;
+                }
+            }
+        }
         return count($results)>0?$results:false;
     }
 
@@ -14,6 +42,11 @@ class Tasks_model extends CI_Model{
 
     public function delete($id){
         $this->database_model->delete('tasks',array('id'=>$id));
+        return true;
+    }
+
+    public function delete_answer($id){
+        $this->database_model->delete('tasks_log',array('id'=>$id));
         return true;
     }
 

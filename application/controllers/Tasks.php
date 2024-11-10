@@ -67,7 +67,11 @@ class Tasks extends CI_Controller{
 
     public function delete(){
         $id=$this->input->post('delete_id',true);
-        if(!empty($id)){
+        $o_id=$this->input->post('o_id',true);
+        if($o_id=="tasks_log"){
+            $this->tasks_model->delete_answer($id);
+        }
+        else if(!empty($id)){
             $this->tasks_model->delete($id);
         }
         echo json_encode(array('status'=>true));

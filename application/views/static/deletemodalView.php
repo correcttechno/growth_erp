@@ -8,6 +8,7 @@
                         <div class="col-12 mb-20 text-center">
                            <p>Silmək istəyinizə əminsiniz ?</p>
                            <input type="hidden" name="delete_id" value="0"/>
+                           <input type="hidden" name="o_id" value="0"/>
                         </div>
                         
                         <div class="d-flex align-items-center justify-content-center gap-8 mt-24">

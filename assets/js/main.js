@@ -270,14 +270,20 @@
 
   $(document).on('click', '[data-delete-id]', function () {
     $('#deleteModal').find('input[name=delete_id]').val($(this).attr('data-delete-id'));
+    if ($(this).attr('data-o-id') != undefined) {
+      $('#deleteModal').find('input[name=o_id]').val($(this).attr('data-o-id'));
+    }
+    else {
+      $('#deleteModal').find('input[name=o_id]').val(0);
+    }
     $('#deleteModal').modal('show');
   })
 
-  $('button[type=reset]').click(function(){
+  $('button[type=reset]').click(function () {
     $('.modal').modal('hide');
   })
 
-  function read_row_data(id){
+  function read_row_data(id) {
     $.ajax({
       url: base_url + '/read_row',
       dataType: "json",
@@ -322,12 +328,12 @@
 
   });
 
-  $('#notanswer').click(function(){
+  $('#notanswer').click(function () {
     $('input[name=status]').val("notanswer");
     //return false;
   })
 
-  $('#answer').click(function(){
+  $('#answer').click(function () {
     $('input[name=status]').val("answered");
     //return false;
   })
