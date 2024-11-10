@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 10, 2024 at 06:30 AM
+-- Host: localhost
+-- Generation Time: Nov 10, 2024 at 11:16 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -102,6 +102,26 @@ INSERT INTO `departments` (`id`, `title`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `periodictaskstype`
+--
+
+CREATE TABLE `periodictaskstype` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `department_id` int(11) NOT NULL DEFAULT 0,
+  `date` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `periodictaskstype`
+--
+
+INSERT INTO `periodictaskstype` (`id`, `title`, `department_id`, `date`) VALUES
+(2, 'Basliq', 8, '2024-11-10 09:50:40');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `positions`
 --
 
@@ -181,14 +201,6 @@ CREATE TABLE `tasks_log` (
   `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Dumping data for table `tasks_log`
---
-
-INSERT INTO `tasks_log` (`id`, `task_id`, `user_id`, `note`, `status`, `date`) VALUES
-(5, 1, 3, '', 'answered', '2024-11-10 05:13:31'),
-(6, 4, 6, '', 'answered', '2024-11-10 05:19:30');
-
 -- --------------------------------------------------------
 
 --
@@ -219,7 +231,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `status`, `token`, `department_id`, `position_id`, `firstname`, `lastname`, `password`, `address`, `phone`, `email`, `date`, `gender`, `birthday`, `content`, `photo`) VALUES
-(3, 'admin', '292d020227c2a6e0264143e40972585081dc3669481f9d63311f0272902e40f3601280e3b0dbf7fc', 3, 1, 'Ruslan', 'Recebli', '01e20b61d05bb6b42840997233579e08', 'Cefer Cabbarli 44', '0706644917', 'recebli212@gmail.com', '2024-10-26 13:00:58', 'male', '', '', NULL),
+(3, 'admin', 'b8c286b5bff396d21f802716f7890a3ce2ba2da7444d37a5952b158d199936041ff9a45ba8c5609b', 3, 1, 'Ruslan', 'Recebli', '01e20b61d05bb6b42840997233579e08', 'Cefer Cabbarli 44', '0706644917', 'recebli212@gmail.com', '2024-10-26 13:00:58', 'male', '', '', NULL),
 (5, 'user', '38403572eb987801b36666f49b91e557ed28d759af032300d31cdee3f63ccc73b5e618f8eab3317f', 3, 1, 'Edtech', 'Azerbaijan', '01e20b61d05bb6b42840997233579e08', 'Cefer Cabbarli 44', '0706644917', 'edtech@gmail.com', '2024-11-03 05:01:08', 'male', '', '', NULL),
 (6, 'user', '7c2f57d15d6444b24e4656a4fbc91791c74ca33ee6dcef0c48b641297bba7d593e11dbfc846ca9c5', 3, 1, 'Correct', 'Technology', '01e20b61d05bb6b42840997233579e08', 'Cefer Cabbarli 44', '0706644917', 'correcttechno@gmail.com', '2024-11-03 05:01:08', 'male', '', '', NULL);
 
@@ -243,6 +255,12 @@ ALTER TABLE `customerstype`
 -- Indexes for table `departments`
 --
 ALTER TABLE `departments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `periodictaskstype`
+--
+ALTER TABLE `periodictaskstype`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -296,6 +314,12 @@ ALTER TABLE `customerstype`
 --
 ALTER TABLE `departments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `periodictaskstype`
+--
+ALTER TABLE `periodictaskstype`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `positions`
