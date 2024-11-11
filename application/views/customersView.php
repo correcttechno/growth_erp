@@ -38,7 +38,7 @@
                         <th class="h6 text-gray-300">Müştəri</th>
                         <th class="h6 text-gray-300">Rəhbər şəxs</th>
                         <th class="h6 text-gray-300">Müəssisə məlumatları</th>
-                        <th class="h6 text-gray-300">Bank məlumatları</th>
+                        <th class="h6 text-gray-300">Digər məlumatlar</th>
                         <th class="h6 text-gray-300">Əməliyyatlar</th>
                     </tr>
                 </thead>
@@ -144,24 +144,62 @@
                         </td>
 
                         <td>
-                            <span class="h6 mb-0 fw-medium text-gray-300">
-                                <?=$r['bankname'];?>
-                            </span>
+                            <?php if(!empty($r['bankname'])):?>
+                            <p class="text-12 mb-0 fw-medium text-gray-300">Bank Məlumatları</p>
                             <p>
                                 <span
-                                    class="mb-5 text-13 py-2 px-8 bg-primary-50 text-primary-600 d-inline-flex align-items-center gap-8 rounded-pill">
+                                    class="mb-5 text-13 py-2 px-8 bg-primary-50 text-primary-600 d-inline-flex align-items-center gap-8">
+                                    <?=$r['bankname'];?></br>
                                     Əlaqədar şəxs:
-                                    <?=$r['bankperson'];?>
-                                </span>
-
-                            </p>
-                            <p>
-                                <span
-                                    class="mb-5 text-13 py-2 px-8 bg-warning-50 text-warning-600 d-inline-flex align-items-center gap-8 rounded-pill">
+                                    <?=$r['bankperson'];?></br>
                                     Telefon:
                                     <?=$r['bankphone'];?>
                                 </span>
                             </p>
+                            <?php endif;?>
+
+                            <?php if(!empty($r['anumber'])):?>
+                            <p class="text-12 mb-0 fw-medium text-gray-300">Asan imza</p>
+                            <p>
+                                <span
+                                    class="mb-5 text-13 py-2 px-8 bg-primary-50 text-primary-600 d-inline-flex align-items-center gap-8">
+                                    Nömrə:
+                                    <?=$r['anumber'];?></br>
+                                    İD:
+                                    <?=$r['aid'];?></br>
+                                    PİN 1:
+                                    <?=$r['apin1'];?>
+                                    PİN 2:
+                                    <?=$r['apin2'];?>
+                                </span>
+                            </p>
+                            <?php endif;?>
+
+                            <?php if(!empty($r['skod'])):?>
+                            <p class="text-12 mb-0 fw-medium text-gray-300">Statistika məlumatları</p>
+                            <p>
+                                <span
+                                    class="mb-5 text-13 py-2 px-8 bg-primary-50 text-primary-600 d-inline-flex align-items-center gap-8">
+                                    KOD:
+                                    <?=$r['skod'];?></br>
+                                    Şifrə:
+                                    <?=$r['spass'];?></br>
+                                </span>
+                            </p>
+                            <?php endif;?>
+                            
+                            <?php if(!empty($r['vkod'])):?>
+                            <p class="text-12 mb-0 fw-medium text-gray-300">Vergi məlumatları</p>
+                            <p>
+                                <span
+                                    class="mb-5 text-13 py-2 px-8 bg-primary-50 text-primary-600 d-inline-flex align-items-center gap-8">
+                                    KOD:
+                                    <?=$r['vkod'];?></br>
+                                    Şifrə:
+                                    <?=$r['vpass'];?></br>
+                                </span>
+                            </p>
+                            <?php endif;?>
 
                         </td>
 
