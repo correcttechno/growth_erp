@@ -38,6 +38,15 @@ class Customers extends CI_Controller{
         $bankname       =$this->input->post('bankname',true);
         $bankperson     =$this->input->post('bankperson',true);
         $bankphone      =$this->input->post('bankphone',true);
+
+        $anumber        =$this->input->post('anumber',true);
+        $aid            =$this->input->post('aid',true);
+        $apin1          =$this->input->post('apin1',true);
+        $apin2          =$this->input->post('apin2',true);
+        $skod           =$this->input->post('skod',true);
+        $spass          =$this->input->post('spass',true);
+        $vkod           =$this->input->post('vkod',true);
+        $vpass          =$this->input->post('vpass',true);
         
         $id             =$this->input->post('id',true);
 
@@ -67,6 +76,14 @@ class Customers extends CI_Controller{
                 "bankperson"    => $bankperson,
                 "bankphone"     => $bankphone,
                 "customertype"  =>$customertype,
+                "anumber"       =>$anumber,
+                "aid"           =>$aid,
+                "apin1"         =>$apin1,
+                "apin2"         =>$apin2,
+                "skod"          =>$skod,
+                "spass"         =>$spass,
+                "vkod"          =>$vkod,
+                "vpass"         =>$vpass
             );
 
 

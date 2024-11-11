@@ -142,7 +142,7 @@
 
 
                         </td>
-                        
+
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">
                                 <?=$r['bankname'];?>
@@ -165,7 +165,7 @@
 
                         </td>
 
-                        
+
 
                         <td>
                             <button data-delete-id="<?=$r['id'];?>"
@@ -207,215 +207,361 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-24">
+
+                <ul class="nav common-tab style-two nav-pills mb-20" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-details-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-details" type="button" role="tab" aria-controls="pills-details"
+                            aria-selected="true">Əsas məlumatlar</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                            aria-selected="false">Digər məlumatlar</button>
+                    </li>
+                </ul>
+
                 <form action="<?=base_url('customers/add');?>" method="post">
-                    <div class="row">
-                        <input type="hidden" name="id" value="0" />
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-details" role="tabpanel"
+                            aria-labelledby="pills-details-tab" tabindex="0">
 
-                        <div class="col-6">
                             <div class="row">
+                                <input type="hidden" name="id" value="0" />
+
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5>Müştərinin məlumatları</h5>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Ad:
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" name="firstname" class="form-control radius-8"
+                                                placeholder="Ad">
+                                            <span data-error="firstname" class="text-xs text-danger"></span>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Soyad:
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="text" name="lastname" class="form-control radius-8"
+                                                placeholder="Soyad">
+                                            <span data-error="lastname" class="text-xs text-danger"></span>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label
+                                                class="form-label fw-semibold text-primary-light text-sm mb-8">Telefon:
+                                            </label>
+                                            <input type="text" name="phone" class="form-control radius-8"
+                                                placeholder="Telefon">
+                                            <span data-error="phone" class="text-xs text-danger"></span>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label
+                                                class="form-label fw-semibold text-primary-light text-sm mb-8">E-Mail:
+                                            </label>
+                                            <input type="text" name="email" class="form-control radius-8"
+                                                placeholder="E-Mail">
+                                            <span data-error="email" class="text-xs text-danger"></span>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Doğum
+                                                tarixi:
+                                            </label>
+                                            <input type="date" name="birthday" class="form-control radius-8"
+                                                placeholder="Doğum tarixi">
+                                            <span data-error="birthday" class="text-xs text-danger"></span>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Ünvan:
+                                            </label>
+                                            <input type="text" name="address" class="form-control radius-8"
+                                                placeholder="Ünvan">
+                                            <span data-error="address" class="text-xs text-danger"></span>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                                <div class="col-6" style="border-left: 1px solid #ededed;">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5>Rəhbər şəxsin məlumatları</h5>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Ad:
+                                            </label>
+                                            <input type="text" name="rfirstname" class="form-control radius-8"
+                                                placeholder="Ad">
+                                            <span data-error="rfirstname" class="text-xs text-danger"></span>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Soyad:
+                                            </label>
+                                            <input type="text" name="rlastname" class="form-control radius-8"
+                                                placeholder="Soyad">
+                                            <span data-error="rlastname" class="text-xs text-danger"></span>
+                                        </div>
+
+
+                                        <div class="col-6">
+                                            <label
+                                                class="form-label fw-semibold text-primary-light text-sm mb-8">Telefon:
+                                            </label>
+                                            <input type="text" name="rphone" class="form-control radius-8"
+                                                placeholder="Telefon">
+                                            <span data-error="rphone" class="text-xs text-danger"></span>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label
+                                                class="form-label fw-semibold text-primary-light text-sm mb-8">E-Mail:
+                                            </label>
+                                            <input type="text" name="remail" class="form-control radius-8"
+                                                placeholder="E-Mail">
+                                            <span data-error="remail" class="text-xs text-danger"></span>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Doğum
+                                                tarixi:
+                                            </label>
+                                            <input type="date" name="rbirthday" class="form-control radius-8"
+                                                placeholder="Doğum tarixi">
+                                            <span data-error="rbirthday" class="text-xs text-danger"></span>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Ünvan:
+                                            </label>
+                                            <input type="text" name="raddress" class="form-control radius-8"
+                                                placeholder="Ünvan">
+                                            <span data-error="raddress" class="text-xs text-danger"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
                                 <div class="col-12">
-                                    <h5>Müştərinin məlumatları</h5>
-                                </div>
-                                <div class="col-6">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Ad: <span
-                                            class="text-danger">*</span>
-                                    </label>
-                                    <input type="text" name="firstname" class="form-control radius-8" placeholder="Ad">
-                                    <span data-error="firstname" class="text-xs text-danger"></span>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5>Müəssisə məlumatları</h5>
+                                        </div>
+
+                                        <div class="col-3">
+                                            <label
+                                                class="form-label fw-semibold text-primary-light text-sm mb-8">Müştəri
+                                                növü:
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                            <select name="customertype" class="form-control radius-8"
+                                                placeholder="Müştəri növü">
+                                                <option value="0">--seçim--</option>
+                                                <option value="person">Fiziki şəxs</option>
+                                                <option value="company">Hüquqi şəxs</option>
+                                            </select>
+                                            <span data-error="customertype" class="text-xs text-danger"></span>
+                                        </div>
+
+
+                                        <div class="col-3">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">VOEN:
+                                            </label>
+                                            <input type="text" name="voen" class="form-control radius-8"
+                                                placeholder="VOEN">
+                                            <span data-error="voen" class="text-xs text-danger"></span>
+                                        </div>
+
+                                        <div class="col-3">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">İşçi
+                                                sayı:
+                                            </label>
+                                            <input type="number" name="countworkers" class="form-control radius-8"
+                                                placeholder="İşçi sayı">
+                                            <span data-error="countworkers" class="text-xs text-danger"></span>
+                                        </div>
+
+                                        <div class="col-3">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Obyekt
+                                                sayı:
+                                            </label>
+                                            <input type="number" name="countobject" class="form-control radius-8"
+                                                placeholder="Obyekt sayı">
+                                            <span data-error="countobject" class="text-xs text-danger"></span>
+                                        </div>
+
+                                    </div>
                                 </div>
 
-                                <div class="col-6">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Soyad: <span
-                                            class="text-danger">*</span>
-                                    </label>
-                                    <input type="text" name="lastname" class="form-control radius-8"
-                                        placeholder="Soyad">
-                                    <span data-error="lastname" class="text-xs text-danger"></span>
-                                </div>
 
-                                <div class="col-6">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Telefon:
-                                    </label>
-                                    <input type="text" name="phone" class="form-control radius-8" placeholder="Telefon">
-                                    <span data-error="phone" class="text-xs text-danger"></span>
-                                </div>
-
-                                <div class="col-6">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">E-Mail:
-                                    </label>
-                                    <input type="text" name="email" class="form-control radius-8" placeholder="E-Mail">
-                                    <span data-error="email" class="text-xs text-danger"></span>
-                                </div>
-
-                                <div class="col-6">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Doğum tarixi:
-                                    </label>
-                                    <input type="date" name="birthday" class="form-control radius-8"
-                                        placeholder="Doğum tarixi">
-                                    <span data-error="birthday" class="text-xs text-danger"></span>
-                                </div>
-
-                                <div class="col-6">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Ünvan:
-                                    </label>
-                                    <input type="text" name="address" class="form-control radius-8" placeholder="Ünvan">
-                                    <span data-error="address" class="text-xs text-danger"></span>
-                                </div>
 
 
                             </div>
                         </div>
 
-                        <div class="col-6" style="border-left: 1px solid #ededed;">
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                            aria-labelledby="pills-profile-tab" tabindex="0">
                             <div class="row">
+                                <!--bank data-->
                                 <div class="col-12">
-                                    <h5>Rəhbər şəxsin məlumatları</h5>
-                                </div>
-                                <div class="col-6">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Ad:
-                                    </label>
-                                    <input type="text" name="rfirstname" class="form-control radius-8" placeholder="Ad">
-                                    <span data-error="rfirstname" class="text-xs text-danger"></span>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5>Bank məlumatları</h5>
+                                        </div>
+
+                                        <div class="col-4">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Bank
+                                                adı:
+                                            </label>
+                                            <input type="text" name="bankname" class="form-control radius-8"
+                                                placeholder="Bank adı">
+                                            <span data-error="bankname" class="text-xs text-danger"></span>
+                                        </div>
+
+                                        <div class="col-4">
+                                            <label
+                                                class="form-label fw-semibold text-primary-light text-sm mb-8">Əlaqədar
+                                                şəxs:
+                                            </label>
+                                            <input type="text" name="bankperson" class="form-control radius-8"
+                                                placeholder="Əlaqədar şəxs">
+                                            <span data-error="bankperson" class="text-xs text-danger"></span>
+                                        </div>
+
+                                        <div class="col-4">
+                                            <label
+                                                class="form-label fw-semibold text-primary-light text-sm mb-8">Telefon
+                                                nömrəsi:
+                                            </label>
+                                            <input type="text" name="bankphone" class="form-control radius-8"
+                                                placeholder="Telefon nömrəsi">
+                                            <span data-error="bankphone" class="text-xs text-danger"></span>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="col-6">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Soyad:
-                                    </label>
-                                    <input type="text" name="rlastname" class="form-control radius-8"
-                                        placeholder="Soyad">
-                                    <span data-error="rlastname" class="text-xs text-danger"></span>
-                                </div>
+                                <!--asan imza-->
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5>Asan imza məlumatları</h5>
+                                        </div>
+
+                                        <div class="col-3">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Nömrə:
+                                            </label>
+                                            <input type="text" name="anumber" class="form-control radius-8"
+                                                placeholder="Nömrə">
+                                            <span data-error="anumber" class="text-xs text-danger"></span>
+                                        </div>
 
 
-                                <div class="col-6">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Telefon:
-                                    </label>
-                                    <input type="text" name="rphone" class="form-control radius-8"
-                                        placeholder="Telefon">
-                                    <span data-error="rphone" class="text-xs text-danger"></span>
+                                        <div class="col-3">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">İD:
+                                            </label>
+                                            <input type="number" name="aid" class="form-control radius-8"
+                                                placeholder="İD">
+                                            <span data-error="aid" class="text-xs text-danger"></span>
+                                        </div>
+
+                                        <div class="col-3">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                                PİN 1:
+                                            </label>
+                                            <input type="number" name="apin1" class="form-control radius-8"
+                                                placeholder="PİN 1">
+                                            <span data-error="apin1" class="text-xs text-danger"></span>
+                                        </div>
+
+                                        <div class="col-3">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                                PİN 2:
+                                            </label>
+                                            <input type="number" name="apin2" class="form-control radius-8"
+                                                placeholder="PİN 2">
+                                            <span data-error="apin2" class="text-xs text-danger"></span>
+                                        </div>
+
+
+                                    </div>
                                 </div>
 
-                                <div class="col-6">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">E-Mail:
-                                    </label>
-                                    <input type="text" name="remail" class="form-control radius-8" placeholder="E-Mail">
-                                    <span data-error="remail" class="text-xs text-danger"></span>
+                                <!--statistika-->
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5>Statistika məlumatları</h5>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Kod:
+                                            </label>
+                                            <input type="text" name="skod" class="form-control radius-8"
+                                                placeholder="Kod">
+                                            <span data-error="skod" class="text-xs text-danger"></span>
+                                        </div>
+
+
+                                        <div class="col-6">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Şifrə:
+                                            </label>
+                                            <input type="text" name="spass" class="form-control radius-8"
+                                                placeholder="Şifrə">
+                                            <span data-error="spass" class="text-xs text-danger"></span>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="col-6">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Doğum tarixi:
-                                    </label>
-                                    <input type="date" name="rbirthday" class="form-control radius-8"
-                                        placeholder="Doğum tarixi">
-                                    <span data-error="rbirthday" class="text-xs text-danger"></span>
+                                <!--vergi-->
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5>Vergi məlumatları</h5>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Kod:
+                                            </label>
+                                            <input type="text" name="vkod" class="form-control radius-8"
+                                                placeholder="Kod">
+                                            <span data-error="vkod" class="text-xs text-danger"></span>
+                                        </div>
+
+
+                                        <div class="col-6">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Şifrə:
+                                            </label>
+                                            <input type="text" name="vpass" class="form-control radius-8"
+                                                placeholder="Şifrə">
+                                            <span data-error="vpass" class="text-xs text-danger"></span>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="col-6">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Ünvan:
-                                    </label>
-                                    <input type="text" name="raddress" class="form-control radius-8"
-                                        placeholder="Ünvan">
-                                    <span data-error="raddress" class="text-xs text-danger"></span>
-                                </div>
 
                             </div>
                         </div>
+                    </div>
+                    <div class="col-12 text-danger text-center" data-error="msg"></div>
+                    <div class="d-flex align-items-center justify-content-center gap-8 mt-24">
 
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h5>Müəssisə məlumatları</h5>
-                                </div>
-
-                                <div class="col-3">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Müştəri növü: <span
-                                    class="text-danger">*</span>
-                                    </label>
-                                    <select name="customertype" class="form-control radius-8"
-                                        placeholder="Müştəri növü">
-                                        <option value="0">--seçim--</option>
-                                        <option value="person">Fiziki şəxs</option>
-                                        <option value="company">Hüquqi şəxs</option>
-                                    </select>
-                                    <span data-error="customertype" class="text-xs text-danger"></span>
-                                </div>
-
-
-                                <div class="col-3">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">VOEN:
-                                    </label>
-                                    <input type="text" name="voen" class="form-control radius-8" placeholder="VOEN">
-                                    <span data-error="voen" class="text-xs text-danger"></span>
-                                </div>
-
-                                <div class="col-3">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">İşçi sayı:
-                                    </label>
-                                    <input type="number" name="countworkers" class="form-control radius-8"
-                                        placeholder="İşçi sayı">
-                                    <span data-error="countworkers" class="text-xs text-danger"></span>
-                                </div>
-
-                                <div class="col-3">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Obyekt sayı:
-                                    </label>
-                                    <input type="number" name="countobject" class="form-control radius-8"
-                                        placeholder="Obyekt sayı">
-                                    <span data-error="countobject" class="text-xs text-danger"></span>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h5>Bank məlumatları</h5>
-                                </div>
-
-                                <div class="col-4">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Bank adı:
-                                    </label>
-                                    <input type="text" name="bankname" class="form-control radius-8"
-                                        placeholder="Bank adı">
-                                    <span data-error="bankname" class="text-xs text-danger"></span>
-                                </div>
-
-                                <div class="col-4">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Əlaqədar şəxs:
-                                    </label>
-                                    <input type="text" name="bankperson" class="form-control radius-8"
-                                        placeholder="Əlaqədar şəxs">
-                                    <span data-error="bankperson" class="text-xs text-danger"></span>
-                                </div>
-
-                                <div class="col-4">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Telefon
-                                        nömrəsi:
-                                    </label>
-                                    <input type="text" name="bankphone" class="form-control radius-8"
-                                        placeholder="Telefon nömrəsi">
-                                    <span data-error="bankphone" class="text-xs text-danger"></span>
-                                </div>
-
-                                <div class="col-12 text-danger text-center" data-error="msg"></div>
-
-                            </div>
-                        </div>
-
-
-
-                        <div class="d-flex align-items-center justify-content-center gap-8 mt-24">
-                            
-                            <button type="reset"
-                                class="btn bg-danger-600 hover-bg-danger-800 border-danger-600 hover-border-danger-800 text-md px-24 py-12 radius-8">
-                                Ləğv et
-                            </button>
-                            <button type="submit"
-                                class="btn bg-main-600 hover-bg-main-800 border-main-600 hover-border-main-800 text-md px-24 py-12 radius-8">
-                                Saxla
-                            </button>
-                        </div>
+                        <button type="reset"
+                            class="btn bg-danger-600 hover-bg-danger-800 border-danger-600 hover-border-danger-800 text-md px-24 py-12 radius-8">
+                            Ləğv et
+                        </button>
+                        <button type="submit"
+                            class="btn bg-main-600 hover-bg-main-800 border-main-600 hover-border-main-800 text-md px-24 py-12 radius-8">
+                            Saxla
+                        </button>
                     </div>
                 </form>
             </div>
