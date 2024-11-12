@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 10, 2024 at 11:16 AM
+-- Host: 127.0.0.1
+-- Generation Time: Nov 12, 2024 at 04:46 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -48,6 +48,15 @@ CREATE TABLE `customers` (
   `bankname` varchar(255) DEFAULT NULL,
   `bankperson` varchar(255) DEFAULT NULL,
   `bankphone` varchar(255) DEFAULT NULL,
+  `anumber` varchar(255) DEFAULT NULL,
+  `aid` int(11) NOT NULL DEFAULT 0,
+  `apin1` int(11) NOT NULL DEFAULT 0,
+  `apin2` int(11) NOT NULL DEFAULT 0,
+  `skod` varchar(255) DEFAULT NULL,
+  `spass` varchar(255) DEFAULT NULL,
+  `vkod` varchar(255) DEFAULT NULL,
+  `vpass` varchar(255) DEFAULT NULL,
+  `periodictasks` text DEFAULT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -55,9 +64,9 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `firstname`, `lastname`, `phone`, `email`, `birthday`, `address`, `rfirstname`, `rlastname`, `rphone`, `remail`, `rbirthday`, `raddress`, `customertype`, `voen`, `countworkers`, `countobject`, `bankname`, `bankperson`, `bankphone`, `date`) VALUES
-(1, 'Ruslan', 'Recebli', '0706644917', 'recebli212@gmail.com', '1997-04-24', 'Cefer Cabbarli 44', 'Ruslan', 'Recebli', '0506644917', 'correcttechno@gmail.com', '1997-02-04', 'Cəfər Cabbarlı 46', 'person', '4401472742', 3, 1, 'Unibank', 'Ad Soyad', '055616515616', '2024-11-02 14:16:51'),
-(2, 'Ruslann', 'Recebli', '0706644917', 'recebli212@gmail.com', '1997-04-24', 'Cefer Cabbarli 44', 'Ruslan', 'Recebli', '0506644917', 'correcttechno@gmail.com', '1997-02-04', 'Cəfər Cabbarlı 46', 'company', '5401472742', 3, 1, 'Unibank', 'Ad Soyad', '055616515616', '2024-11-02 14:16:51');
+INSERT INTO `customers` (`id`, `firstname`, `lastname`, `phone`, `email`, `birthday`, `address`, `rfirstname`, `rlastname`, `rphone`, `remail`, `rbirthday`, `raddress`, `customertype`, `voen`, `countworkers`, `countobject`, `bankname`, `bankperson`, `bankphone`, `anumber`, `aid`, `apin1`, `apin2`, `skod`, `spass`, `vkod`, `vpass`, `periodictasks`, `date`) VALUES
+(1, 'Ruslan', 'Recebli', '0706644917', 'recebli212@gmail.com', '1997-04-24', 'Cefer Cabbarli 44', 'Ruslan', 'Recebli', '0506644917', 'correcttechno@gmail.com', '1997-02-04', 'Cəfər Cabbarlı 46', 'person', '4401472742', 3, 1, 'Unibank', 'Ad Soyad', '055616515616', NULL, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '2024-11-02 14:16:51'),
+(2, 'Ruslann', 'Recebli', '0706644917', 'recebli212@gmail.com', '1997-04-24', 'Cefer Cabbarli 44', 'Ruslan', 'Recebli', '0506644917', 'correcttechno@gmail.com', '1997-02-04', 'Cəfər Cabbarlı 46', 'company', '5401472742', 3, 1, 'Unibank', 'Ad Soyad', '055616515616', '1', 2, 3, 45, '4', '5', '6', '7', '[\"2\",\"3\"]', '2024-11-02 14:16:51');
 
 -- --------------------------------------------------------
 
@@ -96,8 +105,8 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`id`, `title`, `date`) VALUES
-(3, 'DEP', '2024-10-21 06:27:13'),
-(8, 'HR', '2024-10-26 13:14:52');
+(3, 'Vergi', '2024-10-21 06:27:13'),
+(8, 'Mühasibatlıq', '2024-10-26 13:14:52');
 
 -- --------------------------------------------------------
 
@@ -117,7 +126,8 @@ CREATE TABLE `periodictaskstype` (
 --
 
 INSERT INTO `periodictaskstype` (`id`, `title`, `department_id`, `date`) VALUES
-(2, 'Basliq', 8, '2024-11-10 09:50:40');
+(2, 'Service 1', 8, '2024-11-10 09:50:40'),
+(3, 'Service 2', 3, '2024-11-12 15:16:28');
 
 -- --------------------------------------------------------
 
@@ -231,7 +241,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `status`, `token`, `department_id`, `position_id`, `firstname`, `lastname`, `password`, `address`, `phone`, `email`, `date`, `gender`, `birthday`, `content`, `photo`) VALUES
-(3, 'admin', 'b8c286b5bff396d21f802716f7890a3ce2ba2da7444d37a5952b158d199936041ff9a45ba8c5609b', 3, 1, 'Ruslan', 'Recebli', '01e20b61d05bb6b42840997233579e08', 'Cefer Cabbarli 44', '0706644917', 'recebli212@gmail.com', '2024-10-26 13:00:58', 'male', '', '', NULL),
+(3, 'admin', '320f6b83584f1fa8cc445f644292cb87c8cbc9ef14911e69fc0c6c9ef82621619a05154faeb967fa', 3, 1, 'Ruslan', 'Recebli', '01e20b61d05bb6b42840997233579e08', 'Cefer Cabbarli 44', '0706644917', 'recebli212@gmail.com', '2024-10-26 13:00:58', 'male', '', '', NULL),
 (5, 'user', '38403572eb987801b36666f49b91e557ed28d759af032300d31cdee3f63ccc73b5e618f8eab3317f', 3, 1, 'Edtech', 'Azerbaijan', '01e20b61d05bb6b42840997233579e08', 'Cefer Cabbarli 44', '0706644917', 'edtech@gmail.com', '2024-11-03 05:01:08', 'male', '', '', NULL),
 (6, 'user', '7c2f57d15d6444b24e4656a4fbc91791c74ca33ee6dcef0c48b641297bba7d593e11dbfc846ca9c5', 3, 1, 'Correct', 'Technology', '01e20b61d05bb6b42840997233579e08', 'Cefer Cabbarli 44', '0706644917', 'correcttechno@gmail.com', '2024-11-03 05:01:08', 'male', '', '', NULL);
 
@@ -319,7 +329,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `periodictaskstype`
 --
 ALTER TABLE `periodictaskstype`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `positions`

@@ -187,7 +187,7 @@
                                 </span>
                             </p>
                             <?php endif;?>
-                            
+
                             <?php if(!empty($r['vkod'])):?>
                             <p class="text-12 mb-0 fw-medium text-gray-300">Vergi məlumatları</p>
                             <p>
@@ -256,6 +256,11 @@
                         <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
                             aria-selected="false">Digər məlumatlar</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-service-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-service" type="button" role="tab" aria-controls="pills-profile"
+                            aria-selected="false">Göstərilən xidmətlər</button>
                     </li>
                 </ul>
 
@@ -587,6 +592,38 @@
 
 
                             </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-service" role="tabpanel"
+                            aria-labelledby="pills-service-tab" tabindex="0">
+                            <?php $departments=$this->departments_model->read(); if($departments):?>
+                            <ul>
+                                <?php foreach($departments as $dep):?>
+                                <li>
+                                    <?=$dep['title'];?>
+                                    <?php $service=$this->periodictaskstype_model->read($dep['id']);if($service):?>
+                                    <ul class="list-group list-group-flush">
+                                        <?php foreach($service as $s):?>
+                                        <li class="list-group-item">
+
+                                            <div
+                                                class="form-switch switch-primary d-flex align-items-center gap-8 mb-16">
+                                                <input class="form-check-input" type="checkbox" id="a<?=$s['id'];?>" role="switch" name="tasks[]" value="<?=$s['id'];?>">
+                                                <label
+                                                    class="form-check-label line-height-1 fw-medium text-secondary-light"
+                                                    for="a<?=$s['id'];?>">
+                                                    <?=$s['title'];?>
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <?php endforeach;?>
+                                    </ul>
+                                    <?php endif;?>
+                                </li>
+                                <?php endforeach;?>
+                            </ul>
+                            <?php endif;?>
+
                         </div>
                     </div>
                     <div class="col-12 text-danger text-center" data-error="msg"></div>

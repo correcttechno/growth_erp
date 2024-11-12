@@ -6,6 +6,8 @@ class Customers extends CI_Controller{
     function __construct(){
         parent::__construct();
         $this->load->model('customers_model');
+        $this->load->model("departments_model");
+        $this->load->model("periodictaskstype_model");
         $this->user_model->checkAdminLogined();
     }
 
@@ -48,6 +50,9 @@ class Customers extends CI_Controller{
         $vkod           =$this->input->post('vkod',true);
         $vpass          =$this->input->post('vpass',true);
         
+        $tasks          =$this->input->post('tasks',true);
+
+
         $id             =$this->input->post('id',true);
 
         $response=array(
@@ -83,7 +88,8 @@ class Customers extends CI_Controller{
                 "skod"          =>$skod,
                 "spass"         =>$spass,
                 "vkod"          =>$vkod,
-                "vpass"         =>$vpass
+                "vpass"         =>$vpass,
+                "periodictasks" =>json_encode($tasks),
             );
 
 

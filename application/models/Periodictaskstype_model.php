@@ -2,8 +2,14 @@
 
 class Periodictaskstype_model extends CI_Model{
 
-    public function read(){
-        $results=$this->database_model->read('periodictaskstype');
+    public function read($dep_id=0){
+        $results=array();
+        if($dep_id!=0){
+            $results=$this->database_model->read('periodictaskstype',array('department_id'=>$dep_id));
+        }
+        else{
+            $results=$this->database_model->read('periodictaskstype');
+        }
         return count($results)>0?$results:false;
     }
 
