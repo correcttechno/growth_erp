@@ -78,7 +78,6 @@ class Employees extends CI_Controller{
                 $response['email']="Bu e-mail bir dəfə istifadə edilib !";
             }
             else{
-                $ar['password']=generate_password($password);
                 $this->employees_model->add($ar,$id);
                 $response['status']=true;
             }

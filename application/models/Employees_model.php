@@ -21,6 +21,9 @@ class Employees_model extends CI_Model{
             if($data['password']==""){
                 unset($data['password']);
             }
+            else{
+                $data['password']=generate_password($data['password']);
+            }
             $this->database_model->update("users",$data,array('id'=>$ch_id));
         }
         else{
