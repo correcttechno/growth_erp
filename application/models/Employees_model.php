@@ -7,7 +7,7 @@ class Employees_model extends CI_Model{
     }
 
     public function read(){
-        $results=$this->database_model->read('users');
+        $results=$this->database_model->read('users',array('status!='=>'admin'));
         return count($results)>0?$results:false;
     }
 
