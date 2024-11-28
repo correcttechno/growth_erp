@@ -42,7 +42,7 @@
                         <th class="h6 text-gray-300">Təhkim edilib</th>
                         <th class="h6 text-gray-300">İcra tarixi</th>
                         <th class="h6 text-gray-300">Vaciblik</th>
-                        <th class="h6 text-gray-300">Fayl</th>
+                       
                         <th class="h6 text-gray-300">Əməliyyatlar</th>
                     </tr>
                 </thead>
@@ -167,14 +167,14 @@
                             </span>
                         </td>
                         <td>
-                            <span class="h6 mb-0 fw-medium text-gray-300"></span>
-                        </td>
-                        <td>
+                            <?php if($this->tasks_model->get_task_progress($r)):?>
                             <button data-answer-id="<?=$r['id'];?>" title="İcra et"
                                 class="w-40 h-40 bg-success-50 rounded-circle hover-bg-success-100 transition-2">
                                 <i class="ph ph-check text-success-700"></i>
                             </button>
+                            <?php endif;?>
 
+                            
                             <?php  if($this->user_model->userdata['status']=='admin' or $r['creator_id']==$this->user_model->userdata['id']):?>                          
                             <button data-delete-id="<?=$r['id'];?>"
                                 class="w-40 h-40 bg-danger-50 rounded-circle hover-bg-danger-100 transition-2">

@@ -18,6 +18,7 @@ class Customers extends CI_Controller{
 
     public function add(){
       
+        $company        =$this->input->post('company',true);
         $firstname      =$this->input->post('firstname',true);
         $lastname       =$this->input->post('lastname',true);
         $phone          =$this->input->post('phone',true);
@@ -62,6 +63,7 @@ class Customers extends CI_Controller{
 
         if(!empty($firstname) and !empty($lastname) and !empty($customertype)){
             $ar=array(
+                "company"       => $company,
                 "firstname"     => $firstname,
                 "lastname"      => $lastname,
                 "phone"         => $phone,

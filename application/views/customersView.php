@@ -53,8 +53,10 @@
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">
                                 <?=$r['firstname'];?>
-                                <?=$r['lastname'];?>
+                                <?=$r['lastname'];?> 
+                                [<?=$r['company'];?>]
                             </span>
+                            <?php if(!empty($r['address'])):?>
                             <p>
                                 <span
                                     class="mb-5 text-13 py-2 px-8 bg-primary-50 text-primary-600 d-inline-flex align-items-center gap-8 rounded-pill">
@@ -63,6 +65,9 @@
                                 </span>
 
                             </p>
+                            <?php endif;?>
+
+                            <?php if(!empty($r['phone'])):?>
                             <p>
                                 <span
                                     class="mb-5 text-13 py-2 px-8 bg-warning-50 text-warning-600 d-inline-flex align-items-center gap-8 rounded-pill">
@@ -70,15 +75,17 @@
                                     <?=$r['phone'];?>
                                 </span>
                             </p>
-
+                            <?php endif;?>
+                            
+                            <?php if(!empty($r['email'])):?>
                             <p>
                                 <span
                                     class=" text-13 py-2 px-8 bg-success-50 text-success-600 d-inline-flex align-items-center gap-8 rounded-pill">
                                     <i class="ph ph-envelope"></i>
                                     <?=$r['email'];?>
                                 </span>
-
                             </p>
+                            <?php endif;?>
                         </td>
 
                         <td>
@@ -86,6 +93,8 @@
                                 <?=$r['rfirstname'];?>
                                 <?=$r['rlastname'];?>
                             </span>
+                            
+                            <?php if(!empty($r['raddress'])):?>
                             <p>
                                 <span
                                     class="mb-5 text-13 py-2 px-8 bg-primary-50 text-primary-600 d-inline-flex align-items-center gap-8 rounded-pill">
@@ -94,6 +103,9 @@
                                 </span>
 
                             </p>
+                            <?php endif;?>
+
+                            <?php if(!empty($r['rphone'])):?>
                             <p>
                                 <span
                                     class="mb-5 text-13 py-2 px-8 bg-warning-50 text-warning-600 d-inline-flex align-items-center gap-8 rounded-pill">
@@ -101,15 +113,17 @@
                                     <?=$r['rphone'];?>
                                 </span>
                             </p>
+                            <?php endif;?>
 
+                            <?php if(!empty($r['remail'])):?>
                             <p>
                                 <span
                                     class=" text-13 py-2 px-8 bg-success-50 text-success-600 d-inline-flex align-items-center gap-8 rounded-pill">
                                     <i class="ph ph-envelope"></i>
                                     <?=$r['remail'];?>
                                 </span>
-
                             </p>
+                            <?php endif;?>
                         </td>
 
                         <td>
@@ -398,6 +412,14 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <h5>Müəssisə məlumatları</h5>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Şirkət adı:
+                                            </label>
+                                            <input type="text" name="company" class="form-control radius-8"
+                                                placeholder="Şirkət adı">
+                                            <span data-error="company" class="text-xs text-danger"></span>
                                         </div>
 
                                         <div class="col-3">
