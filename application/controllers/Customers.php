@@ -50,6 +50,7 @@ class Customers extends CI_Controller{
         $spass          =$this->input->post('spass',true);
         $vkod           =$this->input->post('vkod',true);
         $vpass          =$this->input->post('vpass',true);
+        $vparol         =$this->input->post('vparol',true);
         
         $tasks          =$this->input->post('tasks',true);
 
@@ -91,6 +92,7 @@ class Customers extends CI_Controller{
                 "spass"         =>$spass,
                 "vkod"          =>$vkod,
                 "vpass"         =>$vpass,
+                "vparol"        =>$vparol,
                 "periodictasks" =>json_encode($tasks),
             );
 

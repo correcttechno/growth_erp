@@ -101,7 +101,6 @@
                                     <i class="ph ph-map-pin-line"></i>
                                     <?=$r['raddress'];?>
                                 </span>
-
                             </p>
                             <?php endif;?>
 
@@ -593,7 +592,7 @@
                                             <h5>Vergi məlumatları</h5>
                                         </div>
 
-                                        <div class="col-6">
+                                        <div class="col-4">
                                             <label class="form-label fw-semibold text-primary-light text-sm mb-8">Kod:
                                             </label>
                                             <input type="text" name="vkod" class="form-control radius-8"
@@ -601,8 +600,16 @@
                                             <span data-error="vkod" class="text-xs text-danger"></span>
                                         </div>
 
+                                        <div class="col-4">
+                                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Parol:
+                                            </label>
+                                            <input type="text" name="vparol" class="form-control radius-8"
+                                                placeholder="Parol">
+                                            <span data-error="vparol" class="text-xs text-danger"></span>
+                                        </div>
 
-                                        <div class="col-6">
+
+                                        <div class="col-4">
                                             <label class="form-label fw-semibold text-primary-light text-sm mb-8">Şifrə:
                                             </label>
                                             <input type="text" name="vpass" class="form-control radius-8"
