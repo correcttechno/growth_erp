@@ -9,8 +9,26 @@
         </div>
         <!-- Breadcrumb End -->
 
+    
         <!-- Breadcrumb Right Start -->
         <div class="flex-align gap-8 flex-wrap">
+
+            <div class="flex-align flex-wrap gap-16">
+                <div class="flex-align flex-wrap gap-8">
+                    <span class="w-8 h-8 rounded-circle bg-success-600"></span>
+                    <span class="text-13 text-gray-600">Yüksək</span>
+                </div>
+                <div class="flex-align flex-wrap gap-8">
+                    <span class="w-8 h-8 rounded-circle bg-main-600"></span>
+                    <span class="text-13 text-gray-600">Orta</span>
+                </div>
+                <div class="flex-align flex-wrap gap-8">
+                    <span class="w-8 h-8 rounded-circle bg-danger-600"></span>
+                    <span class="text-13 text-gray-600">Aşağı</span>
+                </div>
+            </div>
+
+
             <button type="button" class="btn btn-main text-sm btn-sm px-24 rounded-pill" data-bs-toggle="modal"
                 data-bs-target="#addModal">
                 <i class="ph ph-plus me-4"></i>
@@ -26,7 +44,7 @@
         <div class="card-body p-0">
 
             <?php if($results):?>
-            <table  class="dataTable table table-striped">
+            <table class="dataTable table table-striped">
                 <thead>
                     <tr>
                         <th class="fixed-width">
@@ -41,8 +59,7 @@
                         <th class="h6 text-gray-300">Açıqlama</th>
                         <th class="h6 text-gray-300">Təhkim edilib</th>
                         <th class="h6 text-gray-300">İcra tarixi</th>
-                        <th class="h6 text-gray-300">Vaciblik</th>
-                       
+
                         <th class="h6 text-gray-300">Əməliyyatlar</th>
                     </tr>
                 </thead>
@@ -58,13 +75,29 @@
                             <span class="h6 mb-0 fw-medium text-gray-300">
                                 <?php $creator=$this->employees_model->read_row($r['creator_id']);
                                 if($creator):?>
-                                <?=$creator['firstname'];?> <?=$creator['lastname'];?>
+                                <?=$creator['firstname'];?>
+                                <?=$creator['lastname'];?>
                                 <?php endif;?>
                             </span>
                         </td>
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">
+                                
                             <?php
+                                switch($r['priority']){
+                                    case 'hight':
+                                        echo '<span class="w-8 h-8 rounded-circle bg-success-600"></span>';
+                                        break;
+                                    case 'middle':
+                                        echo ' <span class="w-8 h-8 rounded-circle bg-main-600"></span>';
+                                        break;
+                                    case 'low':
+                                        echo ' <span class="w-8 h-8 rounded-circle bg-danger-600"></span>';
+                                        break;
+                                }
+                                ?>
+
+                                <?php
                             $data=$this->taskstype_model->read_row($r['tasktype_id']);
                             if($data){
                                 echo $data['title'];
@@ -91,14 +124,14 @@
                             ?>
                             </span>
                         </td>
-                        <td>
+                        <td style="max-width:200px">
                             <span class="h6 mb-0 fw-medium text-gray-300">
                                 <?=$r['content'];?>
                             </span>
                         </td>
                         <td>
                             <ul class="lesson-list">
-                            <?php
+                                <?php
                             $trRow=array();
                             $users=json_decode($r['users'],true);
                             foreach($users as $u):
@@ -114,58 +147,51 @@
                                         );
                                     }
                                 ?>
-                                  <li class="lesson-list__item d-flex align-items-start gap-16 ">
-                                    <span class="circle w-20 h-20 flex-center rounded-circle <?=($status!=false?($status['status']=="answered"?"text-success-600":"text-danger-600"):"text-main-100");?> text-13 flex-shrink-0">
+                                <li class="lesson-list__item d-flex align-items-start gap-16 ">
+                                    <span
+                                        class="circle w-20 h-20 flex-center rounded-circle <?=($status!=false?($status['status']=="
+                                        answered"?"text-success-600":"text-danger-600"):"text-main-100");?> text-13
+                                        flex-shrink-0">
                                         <i class="ph-fill ph-check-circle"></i>
                                     </span>
                                     <div>
-                                        
-                                        <a class="text-13 text-heading d-block text-gray-600 fw-medium hover-text-main-600">
-                                            <?=$user['firstname'];?> <?=$user['lastname'];?>
+
+                                        <a
+                                            class="text-13 text-heading d-block text-gray-600 fw-medium hover-text-main-600">
+                                            <?=$user['firstname'];?>
+                                            <?=$user['lastname'];?>
 
                                             <?php if($status and $this->user_model->userdata['status']=='admin'):?>
-                                                <button data-delete-id="<?=$status['id'];?>" data-o-id="tasks_log" class="w-20 h-20 bg-danger-50 rounded-circle hover-bg-danger-100 transition-2">
-                                                    <i class="text-12 ph ph-trash text-danger-900"></i>
-                                                </button>
+                                            <button data-delete-id="<?=$status['id'];?>" data-o-id="tasks_log"
+                                                class="w-20 h-20 bg-danger-50 rounded-circle hover-bg-danger-100 transition-2">
+                                                <i class="text-12 ph ph-trash text-danger-900"></i>
+                                            </button>
                                             <?php endif;?>
 
                                             <?php if($status):?>
-                                                <span class="text-13 text-heading d-block text-gray-600 fw-medium"><?=$status['date'];?></span>
+                                            <span class="text-13 text-heading d-block text-gray-600 fw-medium">
+                                                <?=$status['date'];?>
+                                            </span>
                                             <?php endif;?>
                                         </a>
                                     </div>
                                 </li>
-                            <?php endif;endforeach;?>
+                                <?php endif;endforeach;?>
                             </ul>
                         </td>
                         <td>
                             <span
-                            class="mb-5 text-13 py-2 px-8 bg-primary-50 text-primary-600 d-inline-flex align-items-center gap-8 rounded-pill">
-                            <?=$r['start'];?></span>
-                             -
-                             <span
-                            class="mb-5 text-13 py-2 px-8 bg-success-50 text-success-600 d-inline-flex align-items-center gap-8 rounded-pill">
-                                <?=$r['end'];?>
-                                </span>
-                        
-                        </td>
-                        <td>
-                            <span class="h6 mb-0 fw-medium text-gray-300">
-                                <?php
-                                switch($r['priority']){
-                                    case 'hight':
-                                        echo 'Yüksək';
-                                        break;
-                                    case 'middle':
-                                        echo 'Orta';
-                                        break;
-                                    case 'low':
-                                        echo 'Aşağı';
-                                        break;
-                                }
-                                ?>
+                                class="mb-5 text-13 py-2 px-8 bg-primary-50 text-primary-600 d-inline-flex align-items-center gap-8 rounded-pill">
+                                <?=$r['start'];?>
                             </span>
+                            -
+                            <span
+                                class="mb-5 text-13 py-2 px-8 bg-success-50 text-success-600 d-inline-flex align-items-center gap-8 rounded-pill">
+                                <?=$r['end'];?>
+                            </span>
+
                         </td>
+                      
                         <td>
                             <?php if(true):?>
                             <button data-answer-id="<?=$r['id'];?>" title="İcra et"
@@ -174,8 +200,8 @@
                             </button>
                             <?php endif;?>
 
-                            
-                            <?php  if($this->user_model->userdata['status']=='admin' or $r['creator_id']==$this->user_model->userdata['id']):?>                          
+
+                            <?php  if($this->user_model->userdata['status']=='admin' or $r['creator_id']==$this->user_model->userdata['id']):?>
                             <button data-delete-id="<?=$r['id'];?>"
                                 class="w-40 h-40 bg-danger-50 rounded-circle hover-bg-danger-100 transition-2">
                                 <i class="ph ph-trash text-danger-700"></i>
@@ -189,27 +215,31 @@
                     </tr>
 
                     <?php foreach($trRow as $tr):if(!empty($tr['note'])):?>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <?php if($tr['status']=='answered'):?>
-                                    <span class="flex-shrink-0 w-30 h-30 flex-center rounded-circle bg-success-600 text-white text-small"><i class="ph ph-check"></i></span>
-                                <?php else:?>
-                                    <span class="flex-shrink-0 w-30 h-30 flex-center rounded-circle bg-danger-600 text-white text-small"><i class="ph ph-x"></i></span>
-                                <?php endif;?>
-                            </td>
-                            <td colspan="2">
-                                <span class="h6 mb-0 fw-medium text-gray-300">
+                    <tr>
+                        <td></td>
+                        <td>
+                            <?php if($tr['status']=='answered'):?>
+                            <span
+                                class="flex-shrink-0 w-30 h-30 flex-center rounded-circle bg-success-600 text-white text-small"><i
+                                    class="ph ph-check"></i></span>
+                            <?php else:?>
+                            <span
+                                class="flex-shrink-0 w-30 h-30 flex-center rounded-circle bg-danger-600 text-white text-small"><i
+                                    class="ph ph-x"></i></span>
+                            <?php endif;?>
+                        </td>
+                        <td colspan="2">
+                            <span class="h6 mb-0 fw-medium text-gray-300">
                                 <?=$tr['name'];?>
-                                </span>
-                            </td>
-                            <td colspan="6">
-                                <span class="h6 mb-0 fw-medium text-gray-300" style="max-width:700px">
-                                    <?=nl2br($tr['note']);?>
-                                </span>
-                            </td>
-                           
-                        </tr>
+                            </span>
+                        </td>
+                        <td colspan="6">
+                            <span class="h6 mb-0 fw-medium text-gray-300" style="max-width:700px">
+                                <?=nl2br($tr['note']);?>
+                            </span>
+                        </td>
+
+                    </tr>
                     <?php endif;endforeach;?>
 
                     <?php endforeach;?>
@@ -314,8 +344,8 @@
                             <label class="form-label fw-semibold text-primary-light text-sm mb-8">Başlama tarixi: <span
                                     class="text-danger">*</span>
                             </label>
-                            <input type="date" name="start" class="form-control radius-8"
-                                placeholder="Başlama tarixi" min="<?=date('Y-m-d');?>"/>
+                            <input type="date" name="start" class="form-control radius-8" placeholder="Başlama tarixi"
+                                min="<?=date('Y-m-d');?>" />
                             <span data-error="title" class="text-xs text-danger"></span>
                         </div>
 
@@ -379,12 +409,13 @@
                 <form action="<?=base_url('tasks/answer');?>" method="post">
                     <div class="row">
                         <input type="hidden" name="id" value="0" />
-                        <input type="hidden" name="status" value=""/>
-                            
+                        <input type="hidden" name="status" value="" />
+
                         <div class="col-12">
                             <div class="alert alert-info">
                                 <h4 class="h4 mb-0">Diqqət</h4>
-                                <p><span class="mb-0 fw-medium">"Tapşırıq İcra Edildi"</span> düyməsi sıxıldıqdan sonra tapşırıq hesabınızda görünməyəcəkdir !</p>
+                                <p><span class="mb-0 fw-medium">"Tapşırıq İcra Edildi"</span> düyməsi sıxıldıqdan sonra
+                                    tapşırıq hesabınızda görünməyəcəkdir !</p>
                             </div>
                         </div>
 
@@ -392,13 +423,14 @@
                             <label class="form-label fw-semibold text-primary-light text-sm mb-8">Qeyd: <span
                                     class="text-danger">*</span>
                             </label>
-                            
-                            <textarea type="text" name="note" class="form-control radius-8" placeholder="Qeyd"></textarea>
+
+                            <textarea type="text" name="note" class="form-control radius-8"
+                                placeholder="Qeyd"></textarea>
                             <span data-error="note" class="text-xs text-danger"></span>
                         </div>
 
-               
-                      
+
+
 
                         <div class="col-12 text-danger text-center" data-error="msg"></div>
 
@@ -407,11 +439,13 @@
                                 class="btn bg-danger-600 hover-bg-danger-800 border-danger-600 hover-border-danger-800 text-md px-24 py-12 radius-8">
                                 Ləğv et
                             </button>
-                            <button id="notanswer" class="btn bg-warning-600 hover-bg-warning-800 border-warning-600 hover-border-warning-800 text-md px-24 py-12 radius-8">
+                            <button id="notanswer"
+                                class="btn bg-warning-600 hover-bg-warning-800 border-warning-600 hover-border-warning-800 text-md px-24 py-12 radius-8">
                                 <i class="ph ph-warning"></i>
                                 Tapşırıq icra edilmədi
                             </button>
-                            <button id="answer" class="btn bg-success-600 hover-bg-success-800 border-success-600 hover-border-success-800 text-md px-24 py-12 radius-8">
+                            <button id="answer"
+                                class="btn bg-success-600 hover-bg-success-800 border-success-600 hover-border-success-800 text-md px-24 py-12 radius-8">
                                 <i class="ph ph-check"></i>
                                 Tapşırıq icra edildi
                             </button>
