@@ -56,7 +56,7 @@
                         <th class="h6 text-gray-300" title="Tapşırığı yaradan istifadəçi">T.Y İstifadəçi</th>
                         <th class="h6 text-gray-300">Tapşırıq</th>
                         <th class="h6 text-gray-300">Müştəri</th>
-                        <th class="h6 text-gray-300">Açıqlama</th>
+                       
                         <th class="h6 text-gray-300">Təhkim edilib</th>
                         <th class="h6 text-gray-300">İcra tarixi</th>
 
@@ -124,11 +124,7 @@
                             ?>
                             </span>
                         </td>
-                        <td style="max-width:200px">
-                            <span class="h6 mb-0 fw-medium text-gray-300">
-                                <?=$r['content'];?>
-                            </span>
-                        </td>
+                       
                         <td>
                             <ul class="lesson-list">
                                 <?php
@@ -192,7 +188,7 @@
 
                         </td>
                       
-                        <td>
+                        <td style="width:200px">
                             <?php if(true):?>
                             <button data-answer-id="<?=$r['id'];?>" title="İcra et"
                                 class="w-40 h-40 bg-success-50 rounded-circle hover-bg-success-100 transition-2">
@@ -211,6 +207,17 @@
                                 <i class="ph ph-pencil-simple text-main-700"></i>
                             </button>
                             <?php endif;?>
+                        </td>
+                    </tr>
+
+                    <tr>
+                      
+                        <td colspan="6">
+                            <div class="alert alert-info">
+                                <span class="h6 mb-0 fw-medium text-gray-300">
+                                    <?=$r['content'];?>
+                                </span>
+                            </div>
                         </td>
                     </tr>
 
@@ -240,6 +247,7 @@
                         </td>
 
                     </tr>
+                    
                     <?php endif;endforeach;?>
 
                     <?php endforeach;?>
