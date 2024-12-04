@@ -167,7 +167,7 @@
                             </span>
                         </td>
                         <td>
-                            <?php if($this->tasks_model->get_task_progress($r)):?>
+                            <?php if(true):?>
                             <button data-answer-id="<?=$r['id'];?>" title="İcra et"
                                 class="w-40 h-40 bg-success-50 rounded-circle hover-bg-success-100 transition-2">
                                 <i class="ph ph-check text-success-700"></i>
