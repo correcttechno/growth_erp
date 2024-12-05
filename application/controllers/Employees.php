@@ -56,6 +56,10 @@ class Employees extends CI_Controller{
         );
 
         if(!empty($dep_id) and !empty($pos_id) and !empty($firstname) and !empty($lastname) and !empty($phone) and !empty($address) and !empty($gender) and !empty($email)){
+
+            $this->load->model("static/upload_model");
+            $upload=$this->upload_model->upload_image();
+
             $ar=array(
                 'department_id'     =>$dep_id,
                 'position_id'       =>$pos_id,
@@ -69,6 +73,7 @@ class Employees extends CI_Controller{
                 'password'          =>$password,
                 'content'           =>$content,
                 'token'             =>generate_token(),
+                'photo'             =>$upload!=false?$upload['base64_image']:'',
             );
 
             if($password!=$repassword){

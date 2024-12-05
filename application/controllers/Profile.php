@@ -43,6 +43,9 @@ class Profile extends CI_Controller{
 
         if(!empty($firstname) and !empty($lastname) and !empty($birthday) and !empty($email) and !empty($phone) and !empty($address)){
 
+            $this->load->model("static/upload_model");
+            $upload=$this->upload_model->upload_image();
+
             $ar=array(
                 'firstname'     =>$firstname,
                 'lastname'      =>$lastname,
@@ -51,11 +54,14 @@ class Profile extends CI_Controller{
                 'gender'        =>$gender,
                 'address'       =>$address,
                 'birthday'      =>$birthday,
+                'photo'         =>$upload!=false?$upload['base64_image']:'',
             );
 
             $this->user_model->changeUserData($ar);
             $response['status']=true;
             $response['message']="Düzəlişlər tətbiq edildi.";
+
+            
         }
         else{
             $response['message']="Zəhmət olmasa *-lu xanaları doldurun !";

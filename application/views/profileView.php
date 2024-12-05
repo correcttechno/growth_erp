@@ -29,7 +29,7 @@
             <div class="setting-profile px-24">
                 <div class="flex-between">
                     <div class="d-flex align-items-end flex-wrap mb-32 gap-24">
-                        <img src="<?=get_img('user-img.png');?>" alt=""
+                        <img src="<?=($this->user_model->userdata['photo']!=''?$this->user_model->userdata['photo']:get_img('user-img.png'));?>" alt=""
                             class="w-120 h-120 rounded-circle border border-white">
                         <div>
                             <h4 class="mb-8">
@@ -98,7 +98,7 @@
                     <p class="text-gray-600 text-15">Zəhmət olmasa şəxsi məlumatları düzgün doldurun.</p>
                 </div>
                 <div class="card-body">
-                    <form action="<?=base_url();?>profile/changeUserData" method="post">
+                    <form action="<?=base_url();?>profile/changeUserData" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-sm-6 col-xs-6">
                                 <label for="firstname" class="form-label mb-8 h6">Ad <span
@@ -153,16 +153,14 @@
                                 </select>
                                 <span data-error="gender" class="text-xs text-danger"></span>
                             </div>
+
+
                             <div class="col-12">
                                 <label for="imageUpload" class="form-label mb-8 h6">Your Photo</label>
                                 <div class="flex-align gap-22">
                                     <div class="avatar-upload flex-shrink-0">
-                                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg">
-                                        <div class="avatar-preview">
-                                            <div id="profileImagePreview"
-                                                style="background-image: url('assets/images/thumbs/setting-profile-img.jpg');">
-                                            </div>
-                                        </div>
+                                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" name="image">
+                                       
                                     </div>
                                     <div
                                         class="avatar-upload-box text-center position-relative flex-grow-1 py-24 px-4 rounded-16 border border-main-300 border-dashed bg-main-50 hover-bg-main-100 hover-border-main-400 transition-2 cursor-pointer">

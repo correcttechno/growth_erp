@@ -55,6 +55,7 @@
                             </div>
                         </td>
                         <td>
+                            <img class="w-54 h-54 rounded-circle" src="<?=($r['photo']!=''?$r['photo']:get_img('user-img.png'));?>"/>
                             <span class="h6 mb-0 fw-medium text-gray-300">
                                 <?=$r['firstname'];?> 
                                 <?=$r['lastname'];?>
@@ -148,12 +149,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-24">
-                <form action="<?=base_url('employees/add');?>" method="post">
+                <form action="<?=base_url('employees/add');?>" method="post"  enctype="multipart/form-data">
                     <div class="row">
                         <input type="hidden" name="id" value="0" />
-
                         <div class="col-xxl-4 col-md-4 col-sm-5">
-                           
                             <div id="fileUpload" class="fileUpload image-upload"></div>
                         </div>
                         <div class="col-xxl-8 col-md-8 col-sm-7">
