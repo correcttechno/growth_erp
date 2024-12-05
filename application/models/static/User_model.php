@@ -80,6 +80,15 @@ class User_model extends CI_Model{
         }
     }
 
-    
+
+    public function changeUserData($ar){
+        $this->database_model->update("users",$ar,array('id'=>$this->userdata['id']));
+        return true;
+    }
+
+    public function changePassword($pass){
+        $this->database_model->update("users",array('password'=>generate_password($pass)),array('id'=>$this->userdata['id']));
+        return true;
+    }    
 
 }

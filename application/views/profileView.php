@@ -79,7 +79,7 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pills-password-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-password" type="button" role="tab" aria-controls="pills-password"
-                            aria-selected="false">Password</button>
+                            aria-selected="false">Şifrə</button>
                     </li>
 
                 </ul>
@@ -94,28 +94,64 @@
             tabindex="0">
             <div class="card mt-24">
                 <div class="card-header border-bottom">
-                    <h4 class="mb-4">My Details</h4>
-                    <p class="text-gray-600 text-15">Please fill full details about yourself</p>
+                    <h4 class="mb-4">Şəxsi Məlumatlar</h4>
+                    <p class="text-gray-600 text-15">Zəhmət olmasa şəxsi məlumatları düzgün doldurun.</p>
                 </div>
                 <div class="card-body">
-                    <form action="#">
-                        <div class="row gy-4">
+                    <form action="<?=base_url();?>profile/changeUserData" method="post">
+                        <div class="row">
                             <div class="col-sm-6 col-xs-6">
-                                <label for="fname" class="form-label mb-8 h6">First Name</label>
-                                <input type="text" class="form-control py-11" id="fname" placeholder="Enter First Name">
+                                <label for="firstname" class="form-label mb-8 h6">Ad <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control py-11" id="firstname" name="firstname"
+                                    placeholder="Ad" value="<?=$this->user_model->userdata['firstname'];?>">
+                                <span data-error="firstname" class="text-xs text-danger"></span>
                             </div>
                             <div class="col-sm-6 col-xs-6">
-                                <label for="lname" class="form-label mb-8 h6">Last Name</label>
-                                <input type="text" class="form-control py-11" id="lname" placeholder="Enter Last Name">
+                                <label for="lastname" class="form-label mb-8 h6">Soyad <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control py-11" id="lastname" name="lastname"
+                                    placeholder="Soyad" value="<?=$this->user_model->userdata['lastname'];?>">
+                                <span data-error="lastname" class="text-xs text-danger"></span>
                             </div>
                             <div class="col-sm-6 col-xs-6">
-                                <label for="email" class="form-label mb-8 h6">Email</label>
-                                <input type="email" class="form-control py-11" id="email" placeholder="Enter Email">
+                                <label for="email" class="form-label mb-8 h6">E-mail <span
+                                        class="text-danger">*</span></label>
+                                <input type="email" class="form-control py-11" id="email" name="email"
+                                    placeholder="E-mail" value="<?=$this->user_model->userdata['email'];?>">
+                                <span data-error="email" class="text-xs text-danger"></span>
                             </div>
                             <div class="col-sm-6 col-xs-6">
-                                <label for="phone" class="form-label mb-8 h6">Phone Number</label>
-                                <input type="number" class="form-control py-11" id="phone"
-                                    placeholder="Enter Phone Number">
+                                <label for="phone" class="form-label mb-8 h6">Telefon <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control py-11" id="phone" name="phone"
+                                    placeholder="Telefon" value="<?=$this->user_model->userdata['phone'];?>">
+                                <span data-error="phone" class="text-xs text-danger"></span>
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <label for="address" class="form-label mb-8 h6">Ünvan <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control py-11" id="address" name="address"
+                                    placeholder="Ünvan" value="<?=$this->user_model->userdata['address'];?>">
+                                <span data-error="address" class="text-xs text-danger"></span>
+                            </div>
+                            <div class="col-sm-3 col-xs-3">
+                                <label for="birthday" class="form-label mb-8 h6">Doğum tarixi <span
+                                        class="text-danger">*</span></label>
+                                <input type="date" class="form-control py-11" id="birthday" name="birthday"
+                                    placeholder="Doğum tarixi" value="<?=$this->user_model->userdata['birthday'];?>">
+                                <span data-error="birthday" class="text-xs text-danger"></span>
+                            </div>
+                            <div class="col-sm-3 col-xs-3">
+                                <label for="birthday" class="form-label mb-8 h6">Cins <span
+                                        class="text-danger">*</span></label>
+                                <select class="form-control py-11" id="gender" name="gender">
+                                    <option <?=($this->user_model->userdata['gender']=="male"?"selected":"");?>
+                                        value="male">Kişi</option>
+                                    <option <?=($this->user_model->userdata['gender']=="female"?"selected":"");?>
+                                        value="female">Qadın</option>
+                                </select>
+                                <span data-error="gender" class="text-xs text-danger"></span>
                             </div>
                             <div class="col-12">
                                 <label for="imageUpload" class="form-label mb-8 h6">Your Photo</label>
@@ -141,31 +177,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-xs-6">
-                                <label for="role" class="form-label mb-8 h6">Role</label>
-                                <input type="text" class="form-control py-11" id="role" placeholder="Enter Role">
-                            </div>
-                            <div class="col-sm-6 col-xs-6">
-                                <label for="zip" class="form-label mb-8 h6">ZIP Code</label>
-                                <input type="number" class="form-control py-11" id="zip" placeholder="Enter ZIP Code">
-                            </div>
-                            <div class="col-12">
-                                <div class="editor">
-                                    <label class="form-label mb-8 h6">Bio</label>
-                                    <div id="editor">
-                                        <p>I'm a Product Designer based in Melbourne, Australia. I specialise in
-                                            UX/UI design, brand strategy, and Webflow development.  It has
-                                            survived not only five centuries, but also the leap into electronic
-                                            typesetting, remaining essentially unchanged.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="flex-align justify-content-end gap-8">
-                                    <button type="reset"
-                                        class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9">Cancel</button>
-                                    <button type="submit" class="btn btn-main rounded-pill py-9">Save
-                                        Changes</button>
+
+                            <div class="col-6 text-danger h6" data-error="message"></div>
+                            <div class="col-6">
+                                <div class="flex-align justify-content-end gap-12 mt-10">
+                                    <button type="submit" class="btn btn-main rounded-pill py-9">Düzəlişləri
+                                        saxla</button>
                                 </div>
                             </div>
                         </div>
@@ -181,88 +198,67 @@
             tabindex="0">
             <div class="card mt-24">
                 <div class="card-header border-bottom">
-                    <h4 class="mb-4">Password Settings</h4>
-                    <p class="text-gray-600 text-15">Please fill full details about yourself</p>
+                    <h4 class="mb-4">Şifrəni dəyiş</h4>
+                    <p class="text-danger-600 text-15">Zəhmət olmasa yeni şifrənizi unutmayın !</p>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <form action="#">
+                            <form action="<?=base_url();?>profile/changePassword" method="post">
                                 <div class="row gy-4">
                                     <div class="col-12">
-                                        <label for="current-password" class="form-label mb-8 h6">Current
-                                            Password</label>
+                                        <label for="current-password" class="form-label mb-8 h6">Mövcut şifrə</label>
                                         <div class="position-relative">
                                             <input type="password" class="form-control py-11" id="current-password"
-                                                placeholder="Enter Current Password">
+                                                name="currentpass" placeholder="Mövcut şifrə">
                                             <span
                                                 class="toggle-password position-absolute top-50 inset-inline-end-0 me-16 translate-middle-y ph ph-eye-slash"
                                                 id="#current-password"></span>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <label for="new-password" class="form-label mb-8 h6">New
-                                            Password</label>
+                                        <label for="new-password" class="form-label mb-8 h6">Yeni şifrə</label>
                                         <div class="position-relative">
                                             <input type="password" class="form-control py-11" id="new-password"
-                                                placeholder="Enter New Password">
+                                                name="pass" placeholder="Yeni şifrə">
                                             <span
                                                 class="toggle-password position-absolute top-50 inset-inline-end-0 me-16 translate-middle-y ph ph-eye-slash"
                                                 id="#new-password"></span>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <label for="confirm-password" class="form-label mb-8 h6">Confirm
-                                            Password</label>
+                                        <label for="confirm-password" class="form-label mb-8 h6">Təkrar yeni
+                                            şifrə</label>
                                         <div class="position-relative">
                                             <input type="password" class="form-control py-11" id="confirm-password"
-                                                placeholder="Enter Confirm Password">
+                                                name="retrypass" placeholder="Təkrar yeni şifrə">
                                             <span
                                                 class="toggle-password position-absolute top-50 inset-inline-end-0 me-16 translate-middle-y ph ph-eye-slash"
                                                 id="#confirm-password"></span>
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <label class="form-label mb-8 h6">Password Requirements:</label>
-                                        <ul class="list-inside">
-                                            <li class="text-gray-600 mb-4">At least one lowercase character</li>
-                                            <li class="text-gray-600 mb-4">Minimum 8 characters long - the more,
-                                                the better</li>
-                                            <li class="text-gray-300 mb-4">At least one number, symbol, or
-                                                whitespace character</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-12">
-                                        <label class="form-label mb-8 h6">Two-Step Verification</label>
-                                        <ul>
-                                            <li class="text-gray-600 mb-4 fw-semibold">Two-factor authentication
-                                                is not enabled yet.</li>
-                                            <li class="text-gray-600 mb-4 fw-medium">Two-factor authentication
-                                                adds a layer of security to your account by requiring more than
-                                                just a password to log in. Learn more.</li>
-                                        </ul>
-                                        <button type="submit" class="btn btn-main rounded-pill py-9 mt-24">Enable
-                                            two-factor
-                                            authentication</button>
+
+                                    <div class="col-12 text-danger" data-error="message"></div>
+
+                                </div>
+
+                                <div class="col-12 mt-20">
+                                    <div class="gap-8">
+                                        <button type="submit" class="btn btn-main rounded-pill py-9">
+                                            Şifrəni yadda saxla
+                                        </button>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <div class="col-12">
-                            <div class="flex-align justify-content-end gap-8">
-                                <button type="reset"
-                                    class="btn btn-outline-main bg-main-100 border-main-100 text-main-600 rounded-pill py-9">Cancel</button>
-                                <button type="submit" class="btn btn-main rounded-pill py-9">Save
-                                    Changes</button>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
         <!-- Password Tab End -->
 
-    
+
 
     </div>
 </div>
