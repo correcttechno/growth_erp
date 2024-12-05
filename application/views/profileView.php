@@ -37,6 +37,7 @@
                                 <?=$userdata['lastname'];?>
                             </h4>
                             <div class="setting-profile__infos flex-align flex-wrap gap-16">
+                                <?php if($userdata['department']):?>
                                 <div class="flex-align gap-6">
                                     <span class="text-gray-600 d-flex text-lg">
                                         <i class="ph ph-buildings"></i>
@@ -45,6 +46,9 @@
                                         <?=$userdata['department']['title'];?>
                                     </span>
                                 </div>
+                                <?php endif;?>
+
+                                <?php if($userdata['position']):?>
                                 <div class="flex-align gap-6">
                                     <span class="text-gray-600 d-flex text-lg">
                                         <i class="ph ph-identification-badge"></i>
@@ -53,6 +57,7 @@
                                         <?=$userdata['position']['title'];?>
                                     </span>
                                 </div>
+                                <?php endif;?>
                                 <div class="flex-align gap-6">
                                     <span class="text-gray-600 d-flex text-lg"><i
                                             class="ph ph-calendar-dots"></i></span>
