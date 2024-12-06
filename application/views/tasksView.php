@@ -75,7 +75,7 @@
                             </div>
                         </td>
                         <td>
-                            <span class="h6 mb-0 fw-medium text-gray-300">
+                            <span class="text-13 mb-0 fw-medium text-gray-300">
                                 <?php $creator=$this->employees_model->read_row($r['creator_id']);
                                 if($creator):?>
                                 <?=$creator['firstname'];?>
@@ -84,7 +84,7 @@
                             </span>
                         </td>
                         <td>
-                            <span class="h6 mb-0 fw-medium text-gray-300">
+                            <span class="text-13 mb-0 fw-medium text-gray-300">
                                 
                             <?php
                                 switch($r['priority']){
@@ -109,7 +109,7 @@
                             </span>
                         </td>
                         <td>
-                            <span class="h6 mb-0 fw-medium text-gray-300">
+                            <span class="text-13 mb-0 fw-medium text-gray-300">
                                 <?php
                             $data=$this->customers_model->read_row($r['customer_id']);
                             if($data){
@@ -180,12 +180,7 @@
                         <td>
                             <span
                                 class="mb-5 text-13 py-2 px-8 bg-primary-50 text-primary-600 d-inline-flex align-items-center gap-8 rounded-pill">
-                                <?=$r['start'];?>
-                            </span>
-                            -
-                            <span
-                                class="mb-5 text-13 py-2 px-8 bg-success-50 text-success-600 d-inline-flex align-items-center gap-8 rounded-pill">
-                                <?=$r['end'];?>
+                                <?=$r['start'];?> - <?=$r['end'];?>
                             </span>
 
                         </td>
@@ -193,7 +188,7 @@
                         <td style="width:200px">
                             <?php if($this->tasks_model->get_answer_button($r['users'])):?>
                             <button data-answer-id="<?=$r['id'];?>" title="İcra et"
-                                class="w-40 h-40 bg-success-50 rounded-circle hover-bg-success-100 transition-2">
+                                class="w-30 h-30 bg-success-50 rounded-circle hover-bg-success-100 transition-2">
                                 <i class="ph ph-check text-success-700"></i>
                             </button>
                             <?php endif;?>
@@ -201,11 +196,11 @@
 
                             <?php  if($this->user_model->userdata['status']=='admin' or $r['creator_id']==$this->user_model->userdata['id']):?>
                             <button data-delete-id="<?=$r['id'];?>"
-                                class="w-40 h-40 bg-danger-50 rounded-circle hover-bg-danger-100 transition-2">
+                                class="w-30 h-30 bg-danger-50 rounded-circle hover-bg-danger-100 transition-2">
                                 <i class="ph ph-trash text-danger-700"></i>
                             </button>
                             <button data-edit-id="<?=$r['id'];?>"
-                                class=" w-40 h-40 bg-main-50 rounded-circle hover-bg-main-100 transition-2">
+                                class=" w-30 h-30 bg-main-50 rounded-circle hover-bg-main-100 transition-2">
                                 <i class="ph ph-pencil-simple text-main-700"></i>
                             </button>
                             <?php endif;?>
