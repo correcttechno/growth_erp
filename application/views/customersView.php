@@ -638,7 +638,7 @@
 
                                             <div
                                                 class="form-switch switch-primary d-flex align-items-center gap-8 mb-16">
-                                                <input class="form-check-input" type="checkbox" id="a<?=$s['id'];?>" role="switch" name="tasks[]" value="<?=$s['id'];?>">
+                                                <input class="form-check-input" type="checkbox" id="a<?=$s['id'];?>" role="switch" name="periodictasks[]" value="<?=$s['id'];?>">
                                                 <label
                                                     class="form-check-label line-height-1 fw-medium text-secondary-light"
                                                     for="a<?=$s['id'];?>">

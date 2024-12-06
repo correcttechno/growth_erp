@@ -52,7 +52,9 @@ class Customers extends CI_Controller{
         $vpass          =$this->input->post('vpass',true);
         $vparol         =$this->input->post('vparol',true);
         
-        $tasks          =$this->input->post('tasks',true);
+        $tasks          =$this->input->post('periodictasks',true);
+
+      
 
 
         $id             =$this->input->post('id',true);
