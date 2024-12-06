@@ -622,15 +622,16 @@
 
                             </div>
                         </div>
-
+                        
+                        <!--Services sekect-->
                         <div class="tab-pane fade" id="pills-service" role="tabpanel"
                             aria-labelledby="pills-service-tab" tabindex="0">
                             <?php $departments=$this->departments_model->read(); if($departments):?>
                             <ul>
                                 <?php foreach($departments as $dep):?>
+                                <?php $service=$this->periodictaskstype_model->read($dep['id']);if($service):?>
                                 <li>
                                     <?=$dep['title'];?>
-                                    <?php $service=$this->periodictaskstype_model->read($dep['id']);if($service):?>
                                     <ul class="list-group list-group-flush">
                                         <?php foreach($service as $s):?>
                                         <li class="list-group-item">
@@ -647,8 +648,8 @@
                                         </li>
                                         <?php endforeach;?>
                                     </ul>
-                                    <?php endif;?>
                                 </li>
+                                <?php endif;?>
                                 <?php endforeach;?>
                             </ul>
                             <?php endif;?>

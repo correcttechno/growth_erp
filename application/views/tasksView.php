@@ -422,13 +422,7 @@
                         <input type="hidden" name="id" value="0" />
                         <input type="hidden" name="status" value="" />
 
-                        <div class="col-12">
-                            <div class="alert alert-info">
-                                <h4 class="h4 mb-0">Diqqət</h4>
-                                <p><span class="mb-0 fw-medium">"Tapşırıq İcra Edildi"</span> düyməsi sıxıldıqdan sonra
-                                    tapşırıq hesabınızda görünməyəcəkdir !</p>
-                            </div>
-                        </div>
+                   
 
                         <div class="col-12">
                             <label class="form-label fw-semibold text-primary-light text-sm mb-8">Qeyd: <span
