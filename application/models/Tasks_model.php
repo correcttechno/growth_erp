@@ -11,13 +11,32 @@ class Tasks_model extends CI_Model
             $results = $this->database_model->read('tasks');
         }
         else{
-            $results = $this->database_model->read_in('tasks','users',array($this->user_model->userdata['id']));
-            $results2 = $this->database_model->read('tasks',array('creator_id'=>$this->user_model->userdata['id']));
-            $results=array_merge($results,$results2);
+            $my_id=$this->user_model->userdata['id'];
+            $results=$this->db->query("SELECT 
+                t.*
+            FROM 
+                tasks t
+            LEFT JOIN 
+                tasks_log tl
+            ON 
+                t.id = tl.id
+            WHERE creator_id=$my_id or users like '%$my_id%'
+            ORDER BY 
+                CASE 
+                    WHEN tl.id IS NULL THEN 0 
+                    ELSE 1 
+                END, 
+                CASE 
+                    WHEN tl.id IS NULL THEN -t.id 
+                    ELSE t.id   
+                END;
+            ")->result_array();
+
         }
         return count($results) > 0 ? $results : false;
     }
 
+    //bu funksya tasklarin ardicil islemesi ucun idi hazirda isletmirem
     public function get_task_progress($d)
     {
         $users_ids = json_decode($d['users'], true);
@@ -35,6 +54,12 @@ class Tasks_model extends CI_Model
         }
         return false;
 
+    }
+
+    //bu funksya taski icra eden ucun buttonun vezyetin gosterir
+    public function get_answer_button($list){
+        $l=json_decode($list,true);
+        return in_array($this->user_model->userdata['id'],$l);
     }
 
     public function check_user_task_status($task_id, $user_id)

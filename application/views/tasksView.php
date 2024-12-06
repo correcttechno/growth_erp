@@ -69,6 +69,9 @@
                         <td class="fixed-width">
                             <div class="form-check">
                                 <input class="form-check-input border-gray-200 rounded-4" type="checkbox">
+                               <!--  <span class="h6 mb-0 fw-medium text-gray-300">
+                                <?=$r['id'];?>
+                                </span> -->
                             </div>
                         </td>
                         <td>
@@ -189,7 +192,7 @@
                         </td>
                       
                         <td style="width:200px">
-                            <?php if(true):?>
+                            <?php if($this->tasks_model->get_answer_button($r['users'])):?>
                             <button data-answer-id="<?=$r['id'];?>" title="İcra et"
                                 class="w-40 h-40 bg-success-50 rounded-circle hover-bg-success-100 transition-2">
                                 <i class="ph ph-check text-success-700"></i>
