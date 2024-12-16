@@ -107,6 +107,19 @@
                             }
                             ?>
                             </span>
+
+                            <?php $files=get_multiple_files($r['file']); 
+                            if($files):
+                            ?> 
+                            <p>
+                            <?php foreach($files as $f):?>
+                                <a href="<?=get_file($f['file_name']);?>" target="_blank" class="mb-5 text-10 py-2 px-8 bg-success-50 text-success-600 d-inline-flex align-items-center gap-8 rounded-pill">
+                                <i class="ph ph-download-simple"></i>
+                                 Faylı endir
+                                </a>
+                            <?php endforeach;?>
+                            </p>
+                            <?php endif;?>
                         </td>
                         <td>
                             <span class="text-13 mb-0 fw-medium text-gray-300">
@@ -276,7 +289,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-24">
-                <form action="<?=base_url('tasks/add');?>" method="post">
+                <form action="<?=base_url('tasks/add');?>" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <input type="hidden" name="id" value="0" />
                         <div class="col-6">
@@ -312,9 +325,13 @@
                             <select type="text" name="customer_id" class="form-control radius-8" placeholder="Müştəri">
                                 <?php if($customers):foreach($customers as $d):?>
                                 <option value="<?=$d['id'];?>">
-                                    <?=$d['firstname'];?>
-                                    <?=$d['lastname'];?> [
-                                    <?=$d['voen'];?>]
+                                    <?php if(!empty($d['company'])):?>
+                                        <?=$d['company'];?>
+                                    <?php else:?>
+                                        <?=$d['firstname'];?>
+                                        <?=$d['lastname'];?> 
+                                    <?php endif;?>
+                                    [<?=$d['voen'];?>]
                                 </option>
                                 <?php endforeach;endif;?>
                             </select>
@@ -377,7 +394,7 @@
                         <div class="col-12">
                             <label class="form-label fw-semibold text-primary-light text-sm mb-8">Fayl:
                             </label>
-                            <input type="file" name="file" class="form-control radius-8" placeholder="Fayl" />
+                            <input type="file" name="files[]" class="form-control radius-8" multiple placeholder="Fayl" />
                             <span data-error="file" class="text-xs text-danger"></span>
                         </div>
 

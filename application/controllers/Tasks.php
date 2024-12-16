@@ -10,6 +10,7 @@ class Tasks extends CI_Controller{
         $this->load->model("customers_model");
         $this->load->model("taskstype_model");
         $this->load->model("employees_model");
+        $this->load->helper("upload");
     }
 
     public function index(){
@@ -46,6 +47,10 @@ class Tasks extends CI_Controller{
         );
        
         if(!empty($tasktype_id) and !empty($customer_id) and !empty($start) and !empty($end) and !empty($priority) and ($users!=Null and count($users)>0)){
+
+
+            $this->load->model("static/upload_model");
+            
             $ar=array(
                 'creator_id'    =>$this->user_model->userdata['id'],
                 'tasktype_id'   =>$tasktype_id,
@@ -55,8 +60,11 @@ class Tasks extends CI_Controller{
                 'end'           =>$end,
                 'priority'      =>$priority,
                 'users'         =>json_encode($users),
-
+                'file'          =>$this->upload_model->upload_multiple_files(),
             );
+
+        
+
             $this->tasks_model->add($ar,$id);
             $response['status']=true;
         }
