@@ -13,6 +13,20 @@
         <!-- Breadcrumb Right Start -->
         <div class="flex-align gap-8 flex-wrap">
 
+            <div class="position-relative text-gray-500 flex-align gap-4 text-13">
+                <span class="text-inherit">Göstər: </span>
+                <div class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-10 focus-border-main-600 bg-white">
+                <span class="text-lg"><i class="ph ph-funnel-simple"></i></span>
+                
+                    <select id="task_filter" class="form-control ps-8 pe-20 py-16 border-0 text-inherit rounded-4 text-center">
+                                <option <?=(isset($_GET['f']) and $_GET['f']=='all')?'selected':'';?> value="<?=base_url("tasks");?>?f=all">Hamısını</option>
+                                <option <?=(isset($_GET['f']) and $_GET['f']=='ongoing')?'selected':'';?>  value="<?=base_url("tasks");?>?f=ongoing">Davam edən</option>
+                                <option <?=(isset($_GET['f']) and $_GET['f']=='success')?'selected':'';?>  value="<?=base_url("tasks");?>?f=success">Tamamlanan Tapşırıqlar</option>
+                                <option <?=(isset($_GET['f']) and $_GET['f']=='error')?'selected':'';?>  value="<?=base_url("tasks");?>?f=error">İcra edilənməyənlər</option>
+                    </select>
+                </div>
+            </div>
+
             <div class="flex-align flex-wrap gap-16">
                 <div class="flex-align flex-wrap gap-8">
                     <span class="w-8 h-8 rounded-circle bg-success-600"></span>

@@ -5,7 +5,12 @@ class Tasks_model extends CI_Model
 
     public function read()
     {
-        
+       
+        $filter='';
+        if(isset($_GET['f'])){
+            $filter=$_GET['f'];
+        }
+
         $results = array();
         if ($this->user_model->userdata['status'] == 'admin') {
             $results = $this->database_model->read('tasks');
