@@ -11,6 +11,8 @@ class Tasks_model extends CI_Model
             $filter=$_GET['f'];
         }
 
+       // echo $filter;die;
+
         $results = array();
         if ($this->user_model->userdata['status'] == 'admin') {
             $results = $this->database_model->read('tasks');
@@ -36,8 +38,35 @@ class Tasks_model extends CI_Model
                     ELSE t.id   
                 END;
             ")->result_array();
-
         }
+      
+        if($filter!='' and $filter!='all'){
+            
+            $filterAr=array();
+            foreach($results as $r){
+                $tasks_log=$this->database_model->read_row('tasks_log',array('task_id'=>$r['id']));
+                
+                switch($filter){
+                    case 'ongoing':
+                        if(count($tasks_log)<=0){
+                            $filterAr[]=$r;
+                        }
+                        break;
+                    case 'success':
+                        if(count($tasks_log) and $tasks_log['status']=='answered'){
+                            $filterAr[]=$r;
+                        }
+                        break;
+                    case 'error':
+                        if(count($tasks_log) and $tasks_log['status']=='notanswer'){
+                            $filterAr[]=$r;
+                        }
+                        break;
+                }
+            }
+            $results=$filterAr;
+        }
+        
         return count($results) > 0 ? $results : false;
     }
 
