@@ -10,8 +10,8 @@ class Database_model extends CI_Model{
         return $result!=null?$result:array();
     }
 
-    public function read_row($table,$ar=array()){
-        $result=$this->db->where($ar)->get($table)->row_array();
+    public function read_row($table,$ar=array(),$order=array('id','desc')){
+        $result=$this->db->where($ar)->order_by($order[0],$order[1])->get($table)->row_array();
         return $result!=null?$result:array();
     }
 

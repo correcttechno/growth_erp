@@ -44,7 +44,7 @@ class Tasks_model extends CI_Model
             
             $filterAr=array();
             foreach($results as $r){
-                $tasks_log=$this->database_model->read_row('tasks_log',array('task_id'=>$r['id']));
+                $tasks_log=$this->database_model->read_row('tasks_log',array('task_id'=>$r['id']),array('status','asc'));
                 
                 switch($filter){
                     case 'ongoing':
