@@ -43,7 +43,10 @@ class Employees_model extends CI_Model{
         return count($result)>0?true:false;
     }
 
-
+    public function add_notification($user_id,$type){
+        $this->database_model->insert("notifications",array('user_id'=>$user_id,'type'=>$type));
+        return true;
+    }
 
 
 }

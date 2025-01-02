@@ -267,7 +267,7 @@
 
   }
 
-  var base_url = $('#base_url').val();
+  var base_url = $('#base_url').val().replace("growth_erp/","");
   $('form:not([data-stop])').ajaxForm({
     beforeSend: function () {
       $('form').addClass('loading');
@@ -311,8 +311,20 @@
   })
 
   function read_row_data(id) {
+    // Mevcut URL'yi alın
+    let url = new URL(base_url);
+
+    // URL'den sorgu parametrelerini al
+    let params = url.searchParams;
+
+    // 'f' parametresini kaldır
+    params.delete("f");
+
+    // Güncellenmiş URL'yi alın
+    url.search = params.toString();
+
     $.ajax({
-      url: base_url + '/read_row',
+      url: url.toString() + '/read_row',
       dataType: "json",
       data: { 'id': id },
       method: 'post',
@@ -351,6 +363,12 @@
 
   $('#task_filter').change(function () {
     window.location.href = $(this).val();
+  })
+
+  $('#noftButton').click(function () {
+    $.post(base_url + "/readallnoft", {}, function (e) {
+      $('#alarm').remove();
+    });
   })
 
 })(jQuery);

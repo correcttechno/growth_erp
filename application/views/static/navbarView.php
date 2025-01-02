@@ -23,10 +23,12 @@
         <div class="dropdown">
             <button
                 class="dropdown-btn shaking-animation text-gray-500 w-40 h-40 bg-main-50 hover-bg-main-100 transition-2 rounded-circle text-xl flex-center"
-                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                type="button" data-bs-toggle="dropdown" aria-expanded="false" id="noftButton">
                 <span class="position-relative">
                     <i class="ph ph-bell"></i>
-                    <span class="alarm-notify position-absolute end-0"></span>
+                    <?php if(count($this->user_model->notifications)>0):?>
+                    <span id="alarm" class="alarm-notify position-absolute end-0"></span>
+                    <?php endif;?>
                 </span>
             </button>
             <div class="dropdown-menu dropdown-menu--lg border-0 bg-transparent p-0">
@@ -34,11 +36,9 @@
                     <div class="card-body p-0">
                         <div class="py-8 px-24 bg-main-600">
                             <div class="flex-between">
-                                <h5 class="text-xl fw-semibold text-white mb-0">Notifications</h5>
+                                <h5 class="text-xl fw-semibold text-white mb-0">Bildirişlər</h5>
                                 <div class="flex-align gap-12">
-                                    <button type="button"
-                                        class="bg-white rounded-6 text-sm px-8 py-2 hover-text-primary-600"> New
-                                    </button>
+                                   
                                     <button type="button"
                                         class="close-dropdown hover-scale-1 text-xl text-white"><i
                                             class="ph ph-x"></i></button>
@@ -46,16 +46,29 @@
                             </div>
                         </div>
                         <div class="p-24 max-h-270 overflow-y-auto scroll-sm">
+
+                            <?php if(count($this->user_model->notifications)==0):?>
+                                <div class="d-block">
+                                    <div class="text-primary-600 text-center">
+                                        Bildiriş yoxdur.
+                                    </div>
+                                </div>
+                            <?php endif;?>
+
+                            <?php foreach($this->user_model->notifications as $noft):?>
                             <div class="d-flex align-items-start gap-12">
-                                <img src="assets/images/thumbs/notification-img1.png" alt=""
-                                    class="w-48 h-48 rounded-circle object-fit-cover">
+                                <span class="flex-shrink-0 w-48 h-48 flex-center rounded-circle bg-main-two-600 text-white text-2xl">
+                                    <i class="ph ph-list-checks"></i>
+                                </span>
+                              
+                                
                                 <div class="border-bottom border-gray-100 mb-24 pb-24">
                                     <div class="flex-align gap-4">
-                                        <a href="#"
-                                            class="fw-medium text-15 mb-0 text-gray-300 hover-text-main-600 text-line-2">Ashwin
-                                            Bose is requesting access to Design File - Final Project. </a>
+                                        <a href="#" class="fw-medium text-15 mb-0 text-gray-300 hover-text-main-600 text-line-2">
+                                            Yeni tapşırıq əlavə olundu !
+                                         </a>
                                         <!-- Three Dot Dropdown Start -->
-                                        <div class="dropdown flex-shrink-0">
+                                        <!-- <div class="dropdown flex-shrink-0">
                                             <button class="text-gray-200 rounded-4" type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="ph-fill ph-dots-three-outline"></i>
@@ -91,10 +104,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- Three Dot Dropdown End -->
                                     </div>
-                                    <div class="flex-align gap-6 mt-8">
+                                    <!-- <div class="flex-align gap-6 mt-8">
                                         <img src="assets/images/icons/google-drive.png" alt="">
                                         <div class="flex-align gap-4">
                                             <p class="text-gray-900 text-sm text-line-1">Design brief and
@@ -107,24 +120,16 @@
                                             class="btn btn-main py-8 text-15 fw-normal px-16">Accept</button>
                                         <button type="button"
                                             class="btn btn-outline-gray py-8 text-15 fw-normal px-16">Decline</button>
-                                    </div>
-                                    <span class="text-gray-200 text-13 mt-8">2 mins ago</span>
+                                    </div> -->
+                                    <span class="text-gray-200 text-13 mt-8"><?=$noft['date'];?></span>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-start gap-12">
-                                <img src="assets/images/thumbs/notification-img2.png" alt=""
-                                    class="w-48 h-48 rounded-circle object-fit-cover">
-                                <div class="">
-                                    <a href="#"
-                                        class="fw-medium text-15 mb-0 text-gray-300 hover-text-main-600 text-line-2">Patrick
-                                        added a comment on Design Assets - Smart Tags file:</a>
-                                    <span class="text-gray-200 text-13">2 mins ago</span>
-                                </div>
-                            </div>
+                        
+                            <?php endforeach;?>
                         </div>
-                        <a href="#"
+                       <!--  <a href="#"
                             class="py-13 px-24 fw-bold text-center d-block text-primary-600 border-top border-gray-100 hover-text-decoration-underline">
-                            View All </a>
+                            View All </a> -->
 
                     </div>
                 </div>

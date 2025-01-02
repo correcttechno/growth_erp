@@ -7,9 +7,11 @@ class User_model extends CI_Model{
         $this->load->helper('password');
         $this->load->library('session');
         $this->userdata=$this->get_userdata();
+        $this->notifications=$this->get_notifications();
     }
 
     public $userdata=false;
+    public $notifications=[];
 
     private function check_user($username,$password){
         $password=generate_password($password);
@@ -57,6 +59,21 @@ class User_model extends CI_Model{
         }
         else{
             return false;
+        }
+    }
+
+    public function get_notifications(){
+        if($this->userdata){
+            $data=$this->database_model->read("notifications",array('user_id'=>$this->userdata['id'],'asRead'=>'false'));
+            return $data;
+        }
+        return [];
+    }
+
+    public function changeNotificationsStatus(){
+        if($this->userdata){
+            $this->database_model->update("notifications",array('asRead'=>'true'),array('user_id'=>$this->userdata['id']));
+            return true;
         }
     }
 

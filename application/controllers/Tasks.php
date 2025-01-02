@@ -63,6 +63,11 @@ class Tasks extends CI_Controller{
                 'file'          =>$this->upload_model->upload_multiple_files(),
             );
 
+
+            foreach($users as $u){
+                $this->employees_model->add_notification($u,'task');
+            }
+
         
 
             $this->tasks_model->add($ar,$id);

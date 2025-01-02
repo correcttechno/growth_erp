@@ -102,5 +102,9 @@ class Profile extends CI_Controller{
         echo json_encode($response);
         
     }
+
+    public function readAllNoft(){
+        $this->user_model->changeNotificationsStatus();
+    }
     
 }
