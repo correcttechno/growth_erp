@@ -365,7 +365,7 @@
                                     class="text-danger">*</span>
                             </label>
                             <select class="text-12 form-control radius-8 selectpicker text-primary" name="users[]"
-                                id="ms1" multiple>
+                                id="users" multiple>
                                 <?php if($employees):foreach($employees as $d):?>
                                 <option value="<?=$d['id'];?>">
                                     <?=$d['firstname'];?>

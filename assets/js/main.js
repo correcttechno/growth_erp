@@ -198,6 +198,23 @@
   });
   // ========================= Header Sticky Js End===================
 
+  var selectPicker = $('.selectpicker').selectpicker({
+
+
+    countSelectedText: '{0} öğe seçildi',
+    dropupAuto: false,
+
+    liveSearch: true,
+    liveSearchPlaceholder: 'Axtar...',
+
+    selectedTextFormat: 'count > 3',
+    showSubtext: true,
+    size: 7,
+    style: 'btn-primary',
+    tickIcon: 'ph ph-check-fat',
+    width: '100%'
+
+  });
   function write_form_element(object, item, value) {
 
     if (object.find('[name=' + item + ']:not([type=file])').length > 0) {
@@ -210,7 +227,7 @@
         object.find('[name=' + item + '].word_2').froalaEditor('html.set', value);
       }
 
-
+      //
       if (object.find('[name=' + item + ']').attr('type') != undefined) {
         if (object.find('[name=' + item + ']').attr('type') == 'checkbox' || object.find('[name=' + item + ']').attr('type') == 'radio') {
           if (value == 'false' || value == false) {
@@ -237,7 +254,17 @@
           object.find('.form-image').html(value);
         }
       }
+      else if (item == "users") {
+        var dat = JSON.parse(value);
+        $('#users').find("option").removeAttr("selected");
+        for (var i = 0; i < dat.length; i++) {
+          $('#users').find("option[value=" + dat[i] + "]").attr("selected", true);
+        }
+        selectPicker.selectpicker("refresh");
+      }
     }
+
+
   }
 
   var base_url = $('#base_url').val();
@@ -310,23 +337,7 @@
     read_row_data($(this).attr('data-answer-id'));
   })
 
-  $('.selectpicker').selectpicker({
 
-
-    countSelectedText: '{0} öğe seçildi',
-    dropupAuto: false,
-
-    liveSearch: true,
-    liveSearchPlaceholder: 'Axtar...',
-
-    selectedTextFormat: 'count > 3',
-    showSubtext: true,
-    size: 7,
-    style: 'btn-primary',
-    tickIcon: 'fa fa-check',
-    width: '100%'
-
-  });
 
   $('#notanswer').click(function () {
     $('input[name=status]').val("notanswer");
@@ -338,8 +349,8 @@
     //return false;
   })
 
-  $('#task_filter').change(function(){
-    window.location.href=$(this).val();
+  $('#task_filter').change(function () {
+    window.location.href = $(this).val();
   })
 
 })(jQuery);
