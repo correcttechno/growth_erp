@@ -227,7 +227,7 @@
         object.find('[name=' + item + '].word_2').froalaEditor('html.set', value);
       }
 
-      //
+      ////
       if (object.find('[name=' + item + ']').attr('type') != undefined) {
         if (object.find('[name=' + item + ']').attr('type') == 'checkbox' || object.find('[name=' + item + ']').attr('type') == 'radio') {
           if (value == 'false' || value == false) {
@@ -254,6 +254,8 @@
           object.find('.form-image').html(value);
         }
       }
+
+      //custom json for users
       else if (item == "users") {
         var dat = JSON.parse(value);
         $('#users').find("option").removeAttr("selected");
@@ -261,6 +263,13 @@
           $('#users').find("option[value=" + dat[i] + "]").attr("selected", true);
         }
         selectPicker.selectpicker("refresh");
+      }
+      //custom json for customers periodic tasks
+      else if (item == "periodictasks") {
+        var dat = JSON.parse(value);
+        for (var i = 0; i < dat.length; i++) {
+          $('#service'+dat[i]).prop("checked", true);
+        }
       }
     }
 
