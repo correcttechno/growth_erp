@@ -22,16 +22,18 @@ class Reports extends CI_Controller{
         $customer_id    =$this->input->post('b_id',true);
         $response=array(
             'status'=>false,
-            'msg'   =>'',
+            'msg'   =>'ee',
         );
 
         if(!empty($id) and !empty($customer_id)){
-          
+            $this->reports_model->add_log($id,$customer_id);
+            $response['status']=true;
         }
         else{
             $response['msg']="Error";
         }
         echo json_encode($response);
+      
     }
 
     public function delete(){

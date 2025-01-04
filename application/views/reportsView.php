@@ -58,6 +58,7 @@
                 </thead>
                 <tbody>
                     <?php foreach($results as $r):?>
+                        <?php $reports_log=$this->reports_model->read_log($r['id']);?>
                         <tr>
                             <td>
                                 <span class="text-13 mb-0 fw-medium text-gray-300">
@@ -83,7 +84,7 @@
                                 
                                 <td class="m-auto ">
                                     <div class="form-check">
-                                        <input id="<?=$tdLen[$i];?>" data-id="<?=$r['id'];?>" <?=(($r['reports']!='null' and $r['reports']!='')?(in_array($tdLen[$i],json_decode($r['reports'],true))==false?'disabled':''):'disabled');?> class="form-check-input rounded-3 reports_check
+                                        <input <?=($reports_log!=false and in_array($tdLen[$i],json_decode($reports_log['reports'],true))==true)?'checked':'';?> id="<?=$tdLen[$i];?>" data-id="<?=$r['id'];?>" <?=(($r['reports']!='null' and $r['reports']!='')?(in_array($tdLen[$i],json_decode($r['reports'],true))==false?'disabled':''):'disabled');?> class="form-check-input rounded-3 reports_check
                                         <?=(($r['reports']!='null' and $r['reports']!='')?(in_array($tdLen[$i],json_decode($r['reports'],true))==false?'border-gray-200 bg-gray-100':'border-success-600'):'bg-gray-100 border-gray-200');?>
                                         " type="checkbox">
                                     </div>
@@ -108,4 +109,4 @@
 
 </div>
 
-<?=$this->modal_model->alert("Hesabatı icra etdiyinizi təsdiq edirsiz ?","reports_task/add");?>
+<?=$this->modal_model->alert("Əməliyyatı təsdiq edirsiz ?","reports/add");?>

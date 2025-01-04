@@ -3,7 +3,7 @@
         <div class="modal-content radius-16 bg-base">
             
             <div class="modal-body p-24">
-                <form action="<?=base_url($url.'/'.$url);?>" method="post">
+                <form action="<?=base_url($url);?>" method="post">
                     <div class="row">
                         <div class="col-12 mb-20 text-center">
                            <p><?=$content;?></p>

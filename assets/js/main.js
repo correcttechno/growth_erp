@@ -385,6 +385,7 @@
     var customer_id=$(this).attr('data-id');
     $('#alertModal').modal("show").find('input[name=a_id]').val(task_id);
     $('#alertModal').modal("show").find('input[name=b_id]').val(customer_id);
+  //  return false;
   });
 
 })(jQuery);
