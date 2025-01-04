@@ -7,7 +7,7 @@ class Customers extends CI_Controller{
         parent::__construct();
         $this->load->model('customers_model');
         $this->load->model("departments_model");
-        $this->load->model("periodictaskstype_model");
+        $this->load->model("reports_tasktype_model");
         $this->user_model->checkAdminLogined();
     }
 
@@ -52,7 +52,7 @@ class Customers extends CI_Controller{
         $vpass          =$this->input->post('vpass',true);
         $vparol         =$this->input->post('vparol',true);
         
-        $tasks          =$this->input->post('periodictasks',true);
+        $tasks          =$this->input->post('reports',true);
 
       
 
@@ -95,7 +95,7 @@ class Customers extends CI_Controller{
                 "vkod"          =>$vkod,
                 "vpass"         =>$vpass,
                 "vparol"        =>$vparol,
-                "periodictasks" =>json_encode($tasks),
+                "reports"       =>json_encode($tasks),
             );
 
 

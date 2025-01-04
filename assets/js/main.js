@@ -265,7 +265,7 @@
         selectPicker.selectpicker("refresh");
       }
       //custom json for customers periodic tasks
-      else if (item == "periodictasks") {
+      else if (item == "reports") {
         var dat = JSON.parse(value);
         for (var i = 0; i < dat.length; i++) {
           $('#service'+dat[i]).prop("checked", true);

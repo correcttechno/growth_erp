@@ -629,7 +629,7 @@
                             <?php $departments=$this->departments_model->read(); if($departments):?>
                             <ul>
                                 <?php foreach($departments as $dep):?>
-                                <?php $service=$this->periodictaskstype_model->read($dep['id']);if($service):?>
+                                <?php $service=$this->reports_tasktype_model->read($dep['id']);if($service):?>
                                 <li>
                                     <?=$dep['title'];?>
                                     <ul class="list-group list-group-flush">
@@ -638,7 +638,7 @@
 
                                             <div
                                                 class="form-switch switch-primary d-flex align-items-center gap-8 mb-16">
-                                                <input class="form-check-input" type="checkbox" id="service<?=$s['id'];?>" role="switch" name="periodictasks[]" value="<?=$s['id'];?>">
+                                                <input class="form-check-input" type="checkbox" id="service<?=$s['id'];?>" role="switch" name="reports[]" value="<?=$s['id'];?>">
                                                 <label
                                                     class="form-check-label line-height-1 fw-medium text-secondary-light"
                                                     for="a<?=$s['id'];?>">
