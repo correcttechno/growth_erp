@@ -45,24 +45,27 @@
 
                 <li class="sidebar-menu__item has-dropdown">
                     <a href="javascript:void(0)" class="sidebar-menu__link">
-                        <span class="icon"><i class="ph ph-clock-afternoon"></i></i></span>
-                        <span class="text">T. Tapşırıqlar</span>
+                        <span class="icon"><i class="ph ph-calculator"></i></span>
+                        <span class="text">Hesabatlar</span>
                     </a>
                     <!-- Submenu start -->
                     <ul class="sidebar-submenu">
                         <li class="sidebar-submenu__item">
-                            <a href="<?=base_url("periodictasks");?>" class="sidebar-submenu__link">Təkrarlanan Tapşırıqlar</a>
+                            <a href="<?=base_url("reports_task");?>" class="sidebar-submenu__link">Hesabatlar</a>
                         </li>
-
                         <?php if($this->user_model->userdata['status']=='admin'):?>
                         <li class="sidebar-submenu__item">
-                            <a href="<?=base_url("periodictaskstype");?>" class="sidebar-submenu__link">Növləri</a>
+                            <a href="<?=base_url("reports_tasktype");?>" class="sidebar-submenu__link">Hesabat Növləri</a>
                         </li>
-                        <?php endif;?>                   
+                        <?php endif;?>   
+                        <li class="sidebar-submenu__item">
+                            <a href="<?=base_url("reports_1c");?>l" class="sidebar-submenu__link">1C əməliyyatları üzrə</a>
+                        </li>
+                      
                     </ul>
                     <!-- Submenu End -->
-                   
                 </li>
+                
 
                 <?php if($this->user_model->userdata['status']=='admin'):?>
                 <li class="sidebar-menu__item has-dropdown">
@@ -105,23 +108,7 @@
                     </a>
                 </li>
                 
-                <li class="sidebar-menu__item has-dropdown">
-                    <a href="javascript:void(0)" class="sidebar-menu__link">
-                        <span class="icon"><i class="ph ph-calculator"></i></span>
-                        <span class="text">Hesabatlar</span>
-                    </a>
-                    <!-- Submenu start -->
-                    <ul class="sidebar-submenu">
-                        <li class="sidebar-submenu__item">
-                            <a href="<?=base_url("reports_task");?>" class="sidebar-submenu__link">Tapşırıqlar üzrə</a>
-                        </li>
-                        <li class="sidebar-submenu__item">
-                            <a href="<?=base_url("reports_1c");?>l" class="sidebar-submenu__link">1C əməliyyatları üzrə</a>
-                        </li>
-                      
-                    </ul>
-                    <!-- Submenu End -->
-                </li>
+                
                 
                 <?php endif;?>
               

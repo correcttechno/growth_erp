@@ -4,7 +4,7 @@
         <!-- Breadcrumb Start -->
         <div class="breadcrumb mb-24">
             <ul class="flex-align gap-4">
-                <li><span class="text-main-600 fw-normal text-20">Təkrarlanan Tapşırıq növləri</span></li>
+                <li><span class="text-main-600 fw-normal text-20">Hesabat növləri</span></li>
             </ul>
         </div>
         <!-- Breadcrumb End -->
@@ -108,11 +108,11 @@
     <div class="modal-dialog modal-md modal-dialog modal-dialog-centered">
         <div class="modal-content radius-16 bg-base">
             <div class="modal-header py-16 px-24 border border-top-0 border-start-0 border-end-0">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Yeni təkrarlanan növü yarat</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Hesabat növü yarat</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-24">
-                <form action="<?=base_url('periodictaskstype/add');?>" method="post">
+                <form action="<?=base_url('reports_tasktype/add');?>" method="post">
                     <div class="row">
                         <input type="hidden" name="id" value="0" />
                         <div class="col-sm-12">
@@ -159,4 +159,4 @@
     </div>
 </div>
 
-<?php $this->modal_model->delete("periodictaskstype");?>
+<?php $this->modal_model->delete("reports_tasktype");?>

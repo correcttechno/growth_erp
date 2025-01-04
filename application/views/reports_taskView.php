@@ -4,7 +4,7 @@
         <!-- Breadcrumb Start -->
         <div class="breadcrumb mb-24">
             <ul class="flex-align gap-4">
-                <li><span class="text-main-600 fw-normal text-20">Təkrarlanan tapşırıqlar</span></li>
+                <li><span class="text-main-600 fw-normal text-20">Hesabatlar</span></li>
             </ul>
         </div>
         <!-- Breadcrumb End -->
@@ -33,7 +33,7 @@
                         <th rowspan="2" class="h6 text-gray-300">Müştəri</th>
                         <?php if($departments):?>
                             <?php foreach($departments as $d):?>
-                                <?php $services=$this->periodictaskstype_model->read($d['id']);?>
+                                <?php $services=$this->reports_tasktype_model->read($d['id']);?>
                                 <?php if($services):?>
                                     <th colspan="<?=count($services);?>" class="h6 text-gray-300 text-center"><?=$d['title'];?></th>
                                 <?php endif;?>
@@ -44,7 +44,7 @@
                     <tr>
                         <?php if($departments):?>
                             <?php foreach($departments as $d):?>
-                                <?php $services=$this->periodictaskstype_model->read($d['id']);?>
+                                <?php $services=$this->reports_tasktype_model->read($d['id']);?>
                                 <?php if($services):?>
                                     <?php foreach($services as $s):?>
                                         <?php $tdLen[]=$s['id'];?>
@@ -83,8 +83,8 @@
                                 
                                 <td class="m-auto ">
                                     <div class="form-check">
-                                        <input <?=(($r['periodictasks']!='null' and $r['periodictasks']!='')?(in_array($tdLen[$i],json_decode($r['periodictasks'],true))==false?'disabled':''):'disabled');?> class="form-check-input rounded-3
-                                        <?=(($r['periodictasks']!='null' and $r['periodictasks']!='')?(in_array($tdLen[$i],json_decode($r['periodictasks'],true))==false?'border-gray-200 bg-gray-100':'border-success-600'):'bg-gray-100 border-gray-200');?>
+                                        <input <?=(($r['reports']!='null' and $r['reports']!='')?(in_array($tdLen[$i],json_decode($r['reports'],true))==false?'disabled':''):'disabled');?> class="form-check-input rounded-3
+                                        <?=(($r['reports']!='null' and $r['reports']!='')?(in_array($tdLen[$i],json_decode($r['reports'],true))==false?'border-gray-200 bg-gray-100':'border-success-600'):'bg-gray-100 border-gray-200');?>
                                         " type="checkbox">
                                     </div>
                                 </td>

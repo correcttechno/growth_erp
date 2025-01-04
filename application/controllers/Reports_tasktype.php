@@ -1,19 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Periodictaskstype extends CI_Controller{
+class Reports_tasktype extends CI_Controller{
 
     function __construct(){
         parent::__construct();
         $this->user_model->checkAdminLogined();
-        $this->load->model('Periodictaskstype_model');
+        $this->load->model('reports_tasktype_model');
         $this->load->model("departments_model");
     }
 
     public function index(){
         $departments    =$this->departments_model->read();
-        $results=$this->Periodictaskstype_model->read();
-        $this->load_model->load('periodictaskstypeView',array('results'=>$results,'departments'=>$departments,));
+        $results=$this->reports_tasktype_model->read();
+        $this->load_model->load('reports_tasktypeView',array('results'=>$results,'departments'=>$departments,));
     }
 
     public function add(){
@@ -28,7 +28,7 @@ class Periodictaskstype extends CI_Controller{
 
         if(!empty($title)){
             $ar=array('title'=>$title,'department_id'=>$dep_id);
-            $this->Periodictaskstype_model->add($ar,$id);
+            $this->reports_tasktype_model->add($ar,$id);
             $response['status']=true;
         }
         else{
@@ -40,7 +40,7 @@ class Periodictaskstype extends CI_Controller{
     public function delete(){
         $id=$this->input->post('delete_id',true);
         if(!empty($id)){
-            $this->Periodictaskstype_model->delete($id);
+            $this->reports_tasktype_model->delete($id);
         }
         echo json_encode(array('status'=>true));
     }
@@ -48,7 +48,7 @@ class Periodictaskstype extends CI_Controller{
     public function read_row(){
         $id=$this->input->post('id',true);
         if(!empty($id)){
-            $result=$this->Periodictaskstype_model->read_row($id);
+            $result=$this->reports_tasktype_model->read_row($id);
             if($result){
                 echo json_encode($result);
             }
