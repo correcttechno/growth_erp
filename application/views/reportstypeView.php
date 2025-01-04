@@ -112,7 +112,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-24">
-                <form action="<?=base_url('reports_tasktype/add');?>" method="post">
+                <form action="<?=base_url('reports_type/add');?>" method="post">
                     <div class="row">
                         <input type="hidden" name="id" value="0" />
                         <div class="col-sm-12">
@@ -159,4 +159,4 @@
     </div>
 </div>
 
-<?php $this->modal_model->delete("reports_tasktype");?>
+<?php $this->modal_model->delete("reports_type");?>

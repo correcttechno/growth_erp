@@ -7,7 +7,7 @@ class Customers extends CI_Controller{
         parent::__construct();
         $this->load->model('customers_model');
         $this->load->model("departments_model");
-        $this->load->model("reports_tasktype_model");
+        $this->load->model("reports_model");
         $this->user_model->checkAdminLogined();
     }
 

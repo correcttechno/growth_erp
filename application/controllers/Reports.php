@@ -1,38 +1,35 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Reports_tasktype extends CI_Controller{
+class Reports extends CI_Controller{
 
     function __construct(){
         parent::__construct();
         $this->user_model->checkAdminLogined();
-        $this->load->model('reports_tasktype_model');
         $this->load->model("departments_model");
+        $this->load->model("reports_model");
+        $this->load->model("customers_model");
     }
 
     public function index(){
         $departments    =$this->departments_model->read();
-        $results=$this->reports_tasktype_model->read();
-        $this->load_model->load('reports_tasktypeView',array('results'=>$results,'departments'=>$departments,));
+        $customers      =$this->customers_model->read();
+        $this->load_model->load('reportsView',array('departments'=>$departments,'results'=>$customers));
     }
 
     public function add(){
-        $title      =$this->input->post('title',true);
-        $id         =$this->input->post('id',true);
-        $dep_id     =$this->input->post('department_id',true);
-
+        $id             =$this->input->post('a_id',true);
+        $customer_id    =$this->input->post('b_id',true);
         $response=array(
-            'title'=>'',
             'status'=>false,
+            'msg'   =>'',
         );
 
-        if(!empty($title)){
-            $ar=array('title'=>$title,'department_id'=>$dep_id);
-            $this->reports_tasktype_model->add($ar,$id);
-            $response['status']=true;
+        if(!empty($id) and !empty($customer_id)){
+          
         }
         else{
-            $response['title']="Zəhmət olmasa xanaları doldurun !";
+            $response['msg']="Error";
         }
         echo json_encode($response);
     }
@@ -40,7 +37,7 @@ class Reports_tasktype extends CI_Controller{
     public function delete(){
         $id=$this->input->post('delete_id',true);
         if(!empty($id)){
-            $this->reports_tasktype_model->delete($id);
+            $this->reports_model->delete($id);
         }
         echo json_encode(array('status'=>true));
     }
@@ -48,7 +45,7 @@ class Reports_tasktype extends CI_Controller{
     public function read_row(){
         $id=$this->input->post('id',true);
         if(!empty($id)){
-            $result=$this->reports_tasktype_model->read_row($id);
+            $result=$this->reports_model->read_row($id);
             if($result){
                 echo json_encode($result);
             }

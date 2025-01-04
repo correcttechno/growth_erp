@@ -10,13 +10,13 @@
         <!-- Breadcrumb End -->
 
         <!-- Breadcrumb Right Start -->
-        <div class="flex-align gap-8 flex-wrap">
+        <!-- <div class="flex-align gap-8 flex-wrap">
             <button type="button" class="btn btn-main text-sm btn-sm px-24 rounded-pill" data-bs-toggle="modal"
                 data-bs-target="#addModal">
                 <i class="ph ph-plus me-4"></i>
                 Əlavə et
             </button>
-        </div>
+        </div> -->
         <!-- Breadcrumb Right End -->
 
     </div>
@@ -33,7 +33,7 @@
                         <th rowspan="2" class="h6 text-gray-300">Müştəri</th>
                         <?php if($departments):?>
                             <?php foreach($departments as $d):?>
-                                <?php $services=$this->reports_tasktype_model->read($d['id']);?>
+                                <?php $services=$this->reports_model->read($d['id']);?>
                                 <?php if($services):?>
                                     <th colspan="<?=count($services);?>" class="h6 text-gray-300 text-center"><?=$d['title'];?></th>
                                 <?php endif;?>
@@ -44,7 +44,7 @@
                     <tr>
                         <?php if($departments):?>
                             <?php foreach($departments as $d):?>
-                                <?php $services=$this->reports_tasktype_model->read($d['id']);?>
+                                <?php $services=$this->reports_model->read($d['id']);?>
                                 <?php if($services):?>
                                     <?php foreach($services as $s):?>
                                         <?php $tdLen[]=$s['id'];?>
@@ -83,7 +83,7 @@
                                 
                                 <td class="m-auto ">
                                     <div class="form-check">
-                                        <input <?=(($r['reports']!='null' and $r['reports']!='')?(in_array($tdLen[$i],json_decode($r['reports'],true))==false?'disabled':''):'disabled');?> class="form-check-input rounded-3
+                                        <input id="<?=$tdLen[$i];?>" data-id="<?=$r['id'];?>" <?=(($r['reports']!='null' and $r['reports']!='')?(in_array($tdLen[$i],json_decode($r['reports'],true))==false?'disabled':''):'disabled');?> class="form-check-input rounded-3 reports_check
                                         <?=(($r['reports']!='null' and $r['reports']!='')?(in_array($tdLen[$i],json_decode($r['reports'],true))==false?'border-gray-200 bg-gray-100':'border-success-600'):'bg-gray-100 border-gray-200');?>
                                         " type="checkbox">
                                     </div>
@@ -108,3 +108,4 @@
 
 </div>
 
+<?=$this->modal_model->alert("Hesabatı icra etdiyinizi təsdiq edirsiz ?","reports_task/add");?>

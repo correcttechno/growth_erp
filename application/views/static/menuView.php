@@ -51,11 +51,11 @@
                     <!-- Submenu start -->
                     <ul class="sidebar-submenu">
                         <li class="sidebar-submenu__item">
-                            <a href="<?=base_url("reports_task");?>" class="sidebar-submenu__link">Hesabatlar</a>
+                            <a href="<?=base_url("reports");?>" class="sidebar-submenu__link">Hesabatlar</a>
                         </li>
                         <?php if($this->user_model->userdata['status']=='admin'):?>
                         <li class="sidebar-submenu__item">
-                            <a href="<?=base_url("reports_tasktype");?>" class="sidebar-submenu__link">Hesabat Növləri</a>
+                            <a href="<?=base_url("reports_type");?>" class="sidebar-submenu__link">Hesabat Növləri</a>
                         </li>
                         <?php endif;?>   
                         <li class="sidebar-submenu__item">

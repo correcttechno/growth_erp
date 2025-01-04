@@ -629,7 +629,7 @@
                             <?php $departments=$this->departments_model->read(); if($departments):?>
                             <ul>
                                 <?php foreach($departments as $dep):?>
-                                <?php $service=$this->reports_tasktype_model->read($dep['id']);if($service):?>
+                                <?php $service=$this->reports_model->read($dep['id']);if($service):?>
                                 <li>
                                     <?=$dep['title'];?>
                                     <ul class="list-group list-group-flush">
