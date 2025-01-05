@@ -12,7 +12,13 @@ class Reports extends CI_Controller{
     }
 
     public function index(){
-        $departments    =$this->departments_model->read();
+        $departments=array();
+        if($this->user_model->userdata['status'] == 'admin'){
+            $departments    =$this->departments_model->read();
+        }
+        else{
+            $departments[]=$this->departments_model->read_row($this->user_model->userdata['department_id']);
+        }
         $customers      =$this->customers_model->read();
         $this->load_model->load('reportsView',array('departments'=>$departments,'results'=>$customers));
     }

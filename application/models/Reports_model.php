@@ -73,4 +73,11 @@ class Reports_model extends CI_Model{
         return count($result)>0?$result:false;
     }
 
+    public function read_logs($customer_id){
+        $sql="select *from reports_log where customer_id=$customer_id order by id desc";
+        //echo $sql;die;
+        $result=$this->database_model->query($sql);
+        return count($result)>0?$result:false;
+    }
+
 }

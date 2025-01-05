@@ -140,9 +140,14 @@
                                 <?php
                             $data=$this->customers_model->read_row($r['customer_id']);
                             if($data){
-                                echo $data['firstname'];
-                                echo " ";
-                                echo $data['lastname'];
+                                if(!empty($data['company'])){
+                                    echo $data['company'];
+                                }
+                                else{
+                                    echo $data['firstname'];
+                                    echo " ";
+                                    echo $data['lastname'];
+                                }
                                 echo '<p>
                                 <span
                                     class="mb-5 text-13 py-2 px-8 bg-primary-50 text-primary-600 d-inline-flex align-items-center gap-8 rounded-pill">

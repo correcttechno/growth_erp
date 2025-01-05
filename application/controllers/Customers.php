@@ -8,16 +8,17 @@ class Customers extends CI_Controller{
         $this->load->model('customers_model');
         $this->load->model("departments_model");
         $this->load->model("reports_model");
-        $this->user_model->checkAdminLogined();
+        
     }
 
     public function index(){
+        $this->user_model->checkAdminLogined();
         $results=$this->customers_model->read();
         $this->load_model->load('customersView',array('results'=>$results));
     }
 
     public function add(){
-      
+        $this->user_model->checkAdminLogined();
         $company        =$this->input->post('company',true);
         $firstname      =$this->input->post('firstname',true);
         $lastname       =$this->input->post('lastname',true);
@@ -109,6 +110,7 @@ class Customers extends CI_Controller{
     }
 
     public function delete(){
+        $this->user_model->checkAdminLogined();
         $id=$this->input->post('delete_id',true);
         if(!empty($id)){
             $this->customers_model->delete($id);
@@ -126,6 +128,23 @@ class Customers extends CI_Controller{
         }
     }
 
-    
+    ///musteriye aid her sey
+    public function view_details($customer_id){
+
+        $this->load->model("departments_model");
+        $this->load->model("reports_model");
+
+        $departments=array();
+        if($this->user_model->userdata['status'] == 'admin'){
+            $departments    =$this->departments_model->read();
+        }
+        else{
+            $departments[]=$this->departments_model->read_row($this->user_model->userdata['department_id']);
+        }
+        $customers      =$this->customers_model->read();
+
+        $result=$this->customers_model->read_row($customer_id);
+        $this->load_model->load('customerdetailsView',array('result'=>$result,'departments'=>$departments));
+    }
 
 }
