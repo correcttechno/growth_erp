@@ -35,12 +35,16 @@ class Reports_model extends CI_Model{
     }
 
     public function add_log($id,$customer_id){
-        $check=$this->database_model->read_row("reports_log",array('customer_id'=>$customer_id));
+        $nowmonth=date("m");
+        //MONTH(eklenme_tarihi) = MONTH(NOW()) AND YEAR(eklenme_tarihi) = YEAR(NOW());
+        $sql="select *from reports_log where customer_id=$customer_id and (MONTH(date) = MONTH(NOW()) AND YEAR(date) = YEAR(NOW()))";
+        //echo $sql;die;
+        $check=$this->database_model->query_row($sql);
         $reports=array();
         if(count($check)>0){
             $reports=json_decode($check['reports'],true);
         }
-
+        
         if(!in_array($id,$reports)){
             $reports[]=$id;
         }
@@ -48,7 +52,9 @@ class Reports_model extends CI_Model{
             $index=array_search($id,$reports);
             unset($reports[$index]);
         }
+        
         $reports=json_encode($reports);
+    
         if(count($check)>0){
             $this->database_model->update("reports_log",array('reports'=>$reports),array('id'=>$check['id']));
         }
@@ -61,7 +67,9 @@ class Reports_model extends CI_Model{
     }
 
     public function read_log($customer_id){
-        $result=$this->database_model->read_row('reports_log',array('customer_id'=>$customer_id));
+        $sql="select *from reports_log where customer_id=$customer_id and (MONTH(date) = MONTH(NOW()) AND YEAR(date) = YEAR(NOW()))";
+        //echo $sql;die;
+        $result=$this->database_model->query_row($sql);
         return count($result)>0?$result:false;
     }
 

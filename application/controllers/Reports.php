@@ -5,7 +5,7 @@ class Reports extends CI_Controller{
 
     function __construct(){
         parent::__construct();
-        $this->user_model->checkAdminLogined();
+        $this->user_model->checkLogined();
         $this->load->model("departments_model");
         $this->load->model("reports_model");
         $this->load->model("customers_model");
