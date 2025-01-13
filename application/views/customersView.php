@@ -23,7 +23,7 @@
 
 
     <div class="card overflow-hidden">
-        <div class="card-body p-0">
+        <div class="card-body p-0 table-responsive">
 
             <?php if($results):?>
             <table id="assignmentTable" class="table table-striped">

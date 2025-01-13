@@ -55,7 +55,7 @@
 
 
     <div class="card overflow-hidden">
-        <div class="card-body p-0">
+        <div class="card-body p-0 table-responsive">
 
             <?php if($results):?>
             <table class="dataTable table table-striped">

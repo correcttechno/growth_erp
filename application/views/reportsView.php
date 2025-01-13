@@ -23,7 +23,7 @@
 
 
     <div class="card overflow-hidden">
-        <div class="card-body p-0">
+        <div class="card-body p-0 table-responsive">
         <?php if($results):?>
         <?php $tdLen=array();?>
         <table  class="table table-bordered">

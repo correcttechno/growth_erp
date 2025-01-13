@@ -160,7 +160,7 @@
                 </div>
 
                 <div class="card">
-                    <div class="card-body p-0">
+                    <div class="card-body p-0 table-responsive">
                     <?php if($result):?>
                     <?php $tdLen=array();?>
                     <table  class="table table-bordered">
