@@ -3,7 +3,7 @@
 class Tasks_model extends CI_Model
 {
 
-    public function read()
+    public function read($start=0,$limit=100)
     {
        
         $filter='';
@@ -15,7 +15,7 @@ class Tasks_model extends CI_Model
 
         $results = array();
         if ($this->user_model->userdata['status'] == 'admin') {
-            $results = $this->database_model->read('tasks');
+            $results = $this->database_model->read('tasks',array('id!='=>0),array('id','desc'),$limit,$start);
         }
         else{
             $my_id=$this->user_model->userdata['id'];
@@ -36,7 +36,8 @@ class Tasks_model extends CI_Model
                 CASE 
                     WHEN tl.id IS NULL THEN -t.id 
                     ELSE t.id   
-                END;
+                END
+            LIMIT $start,$limit;
             ")->result_array();
         }
       

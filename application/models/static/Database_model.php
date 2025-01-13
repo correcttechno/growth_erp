@@ -5,8 +5,8 @@ class Database_model extends CI_Model{
         $this->load->database();
     }
 
-    public function read($table,$ar=array('id!='=>0),$order=array('id','desc'),$limit=1000000){
-        $result=$this->db->where($ar)->order_by($order[0],$order[1])->limit($limit)->get($table)->result_array();
+    public function read($table,$ar=array('id!='=>0),$order=array('id','desc'),$limit=1000000,$start=0){
+        $result=$this->db->where($ar)->order_by($order[0],$order[1])->limit($limit,$start)->get($table)->result_array();
         return $result!=null?$result:array();
     }
 
