@@ -271,6 +271,13 @@
           $('#service'+dat[i]).prop("checked", true);
         }
       }
+
+      else if (item == "reports1c") {
+        var dat = JSON.parse(value);
+        for (var i = 0; i < dat.length; i++) {
+          $('#service1c'+dat[i]).prop("checked", true);
+        }
+      }
     }
 
 

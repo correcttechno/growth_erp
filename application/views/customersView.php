@@ -273,7 +273,13 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pills-service-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-service" type="button" role="tab" aria-controls="pills-profile"
-                            aria-selected="false">Göstərilən xidmətlər</button>
+                            aria-selected="false">Hesabatlar</button>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-1c-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-1c" type="button" role="tab" aria-controls="pills-profile"
+                            aria-selected="false">1C Hesabatları</button>
                     </li>
                 </ul>
 
@@ -641,7 +647,7 @@
                                                 <input class="form-check-input" type="checkbox" id="service<?=$s['id'];?>" role="switch" name="reports[]" value="<?=$s['id'];?>">
                                                 <label
                                                     class="form-check-label line-height-1 fw-medium text-secondary-light"
-                                                    for="a<?=$s['id'];?>">
+                                                    for="service<?=$s['id'];?>">
                                                     <?=$s['title'];?>
                                                 </label>
                                             </div>
@@ -655,6 +661,28 @@
                             <?php endif;?>
 
                         </div>
+
+
+                        <!--1c select-->
+                        <div class="tab-pane fade" id="pills-1c" role="tabpanel"
+                            aria-labelledby="pills-1c-tab" tabindex="0">
+                            <?php $service1c=$this->reports1c_model->read();if($service):?>
+                            <ul class="list-group list-group-flush">
+                                <?php foreach($service1c as $s):?>
+                                <li class="list-group-item">
+                                    <div class="form-switch switch-primary d-flex align-items-center gap-8 mb-16">
+                                        <input class="form-check-input" type="checkbox" id="service1c<?=$s['id'];?>" role="switch" name="reports1c[]" value="<?=$s['id'];?>">
+                                        <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="service1c<?=$s['id'];?>">
+                                            <?=$s['title'];?>
+                                        </label>
+                                    </div>
+                                </li>
+                                <?php endforeach;?>
+                            </ul>
+                            <?php endif;?>
+                        </div>
+
+
                     </div>
                     <div class="col-12 text-danger text-center" data-error="msg"></div>
                     <div class="d-flex align-items-center justify-content-center gap-8 mt-24">

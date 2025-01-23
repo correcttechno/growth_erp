@@ -8,7 +8,7 @@ class Customers extends CI_Controller{
         $this->load->model('customers_model');
         $this->load->model("departments_model");
         $this->load->model("reports_model");
-        
+        $this->load->model("reports1c_model");        
     }
 
     public function index(){
@@ -54,7 +54,7 @@ class Customers extends CI_Controller{
         $vparol         =$this->input->post('vparol',true);
         
         $tasks          =$this->input->post('reports',true);
-
+        $reports1c      =$this->input->post('reports1c',true);
       
 
 
@@ -97,6 +97,7 @@ class Customers extends CI_Controller{
                 "vpass"         =>$vpass,
                 "vparol"        =>$vparol,
                 "reports"       =>json_encode($tasks),
+                "reports1c"     =>json_encode($reports1c),
             );
 
 

@@ -55,13 +55,29 @@
                         </li>
                         <?php if($this->user_model->userdata['status']=='admin'):?>
                         <li class="sidebar-submenu__item">
-                            <a href="<?=base_url("reports_type");?>" class="sidebar-submenu__link">Hesabat Növləri</a>
+                            <a href="<?=base_url("reports_type");?>" class="sidebar-submenu__link">Növləri</a>
                         </li>
                         <?php endif;?>   
+                    </ul>
+                    <!-- Submenu End -->
+                </li>
+
+
+                <li class="sidebar-menu__item has-dropdown">
+                    <a href="javascript:void(0)" class="sidebar-menu__link">
+                        <span class="icon"><i class="ph ph-calculator"></i></span>
+                        <span class="text">1C Hesabatları</span>
+                    </a>
+                    <!-- Submenu start -->
+                    <ul class="sidebar-submenu">
                         <li class="sidebar-submenu__item">
-                            <a href="<?=base_url("reports_1c");?>l" class="sidebar-submenu__link">1C əməliyyatları üzrə</a>
+                            <a href="<?=base_url("reports1c");?>" class="sidebar-submenu__link">1C hesabatları</a>
                         </li>
-                      
+                        <?php if($this->user_model->userdata['status']=='admin'):?>
+                        <li class="sidebar-submenu__item">
+                            <a href="<?=base_url("reports1c_type");?>" class="sidebar-submenu__link">Növləri</a>
+                        </li>
+                        <?php endif;?>   
                     </ul>
                     <!-- Submenu End -->
                 </li>
