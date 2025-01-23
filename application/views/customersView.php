@@ -666,7 +666,8 @@
                         <!--1c select-->
                         <div class="tab-pane fade" id="pills-1c" role="tabpanel"
                             aria-labelledby="pills-1c-tab" tabindex="0">
-                            <?php $service1c=$this->reports1c_model->read();if($service):?>
+                            <?php $service1c=$this->reports1c_model->read();
+                            if($service1c):?>
                             <ul class="list-group list-group-flush">
                                 <?php foreach($service1c as $s):?>
                                 <li class="list-group-item">
