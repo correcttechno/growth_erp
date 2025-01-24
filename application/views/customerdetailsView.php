@@ -243,7 +243,7 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
-
+                                                <td rowspan="2" class="h6 text-gray-300 text-center">TARİX</td>
                                                 <?php if($departments):?>
                                                 <?php foreach($departments as $d):?>
                                                 <?php $services=$this->reports_model->read($d['id']);?>
@@ -255,6 +255,7 @@
                                                 <?php endif;?>
                                                 <?php endforeach;?>
                                                 <?php endif;?>
+                                                
                                             </tr>
 
                                             <tr>
@@ -275,11 +276,20 @@
 
                                         </thead>
                                         <tbody>
+                                            
                                             <?php $r=$result;?>
                                             <?php $reports_logs=$this->reports_model->read_logs($r['id']);?>
                                             <?php if($reports_logs):?>
                                             <?php foreach($reports_logs as $reports_log):?>
                                             <tr>
+                                                <td class="text-success">
+                                                    <?php
+                                                    $date = new DateTime($reports_log['date']);
+                                                    $year = $date->format('Y');
+                                                    $month = $date->format('m');
+                                                    echo "$year-$month";
+                                                    ?>
+                                                </td>
                                                 <?php for($i=0;$i<count($tdLen);$i++):?>
                                                 <td class="m-auto ">
                                                     <div class="form-check">
@@ -316,6 +326,7 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
+                                                <td class="h6 text-gray-300 text-center">TARİX</td>
                                                 <?php $services1c=$this->reports1c_model->read();?>
                                                 <?php if($services1c):?>
                                                 <?php foreach($services1c as $s):?>
@@ -334,6 +345,15 @@
                                             <?php if($reports_logs):?>
                                             <?php foreach($reports_logs as $reports_log):?>
                                             <tr>
+                                                <td>
+                                                <?php
+                                                    $date = new DateTime($reports_log['date']);
+                                                    $year = $date->format('Y'); 
+                                                    $month = $date->format('m');
+                                                    echo "$year-$month";
+
+                                                ?>
+                                                </td>
                                                 <?php for($i=0;$i<count($tdLen);$i++):?>
                                                 <td class="m-auto ">
                                                     <div class="form-check">
