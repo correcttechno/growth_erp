@@ -395,4 +395,8 @@
   //  return false;
   });
 
+  $('#select_month').change(function(){
+    $('#month_form').submit();
+  })
+
 })(jQuery);

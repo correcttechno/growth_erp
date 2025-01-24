@@ -67,7 +67,18 @@ class Reports_model extends CI_Model{
     }
 
     public function read_log($customer_id){
-        $sql="select *from reports_log where customer_id=$customer_id and (MONTH(date) = MONTH(NOW()) AND YEAR(date) = YEAR(NOW()))";
+        $sql="";
+        $date=$this->input->get("date");
+        if(empty($date)){
+            $sql="select *from reports_log where customer_id=$customer_id and (MONTH(date) = MONTH(NOW()) AND YEAR(date) = YEAR(NOW()))";
+        }
+        else{
+            $date=explode('-',$date);
+
+            $year=$date[0];
+            $month=$date[1];
+            $sql="select *from reports_log where customer_id=$customer_id and (MONTH(date) = ($month) AND YEAR(date) = ($year))";
+        }
         //echo $sql;die;
         $result=$this->database_model->query_row($sql);
         return count($result)>0?$result:false;

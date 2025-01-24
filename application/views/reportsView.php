@@ -10,14 +10,18 @@
         <!-- Breadcrumb End -->
 
         <!-- Breadcrumb Right Start -->
-        <!-- <div class="flex-align gap-8 flex-wrap">
-            <button type="button" class="btn btn-main text-sm btn-sm px-24 rounded-pill" data-bs-toggle="modal"
-                data-bs-target="#addModal">
-                <i class="ph ph-plus me-4"></i>
-                Əlavə et
-            </button>
-        </div> -->
-        <!-- Breadcrumb Right End -->
+        <div class="flex-align gap-8 flex-wrap">
+            <div class="position-relative text-gray-500 flex-align gap-4 text-13">
+                <span class="text-inherit">Hesabat ayı: </span>
+                <div class="flex-align text-gray-500 text-13 border border-gray-100 rounded-4 ps-10 focus-border-main-600 bg-white">
+                <span class="text-lg"><i class="ph ph-funnel-simple"></i></span>
+                    <form data-stop method="get" action="<?=base_url("reports");?>" id="month_form">
+                    <input value="<?=(isset($_GET['date'])==true)?$_GET['date']:date("Y-m");?>" type="month" id="select_month" name="date" class="form-control ps-8 pe-20 py-16 border-0 text-inherit rounded-4 text-center"/>
+                    </form>
+                </div>
+            </div>
+        </div> 
+        <!-- Breadcrumb Right End-->
 
     </div>
 
