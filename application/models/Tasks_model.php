@@ -6,10 +6,6 @@ class Tasks_model extends CI_Model
     public function read($start=0,$limit=100)
     {
        
-        $filter='';
-        if(isset($_GET['f'])){
-            $filter=$_GET['f'];
-        }
 
        // echo $filter;die;
 
@@ -19,54 +15,11 @@ class Tasks_model extends CI_Model
         }
         else{
             $my_id=$this->user_model->userdata['id'];
-            $results=$this->db->query("SELECT 
-                t.*
-            FROM 
-                tasks t
-            LEFT JOIN 
-                tasks_log tl
-            ON 
-                t.id = tl.id
-            WHERE creator_id=$my_id or users like '%$my_id%'
-            ORDER BY 
-                CASE 
-                    WHEN tl.id IS NULL THEN 0 
-                    ELSE 1 
-                END, 
-                CASE 
-                    WHEN tl.id IS NULL THEN -t.id 
-                    ELSE t.id   
-                END
-            LIMIT $start,$limit;
-            ")->result_array();
+            $this->db->like('users',$my_id,'both');
+            $results = $this->db->get("tasks")->result_array();
         }
       
-        if($filter!='' and $filter!='all'){
-            
-            $filterAr=array();
-            foreach($results as $r){
-                $tasks_log=$this->database_model->read_row('tasks_log',array('task_id'=>$r['id']),array('status','asc'));
-                
-                switch($filter){
-                    case 'ongoing':
-                        if(count($tasks_log)<=0){
-                            $filterAr[]=$r;
-                        }
-                        break;
-                    case 'success':
-                        if(count($tasks_log) and $tasks_log['status']=='answered'){
-                            $filterAr[]=$r;
-                        }
-                        break;
-                    case 'error':
-                        if(count($tasks_log) and $tasks_log['status']=='notanswer'){
-                            $filterAr[]=$r;
-                        }
-                        break;
-                }
-            }
-            $results=$filterAr;
-        }
+        
         
         return count($results) > 0 ? $results : false;
     }
@@ -141,5 +94,12 @@ class Tasks_model extends CI_Model
         } else {
             $this->database_model->insert('tasks_log', $ar);
         }
+    }
+
+
+    public function readTaskLogs($task_id)
+    {
+        $results = $this->database_model->read("tasks_log", array('task_id' => $task_id));
+        return count($results) > 0 ? $results : false;
     }
 }

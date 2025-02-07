@@ -19,7 +19,46 @@ class Tasks extends CI_Controller{
         $taskstype      =$this->taskstype_model->read();
         $employees      =$this->employees_model->read();
         
-        $this->load_model->load('tasksView',array('results'=>$results,'customers'=>$customers,'taskstype'=>$taskstype,'employees'=>$employees));
+        $incomplete     =array();
+        $complete       =array();
+        $ongoing        =array();
+
+        foreach($results as $r){
+            $logs=$this->tasks_model->readTaskLogs($r['id']);
+            $userIDS=json_decode($r['users'],true);
+            if($logs){
+                for($i=0;$i<count($logs);$i++){
+                    if($logs[$i]['status']=='notanswer'){
+                        $incomplete[]=$r;
+                        break;
+                    }
+                    else if(($i+1)==count($userIDS)){
+                        $complete[]=$r;
+                    }
+                    else if(($i+1)==count($logs) and ($i+1)!=count($userIDS)){
+                        $ongoing[]=$r;
+                    }
+                }
+            }
+            else{
+                $ongoing[]=$r;
+            }
+        }
+
+        //echo count($results);
+        //echo '<br>';
+        //echo count($ongoing)+count($incomplete)+count($complete);
+        //die;
+
+        $ar=array(
+            'ongoing'       =>$ongoing,
+            'incomplete'    =>$incomplete,
+            'complete'      =>$complete,
+            'customers'     =>$customers,
+            'taskstype'     =>$taskstype,
+            'employees'     =>$employees
+        );
+        $this->load_model->load('tasksView',$ar);
     }
 
     public function add(){
