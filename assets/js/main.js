@@ -278,7 +278,21 @@
           $('#service1c'+dat[i]).prop("checked", true);
         }
       }
+    
     }
+
+
+    if(item=='periodic_day'){
+      if(value!='0'){
+        $('#periodic').prop('checked',true);
+        $('#peridocicalert').removeClass('d-none');
+      }
+      else{
+        $('#periodic').prop('checked',false);
+        $('#peridocicalert').addClass('d-none');
+      }
+    }
+
 
 
   }
@@ -397,6 +411,10 @@
 
   $('#select_month').change(function(){
     $('#month_form').submit();
+  })
+
+  $('#periodic').change(function(){
+    $('#peridocicalert').toggleClass('d-none');
   })
 
 })(jQuery);

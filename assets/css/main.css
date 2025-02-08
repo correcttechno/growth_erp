@@ -321,13 +321,14 @@
     border: 1px solid var(--gray-100);
     color: hsl(var(--heading-color));
     line-height: 1;
+    font-size: 14px;
 }
 
 .form-control::placeholder {
     color: var(--gray-300);
     transition: 0.2s linear;
     font-weight: 400;
-    font-size: 0.9375rem;
+    font-size: 14px;
 }
 
 .form-control:focus {

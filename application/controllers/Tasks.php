@@ -70,6 +70,7 @@ class Tasks extends CI_Controller{
         $end            =$this->input->post('end',true);
         $priority       =$this->input->post('priority',true);
         $users          =$this->input->post('users',true);
+        $periodic_day   =$this->input->post('periodic_day',true);
         $id             =$this->input->post('id',true);
 
         $response=array(
@@ -81,6 +82,7 @@ class Tasks extends CI_Controller{
             'priority'      =>'',
             'file'          =>'',
             'users'         =>'',
+            'periodic_day'  =>'',
             'status'        =>false,
             'msg'           =>'',
         );
@@ -100,6 +102,7 @@ class Tasks extends CI_Controller{
                 'priority'      =>$priority,
                 'users'         =>json_encode($users),
                 'file'          =>$this->upload_model->upload_multiple_files(),
+                'periodic_day'  =>$periodic_day,
             );
 
 

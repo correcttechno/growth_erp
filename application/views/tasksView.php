@@ -53,7 +53,7 @@
             <i class="ph ph-play"></i>
         </span>
         Davam edən tapşırıqlar 
-        <span style="margin-left:5px" class="text-14 h-30 w-30 px-12 bg-primary-50 text-primary-600 d-inline-flex align-items-center rounded-pill"><?=count($ongoing);?></span>
+        <span style="margin-left:5px;line-height:2" class="text-14 h-30 w-30 text-center bg-primary-50 text-primary-600 rounded-pill"><?=count($ongoing);?></span>
       </button>
     </h2>
     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -210,10 +210,10 @@
                         </div>
 
                         <div class="col-4">
-                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Dead Line: <span
+                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Bitirmə vaxtı: <span
                                     class="text-danger">*</span>
                             </label>
-                            <input type="date" name="end" class="form-control radius-8" placeholder="Dead Line" />
+                            <input type="date" name="end" class="form-control radius-8 text-12" placeholder="Bitirmə vaxtı" />
                             <span data-error="title" class="text-xs text-danger"></span>
                         </div>
 
@@ -227,6 +227,28 @@
                                 <option value="low">Aşağı</option>
                             </select>
                             <span data-error="priority" class="text-xs text-danger"></span>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-switch switch-primary d-flex align-items-center gap-8 mb-16">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="periodic" name="periodic" value="true" >
+                                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="periodic">Təkrarlanan tapşırıq yarat</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 d-none" id="peridocicalert">
+                            <div class="bg-main-50 px-15 py-15 radius-8">
+                                <p class="h6 text-primary-600">Aşağıdakı xanada seçilmiş günə 5 gün qalmış tapşırıq "Davam edən tapşırıqlar" siyahısında görünəcəkdir.</p>
+                                <label class="form-label fw-semibold text-primary-light text-sm mb-8">Gün:
+                                </label>
+                                <select type="text" name="periodic_day" class="form-control radius-8"  placeholder="Gün" >
+                                    <option value="0">--gün seçimi--</option>
+                                    <?php for($i=1;$i<31;$i++):?>
+                                        <option value="<?=$i;?>"><?=$i;?></option>
+                                    <?php endfor;?>
+                                </select>
+                                <span data-error="periodic_day" class="text-xs text-danger"></span>
+                            </div>
                         </div>
 
                         <div class="col-12">
