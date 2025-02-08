@@ -175,11 +175,11 @@
 
                             <?php  if($this->user_model->userdata['status']=='admin' or $r['creator_id']==$this->user_model->userdata['id']):?>
                             <button data-delete-id="<?=$r['id'];?>"
-                                class="w-30 h-30 bg-danger-50 rounded-circle hover-bg-danger-100 transition-2">
+                                class="w-30 h-30 py-5 bg-danger-50 rounded-circle hover-bg-danger-100 transition-2">
                                 <i class="ph ph-trash text-danger-700"></i>
                             </button>
                             <button data-edit-id="<?=$r['id'];?>"
-                                class=" w-30 h-30 bg-main-50 rounded-circle hover-bg-main-100 transition-2">
+                                class=" w-30 h-30 py-5 bg-main-50 rounded-circle hover-bg-main-100 transition-2">
                                 <i class="ph ph-pencil-simple text-main-700"></i>
                             </button>
                             <?php endif;?>

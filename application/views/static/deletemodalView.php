@@ -9,6 +9,7 @@
                            <p>Silmək istəyinizə əminsiniz ?</p>
                            <input type="hidden" name="delete_id" value="0"/>
                            <input type="hidden" name="o_id" value="0"/>
+                           <span class="text-danger" data-error="msg"></span>
                         </div>
                         
                         <div class="d-flex align-items-center justify-content-center gap-8 mt-24">

@@ -417,4 +417,8 @@
     $('#peridocicalert').toggleClass('d-none');
   })
 
+  $('#docfiles').change(function(){
+    $('#docfilesform').submit();
+  })
+
 })(jQuery);

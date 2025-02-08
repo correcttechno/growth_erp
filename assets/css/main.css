@@ -9829,3 +9829,29 @@ button:focus {
 }
 
 /* Email Css End */
+
+.docthumb{
+    height: 48px;
+    object-fit: contain;
+}
+
+.document-buttons{
+    display: none;
+    position: absolute;
+    top:-10px;
+    left:0;
+    width: 100%;
+    text-align: right;
+}
+.resource-item{
+    position: relative;
+    padding-top: 10px;
+    background-color: #fff;
+    cursor: pointer;
+}
+.resource-item:hover .document-buttons{
+    display: block;
+}
+.resource-item:hover{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
