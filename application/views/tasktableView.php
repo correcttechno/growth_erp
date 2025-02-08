@@ -56,11 +56,17 @@
                                 ?>
 
                                 <?php
-                            $data=$this->taskstype_model->read_row($r['tasktype_id']);
-                            if($data){
-                                echo $data['title'];
-                            }
-                            ?>
+                                $data=$this->taskstype_model->read_row($r['tasktype_id']);
+                                if($data){
+                                    echo $data['title'];
+                                }
+                                ?>
+
+                                <?php if($r['periodic_day']!='0'):?>
+                                    <span title="Tapşırıq hər ayın <?=$r['periodic_day'];?>-i təkrarlanır" class="text-warning-600 px-2">
+                                    <i class="ph ph-clock"></i>
+                                    </span>
+                                <?php endif;?>
                             </span>
 
                             <?php $files=get_multiple_files($r['file']); 
