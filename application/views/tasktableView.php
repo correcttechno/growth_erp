@@ -121,7 +121,7 @@
                                 ?>
                                 <li class="lesson-list__item d-flex align-items-start gap-16 ">
                                     <span
-                                        class="circle w-20 h-20 flex-center rounded-circle <?=($status!=false?($status['status']=="answered"?"text-success-600":"text-danger-600"):"text-main-100");?> text-13
+                                        class="circle w-20 h-20 flex-center rounded-circle <?=($status!=false?($status['status']=="answered"?"text-success-600":"text-danger-600"):"text-main-100");?> text-15
                                         flex-shrink-0">
                                         <i class="ph-fill ph-check-circle"></i>
                                     </span>
