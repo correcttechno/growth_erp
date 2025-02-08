@@ -52,7 +52,8 @@
         <span class="flex-shrink-0 w-40 h-40 me-10 flex-center rounded-circle bg-main-600 text-white text-2xl">
             <i class="ph ph-play"></i>
         </span>
-        Davam edən tapşırıqlar
+        Davam edən tapşırıqlar 
+        <span style="margin-left:5px" class="text-14 h-30 w-30 px-12 bg-primary-50 text-primary-600 d-inline-flex align-items-center rounded-pill"><?=count($ongoing);?></span>
       </button>
     </h2>
     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
