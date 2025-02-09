@@ -85,11 +85,18 @@
                         <?php for($i=0;$i<count($tdLen);$i++):?>
                             
                             <td class="m-auto ">
-                                <div class="form-check">
+                                <div class="form-check mb-0">
                                     <input <?=($reports_log!=false and in_array($tdLen[$i],json_decode($reports_log['reports'],true))==true)?'checked':'';?> id="<?=$tdLen[$i];?>" data-id="<?=$r['id'];?>" <?=(($r['reports1c']!='null' and $r['reports1c']!='')?(in_array($tdLen[$i],json_decode($r['reports1c'],true))==false?'disabled':''):'disabled');?> class="form-check-input rounded-3 reports_check
                                     <?=(($r['reports1c']!='null' and $r['reports1c']!='')?(in_array($tdLen[$i],json_decode($r['reports1c'],true))==false?'border-gray-200 bg-gray-100':'border-success-600'):'bg-gray-100 border-gray-200');?>
                                     " type="checkbox">
                                 </div>
+                                <?php if($reports_log): $key=array_search($tdLen[$i],json_decode($reports_log['reports'],true));?>
+                                <?php 
+                                $employes=$this->employees_model->read_row($key);
+                                if($employes):
+                                ?>
+                                <span class="text-12 text-success mt-0"><?=$employes['firstname'];?> <?=$employes['lastname'];?></span>
+                                <?php endif; endif;?>
                             </td>
                         <?php endfor;?>
                     </tr>

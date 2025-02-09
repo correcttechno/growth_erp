@@ -9,6 +9,7 @@ class Reports extends CI_Controller{
         $this->load->model("departments_model");
         $this->load->model("reports_model");
         $this->load->model("customers_model");
+        $this->load->model("employees_model");
     }
 
     public function index(){

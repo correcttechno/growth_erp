@@ -40,7 +40,8 @@ class Reports1C_model extends CI_Model{
         }
         
         if(!in_array($id,$reports)){
-            $reports[]=$id;
+            $user_id=$this->user_model->userdata['id'];
+            $reports[$user_id.'-'.rand(11,999)]=$id;
         }
         else{
             $index=array_search($id,$reports);

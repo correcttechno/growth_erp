@@ -8,6 +8,7 @@ class Reports1C extends CI_Controller{
         $this->user_model->checkLogined();
         $this->load->model("reports1c_model");
         $this->load->model("customers_model");
+        $this->load->model("employees_model");
     }
 
     public function index(){
