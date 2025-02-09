@@ -9,12 +9,12 @@
             <div class="row gy-4">
                 <div class="card">
                     <div class="card-body">
-                        <form action="#" class="search-input-form">
+                        <form data-stop action="<?=base_url('dashboard');?>" method="post" class="search-input-form">
                             <div class="row  align-items-end">
                                 <div class="col-4">
                                     <div class="search-input">
-                                        <input type="month"
-                                            class="form-control form-select h6 rounded-4 mb-0 py-6 px-8" />
+                                        <input type="month" name="date"
+                                            class="form-control form-select h6 rounded-4 mb-0 py-6 px-8" value="<?=(isset($_POST['date'])==true)?$_POST['date']:date("Y-m");?>"/>
                                     </div>
                                 </div>
                                 <div class="col-2">

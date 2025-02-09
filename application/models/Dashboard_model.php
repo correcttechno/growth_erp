@@ -9,17 +9,28 @@ class Dashboard_model extends CI_Model{
 
     //tapsiriqlarin sayini oxuyur
     public function read_row($user_id){
-        //and (MONTH(date) = ($month) AND YEAR(date) = ($year))
+        //$year=$date[0];
+        //$month=$date[1];
+        //$sql="select *from reports_log where customer_id=$customer_id and (MONTH(date) = ($month) AND YEAR(date) = ($year))";
+
+        $date=$this->input->post('date',true);
         
-        $this->db->like('users',$user_id,'both');
-        $results=$this->db->get('tasks')->result_array();
+        $month=date('m');
+        $year=date('Y');
+        if($date!=''){
+            $date=explode('-',$date);
+            $year=$date[0];
+            $month=$date[1];
+        }
+
+        $sql="select *from tasks where users like '%$user_id%' and (MONTH(date) = ($month) AND YEAR(date) = ($year))";
+        $results=$this->database_model->query($sql);
         $ar= $this->tasks_model->getTasks($results);
 
 
         //musteri sayi
-        $this->db->like('users',$user_id,'both');
-        $this->db->group_by('customer_id');
-        $clen=$this->db->get('tasks')->result_array();
+        $sql="select *from tasks where users like '%$user_id%' and (MONTH(date) = ($month) AND YEAR(date) = ($year)) group by customer_id";
+        $clen=$this->database_model->query($sql);
 
         $res=array(
             'ongoing'       =>count($ar['ongoing']),
