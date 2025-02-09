@@ -9,11 +9,11 @@
         </div>
         <!-- Breadcrumb End -->
 
-    
+
         <!-- Breadcrumb Right Start -->
         <div class="flex-align gap-8 flex-wrap">
 
-          
+
 
             <div class="flex-align flex-wrap gap-16">
                 <div class="flex-align flex-wrap gap-8">
@@ -43,63 +43,76 @@
 
 
     <div class="card overflow-hidden">
-        <div class="card-body p-0 table-responsive">
+        <div class="card-body p-0 ">
 
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-        <span class="flex-shrink-0 w-40 h-40 me-10 flex-center rounded-circle bg-main-600 text-white text-2xl">
-            <i class="ph ph-play"></i>
-        </span>
-        Davam edən tapşırıqlar 
-        <span style="margin-left:5px;line-height:2" class="text-14 h-30 w-30 text-center bg-primary-50 text-primary-600 rounded-pill"><?=count($ongoing);?></span>
-      </button>
-    </h2>
-    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <span
+                                class="flex-shrink-0 w-40 h-40 me-10 flex-center rounded-circle bg-main-600 text-white text-2xl">
+                                <i class="ph ph-play"></i>
+                            </span>
+                            Davam edən tapşırıqlar
+                            <span style="margin-left:5px;line-height:2"
+                                class="text-14 h-30 w-30 text-center bg-primary-50 text-primary-600 rounded-pill">
+                                <?=count($ongoing);?>
+                            </span>
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body table-responsive">
 
-      <?php $this->load->view('tasktableView',array('results'=>$ongoing));?>
+                            <?php $this->load->view('tasktableView',array('results'=>$ongoing));?>
 
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-        <span class="flex-shrink-0 w-40 h-40 me-10 flex-center rounded-circle bg-danger-600 text-white text-2xl">
-            <i class="ph ph-x"></i>
-        </span>
-        Tamamlanmayan Tapşırıqlar
-      </button>
-    </h2>
-    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">
-      <?php $this->load->view('tasktableView',array('results'=>$incomplete));?>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-        <span class="flex-shrink-0 w-40 h-40 me-10 flex-center rounded-circle bg-success-600 text-white text-2xl">
-            <i class="ph ph-check"></i>
-        </span>
-        Tamamlanan tapşırıqlar
-      </button>
-    </h2>
-    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">
-      <?php $this->load->view('tasktableView',array('results'=>$complete));?>
-      </div>
-    </div>
-  </div>
-</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            <span
+                                class="flex-shrink-0 w-40 h-40 me-10 flex-center rounded-circle bg-danger-600 text-white text-2xl">
+                                <i class="ph ph-x"></i>
+                            </span>
+                            Tamamlanmayan Tapşırıqlar
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body table-responsive">
+                            <?php $this->load->view('tasktableView',array('results'=>$incomplete));?>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            <span
+                                class="flex-shrink-0 w-40 h-40 me-10 flex-center rounded-circle bg-success-600 text-white text-2xl">
+                                <i class="ph ph-check"></i>
+                            </span>
+                            Tamamlanan tapşırıqlar
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body table-responsive">
+                            <?php $this->load->view('tasktableView',array('results'=>$complete));?>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            
+
         </div>
 
-       <!--  <div class="card-footer flex-between flex-wrap">
+        <!--  <div class="card-footer flex-between flex-wrap">
             <span class="text-gray-900">Showing 1 to 10 of 12 entries</span>
             <ul class="pagination flex-align flex-wrap">
                 <li class="page-item active">
@@ -164,12 +177,13 @@
                                 <?php if($customers):foreach($customers as $d):?>
                                 <option value="<?=$d['id'];?>">
                                     <?php if(!empty($d['company'])):?>
-                                        <?=$d['company'];?>
+                                    <?=$d['company'];?>
                                     <?php else:?>
-                                        <?=$d['firstname'];?>
-                                        <?=$d['lastname'];?> 
+                                    <?=$d['firstname'];?>
+                                    <?=$d['lastname'];?>
                                     <?php endif;?>
-                                    [<?=$d['voen'];?>]
+                                    [
+                                    <?=$d['voen'];?>]
                                 </option>
                                 <?php endforeach;endif;?>
                             </select>
@@ -213,7 +227,8 @@
                             <label class="form-label fw-semibold text-primary-light text-sm mb-8">Bitirmə vaxtı: <span
                                     class="text-danger">*</span>
                             </label>
-                            <input type="date" name="end" class="form-control radius-8 text-12" placeholder="Bitirmə vaxtı" />
+                            <input type="date" name="end" class="form-control radius-8 text-12"
+                                placeholder="Bitirmə vaxtı" />
                             <span data-error="title" class="text-xs text-danger"></span>
                         </div>
 
@@ -231,20 +246,25 @@
 
                         <div class="col-12">
                             <div class="form-switch switch-primary d-flex align-items-center gap-8 mb-16">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="periodic" name="periodic" value="true" >
-                                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="periodic">Təkrarlanan tapşırıq yarat</label>
+                                <input class="form-check-input" type="checkbox" role="switch" id="periodic"
+                                    name="periodic" value="true">
+                                <label class="form-check-label line-height-1 fw-medium text-secondary-light"
+                                    for="periodic">Təkrarlanan tapşırıq yarat</label>
                             </div>
                         </div>
 
                         <div class="col-12 d-none" id="peridocicalert">
                             <div class="bg-main-50 px-15 py-15 radius-8">
-                                <p class="h6 text-primary-600">Aşağıdakı xanada seçilmiş günə 5 gün qalmış tapşırıq "Davam edən tapşırıqlar" siyahısında görünəcəkdir.</p>
+                                <p class="h6 text-primary-600">Aşağıdakı xanada seçilmiş günə 5 gün qalmış tapşırıq
+                                    "Davam edən tapşırıqlar" siyahısında görünəcəkdir.</p>
                                 <label class="form-label fw-semibold text-primary-light text-sm mb-8">Gün:
                                 </label>
-                                <select type="text" name="periodic_day" class="form-control radius-8"  placeholder="Gün" >
+                                <select type="text" name="periodic_day" class="form-control radius-8" placeholder="Gün">
                                     <option value="0">--gün seçimi--</option>
                                     <?php for($i=1;$i<31;$i++):?>
-                                        <option value="<?=$i;?>"><?=$i;?></option>
+                                    <option value="<?=$i;?>">
+                                        <?=$i;?>
+                                    </option>
                                     <?php endfor;?>
                                 </select>
                                 <span data-error="periodic_day" class="text-xs text-danger"></span>
@@ -254,7 +274,8 @@
                         <div class="col-12">
                             <label class="form-label fw-semibold text-primary-light text-sm mb-8">Fayl:
                             </label>
-                            <input type="file" name="files[]" class="form-control radius-8" multiple placeholder="Fayl" />
+                            <input type="file" name="files[]" class="form-control radius-8" multiple
+                                placeholder="Fayl" />
                             <span data-error="file" class="text-xs text-danger"></span>
                         </div>
 
@@ -293,7 +314,7 @@
                         <input type="hidden" name="id" value="0" />
                         <input type="hidden" name="status" value="" />
 
-                   
+
 
                         <div class="col-12">
                             <label class="form-label fw-semibold text-primary-light text-sm mb-8">Qeyd: <span
