@@ -41,6 +41,7 @@ class Tasks_model extends CI_Model
         }
         else{
             $my_id=$this->user_model->userdata['id'];
+            $this->db->order_by('id','desc');
             $this->db->like('users',$my_id,'both');
             $results = $this->db->get("tasks")->result_array();
         }
