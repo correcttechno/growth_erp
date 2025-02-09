@@ -25,8 +25,13 @@ class Reports1C extends CI_Controller{
         );
 
         if(!empty($id) and !empty($customer_id)){
-            $this->reports1c_model->add_log($id,$customer_id);
-            $response['status']=true;
+            if($this->reports1c_model->add_log($id,$customer_id)){
+                $response['status']=true;
+            }
+            else{
+                $response['msg']='Əməliyyat sizin tərəfinizdən icra edilə bilməz !';
+            }
+            
         }
         else{
             $response['msg']="Error";

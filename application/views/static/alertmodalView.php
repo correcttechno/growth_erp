@@ -11,6 +11,7 @@
                            <input type="hidden" name="b_id" value="0"/>
                            <input type="hidden" name="c_id" value="0"/>
                            <input type="hidden" name="d_id" value="0"/>
+                           <span data-error="msg" class="text-danger"></span>
                         </div>
                         
                         <div class="d-flex align-items-center justify-content-center gap-8 mt-24">

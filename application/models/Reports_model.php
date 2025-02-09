@@ -51,7 +51,12 @@ class Reports_model extends CI_Model{
         }
         else{
             $index=array_search($id,$reports);
-            unset($reports[$index]);
+            if(strstr($index,$this->user_model->userdata['id'])){
+                unset($reports[$index]);
+            }
+            else{
+                return false;
+            }
         }
         
         $reports=json_encode($reports);

@@ -29,12 +29,17 @@ class Reports extends CI_Controller{
         $customer_id    =$this->input->post('b_id',true);
         $response=array(
             'status'=>false,
-            'msg'   =>'ee',
+            'msg'   =>'',
         );
 
         if(!empty($id) and !empty($customer_id)){
-            $this->reports_model->add_log($id,$customer_id);
-            $response['status']=true;
+            if($this->reports_model->add_log($id,$customer_id)){
+                $response['status']=true;
+            }
+            else{
+                $response['msg']='Əməliyyat sizin tərəfinizdən icra edilə bilməz !';
+            }
+            
         }
         else{
             $response['msg']="Error";
