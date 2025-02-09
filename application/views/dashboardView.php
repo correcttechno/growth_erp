@@ -38,7 +38,7 @@
                             <div class="col-xxl-4 col-md-4 col-sm-4 align-self-center">
                                 <div class="row">
                                     <div class="col-4">
-                                        <img class="rounded-circle"
+                                        <img class="rounded-circle" style="width:100px;height:100px"
                                             src="<?=($r['photo']!=''?$r['photo']:get_img('user-img.png'));?>" />
                                     </div>
                                     <div class="col-8 align-self-center">
