@@ -33,7 +33,7 @@ class Tasks_model extends CI_Model
         return array('ongoing'=>$ongoing,'complete'=>$complete,'incomplete'=>$incomplete);
     }
 
-    public function read($start=0,$limit=100)
+    public function read($start=0,$limit=200)
     {
         $results = array();
         if ($this->user_model->userdata['status'] == 'admin') {

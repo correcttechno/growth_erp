@@ -9,6 +9,7 @@ class Dashboard extends CI_Controller{
         $this->load->model("departments_model");
         $this->load->model("positions_model");
         $this->load->model("customers_model");
+        $this->load->model('dashboard_model');
     }
 
 

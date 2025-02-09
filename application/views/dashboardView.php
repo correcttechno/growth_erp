@@ -10,35 +10,27 @@
                 <div class="card">
                     <div class="card-body">
                         <form action="#" class="search-input-form">
-                            <div class="search-input">
-                                <select class="form-control form-select h6 rounded-4 mb-0 py-6 px-8">
-                                    <?php if($customers):foreach($customers as $d):?>
-                                    <option value="<?=$d['id'];?>">
-                                        <?php if(!empty($d['company'])):?>
-                                        <?=$d['company'];?>
-                                        <?php else:?>
-                                        <?=$d['firstname'];?>
-                                        <?=$d['lastname'];?>
-                                        <?php endif;?>
-                                        [
-                                        <?=$d['voen'];?>]
-                                    </option>
-                                    <?php endforeach;endif;?>
-                                </select>
-                            </div>
-                            <div class="search-input">
-                                <input type="month" class="form-control form-select h6 rounded-4 mb-0 py-6 px-8" />
-                            </div>
-
-                            <div class="search-input">
-                                <button type="submit" class="btn btn-main  py-9 w-100">Search</button>
+                            <div class="row  align-items-end">
+                                <div class="col-4">
+                                    <div class="search-input">
+                                        <input type="month"
+                                            class="form-control form-select h6 rounded-4 mb-0 py-6 px-8" />
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="search-input">
+                                        <button type="submit" class="btn btn-main  py-9 w-100">Search</button>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
 
 
-                <?php foreach($results as $r):?>
+                <?php foreach($results as $r):
+                $task=$this->dashboard_model->read_row($r['id']);    
+                ?>
                 <div class="card">
                     <div class="card-body">
 
@@ -80,7 +72,9 @@
                             </div>
 
                             <div class="col-xxl-2 col-md-2 col-sm-4">
-                                <h4 class="mb-2">39+</h4>
+                                <h4 class="mb-2">
+                                    <?=$task['ongoing'];?>
+                                </h4>
                                 <span class="text-gray-600 text-14">Davam edən tapşırıqlar</span>
                                 <div class="flex-between gap-8 mt-16">
                                     <span
@@ -92,7 +86,9 @@
                             </div>
 
                             <div class="col-xxl-2 col-md-2 col-sm-4">
-                                <h4 class="mb-2">155+</h4>
+                                <h4 class="mb-2">
+                                    <?=$task['complete'];?>
+                                </h4>
                                 <span class="text-gray-600 text-14">Tamamlanan Tapşırıqlar</span>
                                 <div class="flex-between gap-8 mt-16">
                                     <span
@@ -104,7 +100,9 @@
                             </div>
 
                             <div class="col-xxl-2 col-md-2 col-sm-4">
-                                <h4 class="mb-2">25+</h4>
+                                <h4 class="mb-2">
+                                    <?=$task['incomplete'];?>
+                                </h4>
                                 <span class="text-gray-600 text-14">Tamamlanmayan Tapşırıqlar</span>
                                 <div class="flex-between gap-8 mt-16">
                                     <span
@@ -115,7 +113,9 @@
                             </div>
 
                             <div class="col-xxl-2 col-md-2 col-sm-4">
-                                <h4 class="mb-2">18k+</h4>
+                                <h4 class="mb-2">
+                                    <?=$task['customers'];?>
+                                </h4>
                                 <span class="text-gray-600 text-14">Fərqli müştəri sayı</span>
                                 <div class="flex-between gap-8 mt-16">
                                     <span
