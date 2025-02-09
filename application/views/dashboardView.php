@@ -7,6 +7,8 @@
         <div class="col-lg-12">
             <!-- Widgets Start -->
             <div class="row gy-4">
+
+                <?php if($this->user_model->userdata['status']=='admin'):?>
                 <div class="card">
                     <div class="card-body">
                         <form data-stop action="<?=base_url('dashboard');?>" method="post" class="search-input-form">
@@ -26,7 +28,7 @@
                         </form>
                     </div>
                 </div>
-
+                <?php endif;?>
 
                 <?php foreach($results as $r):
                 $task=$this->dashboard_model->read_row($r['id']);    

@@ -14,10 +14,18 @@ class Dashboard extends CI_Controller{
 
 
     public function index(){
-        $results        =$this->employees_model->read();
         $departments    =$this->departments_model->read();
         $positions      =$this->positions_model->read();
         $customers      =$this->customers_model->read();
+        
+        $results        =array();
+        if($this->user_model->userdata['status']=='admin'){
+            $results        =$this->employees_model->read();
+        }
+        else{
+            $results=array($this->user_model->userdata);
+        }
+
         $data=array(
             'results'       =>$results,
             'departments'   =>$departments,
