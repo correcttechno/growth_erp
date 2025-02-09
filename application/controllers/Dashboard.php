@@ -5,11 +5,24 @@ class Dashboard extends CI_Controller{
     function __construct(){
         parent::__construct();
         $this->user_model->checkLogined();
+        $this->load->model('employees_model');
+        $this->load->model("departments_model");
+        $this->load->model("positions_model");
+        $this->load->model("customers_model");
     }
 
 
     public function index(){
-      
-       $this->load_model->load();
+        $results        =$this->employees_model->read();
+        $departments    =$this->departments_model->read();
+        $positions      =$this->positions_model->read();
+        $customers      =$this->customers_model->read();
+        $data=array(
+            'results'       =>$results,
+            'departments'   =>$departments,
+            'positions'     =>$positions,
+            'customers'     =>$customers,
+        );
+        $this->load_model->load('dashboardView',$data);
     }
 }

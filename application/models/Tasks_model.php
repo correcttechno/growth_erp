@@ -3,12 +3,38 @@
 class Tasks_model extends CI_Model
 {
 
+    public function getTasks($results){
+        $incomplete     =array();
+        $complete       =array();
+        $ongoing        =array();
+
+        foreach($results as $r){
+            $logs=$this->readTaskLogs($r['id']);
+            $userIDS=json_decode($r['users'],true);
+            if($logs){
+                for($i=0;$i<count($logs);$i++){
+                    if($logs[$i]['status']=='notanswer'){
+                        $incomplete[]=$r;
+                        break;
+                    }
+                    else if(($i+1)==count($userIDS)){
+                        $complete[]=$r;
+                    }
+                    else if(($i+1)==count($logs) and ($i+1)!=count($userIDS)){
+                        $ongoing[]=$r;
+                    }
+                }
+            }
+            else{
+                $ongoing[]=$r;
+            }
+        }
+
+        return array('ongoing'=>$ongoing,'complete'=>$complete,'incomplete'=>$incomplete);
+    }
+
     public function read($start=0,$limit=100)
     {
-       
-
-       // echo $filter;die;
-
         $results = array();
         if ($this->user_model->userdata['status'] == 'admin') {
             $results = $this->database_model->read('tasks',array('id!='=>0),array('id','desc'),$limit,$start);
@@ -18,10 +44,8 @@ class Tasks_model extends CI_Model
             $this->db->like('users',$my_id,'both');
             $results = $this->db->get("tasks")->result_array();
         }
-      
         
-        
-        return count($results) > 0 ? $results : false;
+        return $this->getTasks($results);
     }
 
     //bu funksya tasklarin ardicil islemesi ucun idi hazirda isletmirem
