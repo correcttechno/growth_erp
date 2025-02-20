@@ -12,7 +12,7 @@ class Customers extends CI_Controller{
     }
 
     public function index(){
-        $this->user_model->checkAdminLogined();
+        $this->user_model->checkLogined();
         $results=$this->customers_model->read();
         $this->load_model->load('customersView',array('results'=>$results));
     }

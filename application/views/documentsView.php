@@ -59,11 +59,13 @@
 
                     <?php foreach($folders as $f):?>
                     <div class="resource-item text-center" >
+                        <?php if($this->user_model->userdata['status']=='admin'):?>
                         <div class="document-buttons">
                             <a href="#" data-delete-id="<?=$f;?>" data-o-id="<?=$path;?>" class="text-center w-30 h-30 py-5 bg-danger-600 rounded-circle text-white">
                                 <i class="ph ph-trash"></i>
                             </a>
                         </div>
+                        <?php endif;?>
                         <!-- <div class="form-check">
                             <input class="form-check-input border-gray-200 rounded-4" id="checkbox1" type="checkbox">
                         </div> -->
@@ -83,11 +85,13 @@
 
                     <?php foreach($files as $f):?>
                     <div class="resource-item text-center">
+                        <?php if($this->user_model->userdata['status']=='admin'):?>
                         <div class="document-buttons">
                             <a href="#" data-delete-id="<?=$f;?>" data-o-id="<?=$path;?>" class="text-center w-30 h-30 py-5 bg-danger-600 rounded-circle text-white">
                                 <i class="ph ph-trash"></i>
                             </a>
                         </div>
+                        <?php endif;?>
                        <!--  <div class="form-check">
                             <input class="form-check-input border-gray-200 rounded-4" id="checkbox52" type="checkbox">
                         </div> -->

@@ -8,7 +8,7 @@
             </ul>
         </div>
         <!-- Breadcrumb End -->
-
+        <?php if($this->user_model->userdata['status']=='admin'):?>
         <!-- Breadcrumb Right Start -->
         <div class="flex-align gap-8 flex-wrap">
             <button type="button" class="btn btn-main text-sm btn-sm px-24 rounded-pill" data-bs-toggle="modal"
@@ -18,6 +18,7 @@
             </button>
         </div>
         <!-- Breadcrumb Right End -->
+        <?php endif;?>
 
     </div>
 
@@ -36,8 +37,10 @@
                             </div>
                         </th>
                         <th class="h6 text-gray-300">Müştəri</th>
+                        <?php if($this->user_model->userdata['status']=='admin'):?>
                         <th class="h6 text-gray-300">Rəhbər şəxs</th>
                         <th class="h6 text-gray-300">Müəssisə məlumatları</th>
+                        <?php endif;?>
                         <th class="h6 text-gray-300">Digər məlumatlar</th>
                         <th class="h6 text-gray-300">Əməliyyatlar</th>
                     </tr>
@@ -52,10 +55,15 @@
                         </td>
                         <td style="max-width:200px">
                             <span class="h6 mb-0 fw-medium text-gray-300">
+                                <?php if($this->user_model->userdata['status']=='admin'):?>
                                 <?=$r['firstname'];?>
                                 <?=$r['lastname'];?> 
                                 [<?=$r['company'];?>]
+                                <?php else:?>
+                                    <?=(empty($r['company'])==true?$r['firstname'].' '.$r['lastname']:$r['company']);?>
+                                <?php endif;?>
                             </span>
+                            <?php if($this->user_model->userdata['status']=='admin'):?>
                             <?php if(!empty($r['address'])):?>
                             <p>
                                 <span
@@ -86,8 +94,9 @@
                                 </span>
                             </p>
                             <?php endif;?>
+                            <?php endif;?>
                         </td>
-
+                        <?php if($this->user_model->userdata['status']=='admin'):?>
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">
                                 <?=$r['rfirstname'];?>
@@ -124,7 +133,7 @@
                             </p>
                             <?php endif;?>
                         </td>
-
+                        
                         <td>
                             <span class="h6 mb-0 fw-medium text-gray-300">
                                 <?=($r['customertype']=='person'?"Fiziki şəxs":"Hüquqi şəxs");?>
@@ -152,10 +161,8 @@
                                 </span>
 
                             </p>
-
-
                         </td>
-
+                        <?php endif;?>
                         <td>
                             <?php if(!empty($r['bankname'])):?>
                             <p class="text-12 mb-0 fw-medium text-gray-300">Bank Məlumatları</p>
@@ -219,6 +226,7 @@
 
 
                         <td>
+                        <?php if($this->user_model->userdata['status']=='admin'):?>
                             <button data-delete-id="<?=$r['id'];?>"
                                 class="w-40 h-40 bg-danger-50 rounded-circle hover-bg-danger-100 transition-2">
                                 <i class="ph ph-trash text-danger-700"></i>
@@ -227,6 +235,7 @@
                                 class=" w-40 h-40 bg-main-50 rounded-circle hover-bg-main-100 transition-2">
                                 <i class="ph ph-pencil-simple text-main-700"></i>
                             </button>
+                        <?php endif;?>
                         </td>
                     </tr>
                     <?php endforeach;?>

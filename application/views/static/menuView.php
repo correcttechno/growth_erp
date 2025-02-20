@@ -83,7 +83,7 @@
                 </li>
                 
 
-                <?php if($this->user_model->userdata['status']=='admin'):?>
+                
                 <li class="sidebar-menu__item has-dropdown">
                     <a href="javascript:void(0)" class="sidebar-menu__link">
                         <span class="icon"><i class="ph ph-squares-four"></i></span>
@@ -95,9 +95,11 @@
                         <li class="sidebar-submenu__item">
                             <a href="<?=base_url("customers");?>" class="sidebar-submenu__link">Müştərilər</a>
                         </li>
+                        <?php if($this->user_model->userdata['status']=='admin'):?>
                         <li class="sidebar-submenu__item">
                             <a href="<?=base_url("customerstype");?>" class="sidebar-submenu__link"> Müştəri növləri </a>
                         </li>
+                        <?php endif;?>
                         <li class="sidebar-submenu__item">
                             <a href="<?=base_url("documents");?>" class="sidebar-submenu__link">Müştəri sənədləri</a>
                         </li>
@@ -105,6 +107,8 @@
                     </ul>
                     <!-- Submenu End -->
                 </li>
+
+                <?php if($this->user_model->userdata['status']=='admin'):?>
                 <li class="sidebar-menu__item">
                     <a href="<?=base_url('departments');?>" class="sidebar-menu__link">
                         <span class="icon"><i class="ph ph-buildings"></i></span>
