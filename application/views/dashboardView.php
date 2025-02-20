@@ -44,10 +44,10 @@
                                             src="<?=($r['photo']!=''?$r['photo']:get_img('user-img.png'));?>" />
                                     </div>
                                     <div class="col-8 align-self-center">
-                                        <span class="text-gray-600 text-20 fw-medium">
+                                        <a href="<?=base_url('tasks?user='.$r['id']);?>" class="text-primary-600 text-20 fw-medium">
                                             <?=$r['firstname'];?>
                                             <?=$r['lastname'];?>
-                                        </span>
+                                        </a>
 
                                         <p class="h6 mb-0 fw-medium text-gray-300">
                                             <?php

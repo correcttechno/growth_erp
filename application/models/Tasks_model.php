@@ -34,7 +34,10 @@ class Tasks_model extends CI_Model
     }
 
     public function read($start=0,$limit=200,$user_id=0)
-    {
+    {   
+        $date = date('Y-m-d H:i:s', strtotime('-50 days'));
+        $this->db->where('date >', $date);
+
         $results = array();
         if ($this->user_model->userdata['status'] == 'admin') {
            // $results = $this->database_model->read('tasks',array('id!='=>0),array('id','desc'),$limit,$start);
@@ -43,7 +46,7 @@ class Tasks_model extends CI_Model
             }
 
             $this->db->order_by('id','desc');
-            $this->db->limit($limit,$start);
+           // $this->db->limit($limit,$start);
             $results = $this->db->get("tasks")->result_array();
         }
         else{
