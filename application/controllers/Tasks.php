@@ -14,7 +14,8 @@ class Tasks extends CI_Controller{
     }
 
     public function index(){
-        $results        =$this->tasks_model->read();
+        $user_id=$this->input->get('user',true);
+        $results        =$this->tasks_model->read(0,200,$user_id);
         $customers      =$this->customers_model->read();
         $taskstype      =$this->taskstype_model->read();
         $employees      =$this->employees_model->read();

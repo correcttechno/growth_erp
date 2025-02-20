@@ -33,11 +33,18 @@ class Tasks_model extends CI_Model
         return array('ongoing'=>$ongoing,'complete'=>$complete,'incomplete'=>$incomplete);
     }
 
-    public function read($start=0,$limit=200)
+    public function read($start=0,$limit=200,$user_id=0)
     {
         $results = array();
         if ($this->user_model->userdata['status'] == 'admin') {
-            $results = $this->database_model->read('tasks',array('id!='=>0),array('id','desc'),$limit,$start);
+           // $results = $this->database_model->read('tasks',array('id!='=>0),array('id','desc'),$limit,$start);
+            if(!empty($user_id)){
+                $this->db->like('users',$user_id,'both');
+            }
+
+            $this->db->order_by('id','desc');
+            $this->db->limit($limit,$start);
+            $results = $this->db->get("tasks")->result_array();
         }
         else{
             $my_id=$this->user_model->userdata['id'];
