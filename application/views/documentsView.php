@@ -27,7 +27,7 @@
                 <i class="ph ph-trash me-4"></i>
                 Sil
             </button> -->
-
+            <?php if($this->user_model->userdata['status']=='admin'):?>
             <button type="button" class="btn btn-main text-sm btn-sm px-24 py-12 d-flex align-items-center gap-8" data-bs-toggle="modal"
                 data-bs-target="#addModal">
                 <i class="ph ph-plus me-4"></i>
@@ -44,6 +44,7 @@
                     <input type="file" id="docfiles" name="files[]" multiple id="upload" hidden>
                 </form>
             </div>
+            <?php endif;?>
         </div>
         <!-- Breadcrumb Right End -->
 
