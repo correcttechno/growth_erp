@@ -115,7 +115,7 @@ class Upload_model extends CI_Model {
         
                 // Upload ayarları
                 $config['upload_path']   = './uploads/documents/'.$path;
-                $config['allowed_types'] = 'jpg|png|gif|pdf|docx|doc|xls|xlsx|ppt|pptx|xml';
+                $config['allowed_types'] = '*';
                 $config['max_size']      = 2048; // Maksimum boyut (KB)
                 $config['file_name']     = time() . '_' . $files['name'][$i];
                 $config['encrypt_name'] = FALSE;
